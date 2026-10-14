@@ -75,6 +75,7 @@
     avail: "all",
     q: "",
     sort: "featured",
+    shown: 16,
     cart: store.get("cart", []).filter((l) => byId[l.id])
   };
   if (state.currency !== "USD" && state.currency !== "ZAR") state.currency = CFG.countries[state.country].defaultCurrency;
@@ -113,31 +114,35 @@
   // Photo for a product: its `image` field, else images/products/<id>.jpg if that file exists.
   const photoSrc = (p) => p.image || (CFG.productImageFolder ? `${CFG.productImageFolder}${p.id}.jpg` : "");
 
-  function art(p, { mark = true } = {}) {
-    const [a, b] = p.tone || ["#e6e0d6", "#b9a98f"];
+  function art(p, { mark = false } = {}) {
+    const [a, b] = p.tone || ["#ece8e3", "#9a948c"];
     const src = photoSrc(p);
-    // The generated artwork sits underneath; a missing photo removes itself and the artwork shows.
-    return `<div class="art" style="background:linear-gradient(140deg, ${a}, ${b})" role="img" aria-label="${esc(fullName(p))}">
-      <span class="art__icon">${icon(p.icon, 2.2)}</span>
+    // The artwork sits underneath; a missing photo removes itself and the artwork shows.
+    return `<div class="art" style="--tone-a:${a};--tone-b:${b}" role="img" aria-label="${esc(fullName(p))}">
+      <span class="art__icon">${icon(p.icon, 2)}</span>
       ${mark ? `<span class="art__mark">${esc(p.brand)}</span>` : ""}
       ${src ? `<img class="art__photo" src="${esc(src)}" alt="" loading="lazy" onerror="this.remove()">` : ""}
     </div>`;
   }
 
   // ---------- Filtering ----------
+  function matches(p, f) {
+    const q = f.q.trim().toLowerCase();
+    if (f.cat !== "all" && p.category !== f.cat) return false;
+    if (f.sub !== "all" && p.sub !== f.sub) return false;
+    if (f.cond !== "all" && p.condition !== f.cond) return false;
+    if (f.brand !== "all" && p.brand !== f.brand) return false;
+    if (f.gender !== "all" && p.sub === "fragrance" && p.gender !== f.gender && p.gender !== "unisex") return false;
+    if (f.avail === "now" && !canNow(p)) return false;
+    if (f.avail === "ship" && (canNow(p) || !canShip(p))) return false;
+    if (q && !`${p.brand} ${p.name} ${p.sub} ${p.condition} ${p.viral || ""} ${GENDER_SEARCH[p.gender] || ""}`.toLowerCase().includes(q)) return false;
+    return true;
+  }
+  // How many products a filter option would show, given the other active filters.
+  const countWith = (over) => PRODUCTS.filter((p) => matches(p, { ...state, ...over })).length;
+
   function filtered() {
-    const q = state.q.trim().toLowerCase();
-    let list = PRODUCTS.filter((p) => {
-      if (state.cat !== "all" && p.category !== state.cat) return false;
-      if (state.sub !== "all" && p.sub !== state.sub) return false;
-      if (state.cond !== "all" && p.condition !== state.cond) return false;
-      if (state.brand !== "all" && p.brand !== state.brand) return false;
-      if (state.gender !== "all" && p.sub === "fragrance" && p.gender !== state.gender && p.gender !== "unisex") return false;
-      if (state.avail === "now" && !canNow(p)) return false;
-      if (state.avail === "ship" && (canNow(p) || !canShip(p))) return false;
-      if (q && !`${p.brand} ${p.name} ${p.sub} ${p.condition} ${p.viral || ""} ${GENDER_SEARCH[p.gender] || ""}`.toLowerCase().includes(q)) return false;
-      return true;
-    });
+    const list = PRODUCTS.filter((p) => matches(p, state));
     const price = (p) => unitUSD(p, bestMode(p));
     if (state.sort === "price-asc") list.sort((a, b) => price(a) - price(b));
     else if (state.sort === "price-desc") list.sort((a, b) => price(b) - price(a));
@@ -146,101 +151,183 @@
     return list;
   }
 
-  // ---------- Rendering: product cards ----------
+  // ---------- Product cards ----------
+  // The delivery option a shopper has picked on each card (defaults to the fastest available).
+  const picked = {};
+  const modeFor = (p) => (picked[p.id] === "now" && canNow(p)) || (picked[p.id] === "ship" && canShip(p)) ? picked[p.id] : bestMode(p);
+
   function badges(p) {
     const out = [];
-    if (p.viral) out.push(`<span class="tag tag--viral">${esc(p.viral)}</span>`);
-    if (p.condition === "refurbished") out.push('<span class="tag tag--refurb">Refurbished</span>');
-    else if (p.category === "electronics") out.push('<span class="tag tag--new">Brand new</span>');
-    if (p.wasUSD && p.wasUSD > p.priceUSD) out.push(`<span class="tag tag--sale">-${Math.round((1 - p.priceUSD / p.wasUSD) * 100)}%</span>`);
+    if (p.condition === "refurbished") out.push('<span class="badge badge--refurb">Refurbished</span>');
+    else if (p.viral) out.push(`<span class="badge">${esc(p.viral)}</span>`);
+    if (p.wasUSD && p.wasUSD > p.priceUSD) out.push(`<span class="badge badge--sale">-${Math.round((1 - p.priceUSD / p.wasUSD) * 100)}%</span>`);
     return out.join("");
   }
 
-  function optionNow(p, compact) {
-    const c = country();
-    if (!canNow(p)) {
-      return `<div class="option option--off">
-        <span class="option__icon">${icon("x", 4)}</span>
-        <span class="option__text"><span class="option__title">Not in stock locally</span>
-        <span class="option__sub">Order it from the USA instead</span></span>
-        ${compact ? "" : '<span></span>'}
-      </div>`;
-    }
-    const left = stockHere(p);
-    return `<div class="option option--now">
-      <span class="option__icon">${icon("bolt", 3.5)}</span>
-      <span class="option__text"><span class="option__title">Available now <span class="option__price">${money(unitUSD(p, "now"))}</span></span>
-      <span class="option__sub">In stock in ${esc(c.hub)}${left <= 3 ? ` · only ${left} left` : ""}</span></span>
-      ${compact ? `<button class="option__add" type="button" data-add="${p.id}" data-mode="now" aria-label="Buy ${esc(p.name)} now from local stock">Buy now</button>` : ""}
-    </div>`;
+  function metaLine(p) {
+    if (p.gender) return `${GENDER_LABEL[p.gender]}${p.size ? ` · ${esc(p.size)}` : ""}`;
+    if (p.grade) return esc(p.grade);
+    if (p.category === "electronics") return "Brand new · sealed";
+    return "";
   }
 
-  function optionShip(p, compact) {
-    if (!canShip(p)) return "";
-    return `<div class="option option--ship">
-      <span class="option__icon">${icon("plane", 3.5)}</span>
-      <span class="option__text"><span class="option__title">Ships from USA <span class="option__price">${money(unitUSD(p, "ship"))}</span></span>
-      <span class="option__sub">Arrives in ${esc(CFG.usaLeadTime)}${CFG.preorderDiscount ? ` · <span class="save">save ${pct(CFG.preorderDiscount)}</span>` : ""}</span></span>
-      ${compact ? `<button class="option__add" type="button" data-add="${p.id}" data-mode="ship" aria-label="Order ${esc(p.name)} from the USA">Order</button>` : ""}
-    </div>`;
-  }
-
-  function priceBlock(p) {
-    const mode = bestMode(p);
+  function priceHTML(p, mode) {
     const usd = unitUSD(p, mode);
     const was = p.wasUSD && p.wasUSD > usd ? `<span class="price__was">${money(p.wasUSD)}</span>` : "";
-    return `<div class="price">
-      <span class="price__main">${money(usd)}</span>${was}
-      <span class="price__alt">≈ ${money(usd, altCur())}${mode === "ship" ? " · USA order price" : ""}</span>
+    return `<div class="price"><span class="price__main">${money(usd)}</span>${was}<span class="price__alt">${money(usd, altCur())}</span></div>`;
+  }
+
+  function availNote(p, mode) {
+    if (mode === "now") {
+      const left = stockHere(p);
+      return `<b class="now">In stock</b> in ${esc(country().hub)}${left <= 3 ? ` · ${left} left` : ""}`;
+    }
+    return `<b class="ship">Ships from USA</b>${CFG.preorderDiscount ? ` · save ${pct(CFG.preorderDiscount)}` : ""}`;
+  }
+
+  function availSeg(p, mode, big = false) {
+    const nowOk = canNow(p), shipOk = canShip(p);
+    const sub = (t) => (big ? `<small>${t}</small>` : "");
+    return `<div class="avail__seg" role="group" aria-label="Delivery option">
+      <button type="button" data-pick="${p.id}" data-mode="now" aria-pressed="${mode === "now"}" ${nowOk ? "" : "disabled"}>
+        <span><i class="dot dot--now"></i> Ready now</span>${sub(nowOk ? `${money(unitUSD(p, "now"))} · 1–4 days` : "Not in stock locally")}
+      </button>
+      <button type="button" data-pick="${p.id}" data-mode="ship" aria-pressed="${mode === "ship"}" ${shipOk ? "" : "disabled"}>
+        <span><i class="dot dot--ship"></i> ~2 weeks</span>${sub(`${money(unitUSD(p, "ship"))} · from USA`)}
+      </button>
     </div>`;
   }
 
   function card(p) {
-    return `<article class="card product">
-      <button class="product__media" type="button" data-open="${p.id}" aria-label="View ${esc(p.brand + " " + p.name)}">
+    const mode = modeFor(p);
+    return `<article class="product" data-card="${p.id}">
+      <button class="product__media" type="button" data-open="${p.id}" aria-label="View ${esc(fullName(p))}">
         ${art(p)}
-        <span class="product__badges">${badges(p)}</span>
+        <span class="badges">${badges(p)}</span>
       </button>
-      <div class="product__body">
-        <div>
-          <div class="product__brand">${esc(p.brand)}</div>
-          <h3 class="product__name"><button type="button" data-open="${p.id}">${esc(p.name)}</button></h3>
-          ${p.grade ? `<div class="product__grade">${esc(p.grade)}</div>` : ""}
-          ${p.gender ? `<div class="product__for">${GENDER_LABEL[p.gender]}${p.size ? ` · ${esc(p.size)}` : ""}</div>` : ""}
+      <div class="product__info">
+        <div class="product__brand">${esc(p.brand)}</div>
+        <h3 class="product__name"><button type="button" data-open="${p.id}">${esc(p.name)}</button></h3>
+        <div class="product__meta">${metaLine(p)}</div>
+        ${priceHTML(p, mode)}
+        <div class="avail">
+          ${availSeg(p, mode)}
+          <p class="avail__note">${availNote(p, mode)}</p>
         </div>
-        ${priceBlock(p)}
-        <div class="avail">${optionNow(p, true)}${optionShip(p, true)}</div>
+        <button class="add-btn" type="button" data-add="${p.id}" data-mode="${mode}">${mode === "now" ? "Add to bag" : "Pre-order"}</button>
       </div>
     </article>`;
   }
 
-  function renderSubChips() {
-    const el = $("#subChips");
-    if (state.cat === "all") { el.hidden = true; el.innerHTML = ""; $("#genderChips").hidden = true; return; }
-    el.hidden = false;
-    el.innerHTML = `<span class="chips__label">Type</span>
-      <button class="chip" data-filter-sub="all" aria-pressed="${state.sub === "all"}">All ${state.cat}</button>` +
-      SUBS[state.cat].map(([v, l]) => `<button class="chip" data-filter-sub="${v}" aria-pressed="${state.sub === v}">${l}</button>`).join("");
-    const g = $("#genderChips");
-    g.hidden = state.sub !== "fragrance";
-    g.innerHTML = g.hidden ? "" : `<span class="chips__label">Scent for</span>
-      <button class="chip" data-filter-gender="all" aria-pressed="${state.gender === "all"}">Everyone</button>` +
-      GENDERS.map(([v, l]) => `<button class="chip" data-filter-gender="${v}" aria-pressed="${state.gender === v}">${l}</button>`).join("");
+  // Re-render a single card after its option changes (keeps scroll position and focus nearby).
+  function refreshCard(id) {
+    const el = $(`[data-card="${id}"]`);
+    if (!el) return;
+    el.outerHTML = card(byId[id]);
   }
 
-  function renderGrid() {
-    const list = filtered();
-    $("#productGrid").innerHTML = list.map(card).join("");
-    $("#emptyState").hidden = list.length > 0;
-    const nowCount = list.filter(canNow).length;
-    $("#resultsCount").textContent = `${list.length} product${list.length === 1 ? "" : "s"} · ${nowCount} available now in ${country().name}`;
-    $$("[data-filter-cat]").forEach((b) => b.setAttribute("aria-selected", b.dataset.filterCat === state.cat));
-    $$("[data-filter-avail]").forEach((b) => b.setAttribute("aria-pressed", b.dataset.filterAvail === state.avail));
-    $$("[data-filter-cond]").forEach((b) => b.setAttribute("aria-pressed", b.dataset.filterCond === state.cond));
-    $("#condChips").hidden = state.cat === "beauty";
-    renderBrands();
-    renderSubChips();
+  const SUB_LABEL = Object.fromEntries([...SUBS.beauty, ...SUBS.electronics]);
+  const CAT_LABEL = { all: "Shop all", beauty: "Beauty", electronics: "Tech" };
+
+  function shopTitle() {
+    if (state.sub !== "all") return SUB_LABEL[state.sub];
+    if (state.cat === "electronics" && state.cond === "refurbished") return "Refurbished tech";
+    if (state.cat === "electronics" && state.cond === "new") return "New tech";
+    if (state.avail === "now" && state.cat === "all") return "Ready now";
+    return CAT_LABEL[state.cat];
   }
+
+  function activeFilters() {
+    const out = [];
+    if (state.cat !== "all") out.push(["cat", CAT_LABEL[state.cat]]);
+    if (state.sub !== "all") out.push(["sub", SUB_LABEL[state.sub]]);
+    if (state.gender !== "all") out.push(["gender", GENDER_LABEL[state.gender]]);
+    if (state.brand !== "all") out.push(["brand", state.brand]);
+    if (state.cond !== "all") out.push(["cond", state.cond === "new" ? "Brand new" : "Refurbished"]);
+    if (state.q.trim()) out.push(["q", `“${state.q.trim()}”`]);
+    return out;
+  }
+
+  const PAGE = 16;
+
+  function renderGrid({ keepShown = false } = {}) {
+    if (!keepShown) state.shown = PAGE;
+    const list = filtered();
+    $("#productGrid").innerHTML = list.slice(0, state.shown).map(card).join("");
+    const left = list.length - state.shown;
+    $("#moreWrap").hidden = left <= 0;
+    $("#moreText").textContent = `Showing ${Math.min(state.shown, list.length)} of ${list.length}`;
+    $("#emptyState").hidden = list.length > 0;
+    $("#shopTitle").textContent = shopTitle();
+    $("#resultsCount").textContent = `${list.length} product${list.length === 1 ? "" : "s"} · ${list.filter(canNow).length} ready now in ${country().name}`;
+    $$("[data-avail]").forEach((b) => b.setAttribute("aria-pressed", b.dataset.avail === state.avail));
+
+    const af = activeFilters();
+    const n = af.filter(([k]) => k !== "q" && k !== "cat").length;
+    const fc = $("#filterCount");
+    fc.hidden = n === 0;
+    fc.textContent = n;
+    $("#activeFilters").innerHTML = af.length
+      ? af.map(([k, l]) => `<button class="af" type="button" data-remove-filter="${k}" aria-label="Remove ${esc(l)} filter">${esc(l)}<span aria-hidden="true">×</span></button>`).join("") +
+        (af.length > 1 ? '<button class="af af--clear" type="button" data-clear-filters>Clear all</button>' : "")
+      : "";
+    if (filterPanel.classList.contains("open")) renderFilters();
+  }
+
+  // ---------- Filter panel ----------
+  const filterPanel = $("#filterPanel");
+
+  function fchip(key, value, label, count) {
+    const on = state[key] === value;
+    return `<button class="fchip" type="button" data-f="${key}" data-v="${esc(value)}" aria-pressed="${on}" ${!on && count === 0 ? "disabled" : ""}>${esc(label)}${count != null ? ` <small>${count}</small>` : ""}</button>`;
+  }
+
+  function renderFilters() {
+    const groups = [];
+    groups.push(["Category", [["all", "All"], ["beauty", "Beauty"], ["electronics", "Tech"]]
+      .map(([v, l]) => fchip("cat", v, l, v === "all" ? null : countWith({ cat: v, sub: "all", cond: "all", gender: "all", brand: "all" }))).join("")]);
+    if (state.cat !== "all") {
+      groups.push(["Type", fchip("sub", "all", "All", null) +
+        SUBS[state.cat].map(([v, l]) => fchip("sub", v, l, countWith({ sub: v, gender: "all" }))).join("")]);
+    }
+    if (state.sub === "fragrance") {
+      groups.push(["Scent for", fchip("gender", "all", "Everyone", null) + GENDERS.map(([v, l]) => fchip("gender", v, l, countWith({ gender: v }))).join("")]);
+    }
+    if (state.cat !== "beauty") {
+      groups.push(["Condition", fchip("cond", "all", "All", null) + fchip("cond", "new", "Brand new", countWith({ cond: "new" })) + fchip("cond", "refurbished", "Refurbished", countWith({ cond: "refurbished" }))]);
+    }
+    const brands = [...new Set(PRODUCTS.filter((p) => matches(p, { ...state, brand: "all" })).map((p) => p.brand))].sort((a, b) => a.localeCompare(b));
+    if (state.brand !== "all" && !brands.includes(state.brand)) brands.unshift(state.brand);
+    groups.push(["Brand", fchip("brand", "all", "All brands", null) + brands.map((b) => fchip("brand", b, b, countWith({ brand: b }))).join("")]);
+    groups.push(["Availability", [["all", "All"], ["now", "Ready now"], ["ship", "~2 weeks"]]
+      .map(([v, l]) => fchip("avail", v, l, v === "all" ? null : countWith({ avail: v }))).join("")]);
+
+    $("#filterContent").innerHTML = groups.map(([t, html]) => `<div class="fgroup"><h3>${t}</h3><div class="fchips">${html}</div></div>`).join("");
+    const n = filtered().length;
+    $("#filterApply").textContent = `Show ${n} product${n === 1 ? "" : "s"}`;
+  }
+
+  function setFilter(key, value) {
+    state[key] = value;
+    if (key === "cat") { state.sub = "all"; state.gender = "all"; state.brand = "all"; if (value === "beauty") state.cond = "all"; }
+    if (key === "sub") state.gender = "all";
+    renderGrid();
+  }
+
+  function clearFilters() {
+    Object.assign(state, { cat: "all", sub: "all", gender: "all", brand: "all", cond: "all", avail: "all", q: "" });
+    $("#searchInput").value = "";
+    renderGrid();
+  }
+
+  function openFilters() { renderFilters(); filterPanel.classList.add("open"); filterPanel.setAttribute("aria-hidden", "false"); setTimeout(() => $(".modal__close", filterPanel).focus(), 50); }
+  function closeFilters() { filterPanel.classList.remove("open"); filterPanel.setAttribute("aria-hidden", "true"); }
+  $("#filterBtn").addEventListener("click", openFilters);
+  filterPanel.addEventListener("click", (e) => {
+    const c = e.target.closest("[data-f]");
+    if (c) { setFilter(c.dataset.f, c.dataset.v); return; }
+    if (e.target.closest("[data-close-filters]")) closeFilters();
+  });
 
   // ---------- Product modal ----------
   const pm = $("#productModal");
@@ -248,42 +335,32 @@
 
   function renderProductModal() {
     const { p, mode, qty } = pmState;
-    const opt = (m) => {
-      const ok = m === "now" ? canNow(p) : canShip(p);
-      if (m === "ship" && !ok) return "";
-      const html = (m === "now" ? optionNow : optionShip)(p, false);
-      // Turn the option into a radio row.
-      return html.replace(/^<div class="option ([^"]+)">/, `<label class="option $1"><input type="radio" name="pmMode" value="${m}" ${mode === m ? "checked" : ""} ${ok ? "" : "disabled"}>`)
-        .replace(/<\/div>$/, "</label>")
-        .replace(/<span><\/span>\s*<\/label>$/, "</label>");
-    };
-    const total = unitUSD(p, mode) * qty;
     $("#productModalBody").innerHTML = `
       <button class="modal__close" type="button" data-close aria-label="Close">×</button>
       <div class="pd">
-        <div class="pd__media">${art(p)}<span class="product__badges">${badges(p)}</span></div>
+        <div class="pd__media">${art(p, { mark: true })}<span class="badges">${badges(p)}</span></div>
         <div class="pd__info">
           <div class="product__brand">${esc(p.brand)}</div>
           <h2 id="pmTitle">${esc(p.name)}</h2>
-          ${p.grade ? `<div class="product__grade">${esc(p.grade)} · tested with 6-month warranty</div>` : ""}
-          ${priceBlock(p)}
+          <div class="product__meta">${metaLine(p)}${p.grade ? " · 6-month warranty" : ""}</div>
+          ${priceHTML(p, mode)}
           <p class="pd__desc">${esc(p.desc || "")}</p>
-          ${p.highlights ? `<ul class="pd__list">${p.highlights.map((h) => `<li>${esc(h)}</li>`).join("")}</ul>` : ""}
-          <div class="pd__choose">Choose how you'd like it</div>
-          <div class="avail">${opt("now")}${opt("ship")}</div>
+          <div class="pd__label">How would you like it?</div>
+          <div class="avail">
+            ${availSeg(p, mode, true)}
+            <p class="avail__note">${mode === "now"
+              ? `Delivered in 1–4 days from ${esc(country().hub)}, or collect.`
+              : `Arrives in ${esc(CFG.usaLeadTime)}. ${pct(CFG.preorderDeposit)} deposit now, the rest when it lands.`}</p>
+          </div>
           <div class="pd__buy">
             <div class="qty" aria-label="Quantity">
               <button type="button" data-pm-qty="-1" aria-label="Decrease quantity">−</button>
               <span>${qty}</span>
               <button type="button" data-pm-qty="1" aria-label="Increase quantity">+</button>
             </div>
-            <button class="btn ${mode === "now" ? "btn--primary" : "btn--navy"} btn--block" type="button" data-pm-add>
-              ${mode === "now" ? "Add to cart" : "Order from USA"} · ${money(total)}
-            </button>
+            <button class="add-btn" type="button" data-pm-add>${mode === "now" ? "Add to bag" : "Pre-order"} · ${money(unitUSD(p, mode) * qty)}</button>
           </div>
-          <p class="pd__note">${mode === "now"
-            ? `Delivered in 1–4 days from our ${esc(country().hub)} hub, or collect.`
-            : `Arrives in ${esc(CFG.usaLeadTime)}. ${pct(CFG.preorderDeposit)} deposit on order, balance when it lands.`}</p>
+          ${p.highlights ? `<ul class="pd__list">${p.highlights.map((h) => `<li>${esc(h)}</li>`).join("")}</ul>` : ""}
         </div>
       </div>`;
   }
@@ -291,14 +368,11 @@
   function openProduct(id) {
     const p = byId[id];
     if (!p) return;
-    pmState = { p, mode: bestMode(p), qty: 1 };
+    pmState = { p, mode: modeFor(p), qty: 1 };
     renderProductModal();
     pm.showModal();
   }
 
-  pm.addEventListener("change", (e) => {
-    if (e.target.name === "pmMode") { pmState.mode = e.target.value; clampPmQty(); renderProductModal(); }
-  });
   function clampPmQty() {
     if (pmState.mode === "now") {
       const max = Math.max(1, stockHere(pmState.p) - inCart(pmState.p.id, "now"));
@@ -307,6 +381,13 @@
   }
   pm.addEventListener("click", (e) => {
     if (e.target === pm || e.target.closest("[data-close]")) { pm.close(); return; }
+    const pick = e.target.closest("[data-pick]");
+    if (pick) {
+      pmState.mode = pick.dataset.mode;
+      picked[pmState.p.id] = pick.dataset.mode;
+      clampPmQty(); renderProductModal(); refreshCard(pmState.p.id);
+      return;
+    }
     const q = e.target.closest("[data-pm-qty]");
     if (q) { pmState.qty = Math.max(1, Math.min(20, pmState.qty + Number(q.dataset.pmQty))); clampPmQty(); renderProductModal(); return; }
     if (e.target.closest("[data-pm-add]")) {
@@ -330,7 +411,7 @@
     renderCart();
     const btn = $("#cartBtn");
     btn.classList.remove("bump"); void btn.offsetWidth; btn.classList.add("bump");
-    toast(mode === "now" ? `Added ${p.name} — ready now` : `Added ${p.name} — ships from USA in ${CFG.usaLeadTime}`);
+    toast(mode === "now" ? "Added to bag ✓" : `Pre-order added · arrives in ${CFG.usaLeadTime}`);
     return true;
   }
 
@@ -350,7 +431,7 @@
   function lineHTML(l, idx) {
     const p = byId[l.id];
     return `<div class="line">
-      <div class="line__art">${art(p, { mark: false })}</div>
+      <div class="line__art">${art(p)}</div>
       <div>
         <div class="line__brand">${esc(p.brand)}</div>
         <div class="line__name">${esc(p.name)}</div>
@@ -372,23 +453,23 @@
     const countEl = $("#cartCount");
     countEl.textContent = count;
     countEl.toggleAttribute("data-zero", count === 0);
-    $("#cartBtn").setAttribute("aria-label", `Open cart, ${count} item${count === 1 ? "" : "s"}`);
+    $("#cartBtn").setAttribute("aria-label", `Open bag, ${count} item${count === 1 ? "" : "s"}`);
 
     if (!state.cart.length) {
-      $("#cartContent").innerHTML = `<div class="cart-empty"><span class="cat__icon">${icon("crate")}</span>
-        <p><strong>Your crate is empty.</strong><br>Find something you love — or ask our concierge to source it.</p>
-        <a class="btn btn--ghost btn--sm" href="#shop" data-close-cart>Browse products</a></div>`;
+      $("#cartContent").innerHTML = `<div class="bag-empty"><span class="cat__circle">${icon("crate")}</span>
+        <p><strong>Your bag is empty</strong><br><span class="muted">Find something you love, or ask our concierge to source it.</span></p>
+        <a class="btn btn--dark" href="#shop" data-close-cart>Start shopping</a></div>`;
       $("#cartFoot").innerHTML = "";
       return;
     }
     const groups = [
-      ["now", '<span class="badge badge--now"><i class="dot dot--now"></i>Available now</span>', `<small>Delivered in 1–4 days</small>`],
-      ["ship", '<span class="badge badge--ship"><i class="dot dot--ship"></i>Ships from USA</span>', `<small>Arrives in ${esc(CFG.usaLeadTime)}</small>`]
+      ["now", '<span class="tag tag--now"><i class="dot dot--now"></i>Ready now</span>', `<small>Delivered in 1–4 days</small>`],
+      ["ship", '<span class="tag tag--ship"><i class="dot dot--ship"></i>From the USA</span>', `<small>Arrives in ${esc(CFG.usaLeadTime)}</small>`]
     ];
     $("#cartContent").innerHTML = groups.map(([mode, badge, note]) => {
       const lines = state.cart.map((l, i) => [l, i]).filter(([l]) => l.mode === mode);
       if (!lines.length) return "";
-      return `<div class="cart-group"><div class="cart-group__head">${badge}${note}</div>${lines.map(([l, i]) => lineHTML(l, i)).join("")}</div>`;
+      return `<div class="bag-group"><div class="bag-group__head">${badge}${note}</div>${lines.map(([l, i]) => lineHTML(l, i)).join("")}</div>`;
     }).join("");
 
     const t = cartTotals();
@@ -396,10 +477,10 @@
     $("#cartFoot").innerHTML = `<div class="totals">
         <div><span>Subtotal</span><strong>${money(t.subtotal)}</strong></div>
         <div class="muted"><span>≈ ${altCur()}</span><span>${money(t.subtotal, altCur())}</span></div>
-        <div class="muted"><span>Delivery</span><span>${minFee === 0 ? "Free collection or courier" : "From " + money(minFee)} — chosen at checkout</span></div>
+        <div class="muted"><span>Delivery</span><span>${minFee === 0 ? "Free collection, or courier" : "From " + money(minFee)}</span></div>
         ${t.ship ? `<div class="muted"><span>USA items: ${pct(CFG.preorderDeposit)} deposit now</span><span>${money(t.dueNow)} due on order</span></div>` : ""}
       </div>
-      <button class="btn btn--primary btn--block" type="button" id="checkoutBtn">Checkout</button>`;
+      <button class="btn btn--dark btn--block" type="button" id="checkoutBtn">Checkout</button>`;
   }
 
   $("#cartContent").addEventListener("click", (e) => {
@@ -563,9 +644,7 @@
       `Hi ${CFG.storeName}! Concierge request:`,
       "",
       `Product: ${f.product.value.trim()}`,
-      `Quantity: ${f.qty.value || 1}`,
       f.details.value.trim() ? `Details: ${f.details.value.trim()}` : null,
-      f.budget.value.trim() ? `Budget: ${f.budget.value.trim()}` : null,
       `Deliver to: ${CFG.countries[f.country.value].name}`,
       "",
       `Name: ${f.name.value.trim()}`,
@@ -588,14 +667,15 @@
   }
 
   // ---------- Global UI ----------
-  function renderCurrency() {
+  function renderLocale() {
+    const c = country();
+    $("#localeFlag").textContent = c.flag;
+    $("#localeCur").textContent = state.currency;
     $$("[data-currency]").forEach((b) => b.setAttribute("aria-pressed", b.dataset.currency === state.currency));
+    $$("[data-country]").forEach((b) => b.setAttribute("aria-pressed", b.dataset.country === state.country));
   }
 
   function renderStatic() {
-    const c = country();
-    $("#countrySelect").value = state.country;
-    $("#hubNote").innerHTML = `Delivering to <strong>${c.flag} ${esc(c.name)}</strong> · “Available now” items ship from our ${esc(c.hub)} hub`;
     $$("[data-preorder-discount]").forEach((el) => (el.textContent = pct(CFG.preorderDiscount)));
     $$("[data-deposit]").forEach((el) => (el.textContent = pct(CFG.preorderDeposit)));
     $$("[data-concierge-fee]").forEach((el) => (el.textContent = pct(CFG.conciergeFeeRate)));
@@ -607,25 +687,30 @@
   }
 
   function renderAll() {
-    renderCurrency();
+    renderLocale();
     renderStatic();
-    renderGrid();
+    renderGrid({ keepShown: true });
     renderCart();
-    if (pm.open && pmState) { clampPmQty(); renderProductModal(); }
+    if (pm.open && pmState) { pmState.mode = modeFor(pmState.p); clampPmQty(); renderProductModal(); }
   }
 
-  $$("[data-currency]").forEach((b) => b.addEventListener("click", () => {
-    state.currency = b.dataset.currency;
-    store.set("currency", state.currency);
-    renderAll();
-  }));
+  // Country & currency
+  const localeModal = $("#localeModal");
+  $("#localeBtn").addEventListener("click", () => localeModal.showModal());
+  localeModal.addEventListener("click", (e) => {
+    if (e.target === localeModal || e.target.closest("[data-close]")) { localeModal.close(); return; }
+    const cur = e.target.closest("[data-currency]");
+    if (cur) { state.currency = cur.dataset.currency; store.set("currency", state.currency); renderAll(); return; }
+    const ctry = e.target.closest("[data-country]");
+    if (ctry && ctry.dataset.country !== state.country) setCountry(ctry.dataset.country);
+  });
 
-  $("#countrySelect").addEventListener("change", (e) => {
-    state.country = e.target.value;
+  function setCountry(code) {
+    state.country = code;
     state.currency = country().defaultCurrency;
     store.set("country", state.country);
     store.set("currency", state.currency);
-    // Landed stock differs per country: drop "ready now" lines that are no longer possible.
+    // Landed stock differs per country: move "ready now" lines that are no longer possible to USA orders.
     let moved = false;
     state.cart = state.cart.flatMap((l) => {
       if (l.mode !== "now") return [l];
@@ -637,7 +722,6 @@
       out.push({ id: l.id, mode: "ship", qty: l.qty - s });
       return out;
     });
-    // Merge duplicate lines.
     state.cart = state.cart.reduce((acc, l) => {
       const ex = acc.find((x) => x.id === l.id && x.mode === l.mode);
       if (ex) ex.qty += l.qty; else acc.push({ ...l });
@@ -645,66 +729,66 @@
     }, []);
     saveCart();
     renderAll();
-    toast(`Showing stock and prices for ${country().name}${moved ? " — some cart items moved to USA order" : ""}`);
-  });
+    toast(`Showing stock for ${country().name}${moved ? " · some bag items moved to USA order" : ""}`);
+  }
 
-  // Filters
+  // Jump to a section of the shop from nav, category circles, hero and footer.
+  function goShop(d) {
+    Object.assign(state, { cat: d.goCat || "all", sub: d.goSub || "all", cond: d.goCond || "all", avail: d.goAvail || "all", gender: "all", brand: "all", q: "" });
+    $("#searchInput").value = "";
+    renderGrid();
+    closeMenu();
+    $("#shop").scrollIntoView({ behavior: "smooth" });
+  }
+
   document.addEventListener("click", (e) => {
     const t = e.target.closest("button, a");
     if (!t) return;
-    if (t.dataset.filterCat) { state.cat = t.dataset.filterCat; state.sub = "all"; state.gender = "all"; state.brand = "all"; if (state.cat === "beauty") state.cond = "all"; renderGrid(); }
-    else if (t.dataset.filterSub) { state.sub = t.dataset.filterSub; state.gender = "all"; renderGrid(); }
-    else if (t.dataset.filterGender) { state.gender = t.dataset.filterGender; renderGrid(); }
-    else if (t.dataset.filterCond) { state.cond = t.dataset.filterCond; renderGrid(); }
-    else if (t.dataset.filterAvail) { state.avail = t.dataset.filterAvail; renderGrid(); }
-    else if (t.dataset.open) { openProduct(t.dataset.open); }
-    else if (t.dataset.add) { addToCart(t.dataset.add, t.dataset.mode); }
-    else if (t.dataset.navCat) {
-      state.cat = t.dataset.navCat; state.sub = "all"; state.cond = "all"; state.avail = "all"; state.gender = "all"; state.brand = "all";
-      renderGrid(); closeMenu();
-    } else if (t.dataset.jumpAvail) {
-      state.cat = "all"; state.sub = "all"; state.cond = "all"; state.avail = t.dataset.jumpAvail;
-      renderGrid(); closeMenu();
-    } else if (t.classList.contains("cat") && t.dataset.cat) {
-      state.cat = t.dataset.cat; state.sub = t.dataset.sub || "all"; state.cond = t.dataset.cond || "all"; state.avail = "all"; state.gender = "all"; state.brand = "all";
-      renderGrid();
-      $("#shop").scrollIntoView({ behavior: "smooth" });
+    const d = t.dataset;
+    if (d.goCat || d.goAvail) { e.preventDefault(); goShop(d); }
+    else if (d.avail) { state.avail = d.avail; renderGrid(); }
+    else if (d.removeFilter) {
+      if (d.removeFilter === "q") { state.q = ""; $("#searchInput").value = ""; renderGrid(); }
+      else setFilter(d.removeFilter, "all");
     }
+    else if ("clearFilters" in d) { clearFilters(); }
+    else if (d.pick && !t.closest("#productModal")) { picked[d.pick] = d.mode; refreshCard(d.pick); }
+    else if (d.open) { openProduct(d.open); }
+    else if (d.add) { addToCart(d.add, d.mode); }
   });
 
   let searchTimer;
   $("#searchInput").addEventListener("input", (e) => {
     clearTimeout(searchTimer);
-    searchTimer = setTimeout(() => { state.q = e.target.value; renderGrid(); }, 120);
+    searchTimer = setTimeout(() => { state.q = e.target.value; renderGrid(); }, 150);
+  });
+  $("#searchBtn").addEventListener("click", () => {
+    $("#shop").scrollIntoView({ behavior: "smooth" });
+    setTimeout(() => $("#searchInput").focus({ preventScroll: true }), 350);
   });
   $("#sortSelect").addEventListener("change", (e) => { state.sort = e.target.value; renderGrid(); });
-
-  // Brand filter, built from the catalogue.
-  const brandSelect = $("#brandSelect");
-  function renderBrands() {
-    const brands = [...new Set(PRODUCTS.filter((p) => state.cat === "all" || p.category === state.cat).map((p) => p.brand))]
-      .sort((a, b) => a.localeCompare(b));
-    if (!brands.includes(state.brand)) state.brand = "all";
-    brandSelect.innerHTML = '<option value="all">All brands</option>' +
-      brands.map((b) => `<option ${b === state.brand ? "selected" : ""}>${esc(b)}</option>`).join("");
-  }
-  brandSelect.addEventListener("change", (e) => { state.brand = e.target.value; renderGrid(); });
+  $("#moreBtn").addEventListener("click", () => { state.shown += PAGE; renderGrid({ keepShown: true }); });
 
   // Mobile menu
   const menuBtn = $("#menuBtn");
-  function closeMenu() { $("#nav").classList.remove("open"); menuBtn.setAttribute("aria-expanded", "false"); }
+  function closeMenu() { $("#nav").classList.remove("open"); $("#menuScrim").classList.remove("open"); menuBtn.setAttribute("aria-expanded", "false"); }
   menuBtn.addEventListener("click", () => {
-    const open = $("#nav").classList.toggle("open");
-    menuBtn.setAttribute("aria-expanded", open);
+    $("#nav").classList.add("open"); $("#menuScrim").classList.add("open"); menuBtn.setAttribute("aria-expanded", "true");
   });
+  $$("[data-close-menu]").forEach((el) => el.addEventListener("click", closeMenu));
   $$("#nav a").forEach((a) => a.addEventListener("click", closeMenu));
+  document.addEventListener("keydown", (e) => {
+    if (e.key !== "Escape") return;
+    closeMenu();
+    if (filterPanel.classList.contains("open")) closeFilters();
+  });
 
   // Icons in static markup
-  $$("[data-icon]").forEach((el) => (el.innerHTML = icon(el.dataset.icon)));
+  $$("[data-icon]").forEach((el) => (el.innerHTML = icon(el.dataset.icon, 2)));
 
-  // Hero collage
-  const heroPicks = ["rare-beauty-soft-pinch-blush", "kayali-vanilla-28", "airpods-pro-2"].map((id) => byId[id]).filter(Boolean);
-  $("#heroArt").innerHTML = '<div class="hero__crate"></div>' + heroPicks.map((p) => `<div class="hero__tile">${art(p)}</div>`).join("");
+  // Hero: four favourites
+  $("#heroGrid").innerHTML = ["rare-beauty-soft-pinch-blush", "fenty-gloss-bomb", "kayali-vanilla-28", "nyx-butter-gloss"]
+    .map((id) => byId[id]).filter(Boolean).map((p) => art(p)).join("");
 
   // Footer contact
   $("#footWhatsapp").href = `https://wa.me/${CFG.whatsappNumber}`;
