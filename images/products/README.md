@@ -23,6 +23,22 @@ Save a photo here named after the product id and it replaces the generated artwo
 | `glow-recipe-watermelon-dew-drops.jpg` | Glow Recipe — Watermelon Glow Niacinamide Dew Drops |
 | `laneige-lip-sleeping-mask.jpg` | Laneige — Lip Sleeping Mask |
 | `cerave-sa-cleanser.jpg` | CeraVe — SA Smoothing Cleanser (Large) |
+| `nyx-butter-gloss.jpg` | NYX Professional Makeup — Butter Gloss |
+| `nyx-fat-oil-lip-drip.jpg` | NYX Professional Makeup — Fat Oil Lip Drip |
+| `nyx-duck-plump.jpg` | NYX Professional Makeup — Duck Plump High Pigment Plumping Gloss |
+| `nyx-suede-matte-lip-liner.jpg` | NYX Professional Makeup — Suede Matte Lip Liner |
+| `nyx-buttermelt-blush.jpg` | NYX Professional Makeup — Buttermelt Powder Blush |
+| `nyx-epic-ink-liner.jpg` | NYX Professional Makeup — Epic Ink Liner |
+| `nyx-matte-setting-spray.jpg` | NYX Professional Makeup — Matte Finish Setting Spray |
+| `nyx-bare-with-me-concealer-serum.jpg` | NYX Professional Makeup — Bare With Me Concealer Serum |
+| `elf-power-grip-primer.jpg` | e.l.f. Cosmetics — Power Grip Primer |
+| `elf-glow-reviver-lip-oil.jpg` | e.l.f. Cosmetics — Glow Reviver Lip Oil |
+| `elf-camo-concealer.jpg` | e.l.f. Cosmetics — Hydrating Camo Concealer |
+| `elf-camo-liquid-blush.jpg` | e.l.f. Cosmetics — Camo Liquid Blush |
+| `elf-putty-bronzer.jpg` | e.l.f. Cosmetics — Putty Bronzer |
+| `elf-halo-glow-beauty-wand.jpg` | e.l.f. Cosmetics — Halo Glow Contour Beauty Wand |
+| `elf-power-grip-setting-spray.jpg` | e.l.f. Cosmetics — Power Grip Dewy Setting Spray |
+| `elf-holy-hydration-cream.jpg` | e.l.f. Cosmetics — Holy Hydration! Face Cream |
 | `sol-de-janeiro-bum-bum-cream.jpg` | Sol de Janeiro — Brazilian Bum Bum Cream |
 | `sol-de-janeiro-cheirosa-mist.jpg` | Sol de Janeiro — Cheirosa 68 Perfume Mist |
 | `tree-hut-sugar-scrub.jpg` | Tree Hut — Shea Sugar Scrub |

@@ -495,6 +495,7 @@ p { margin: 0 0 1em; }
   .tabs { display: flex; }
   .tabs button { flex: 1; padding: 8px 10px; }
   .search { min-width: 0; }
+  .select select { width: 100%; }
   .chips { flex-wrap: nowrap; overflow-x: auto; padding-bottom: 4px; scrollbar-width: none; margin-inline: -16px; padding-inline: 16px; }
   .chips::-webkit-scrollbar { display: none; }
   .chip, .chips__label { flex-shrink: 0; }

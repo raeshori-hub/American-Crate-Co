@@ -190,6 +190,194 @@ window.PRODUCTS = [
     highlights: ["473 ml US size", "Salicylic acid + ceramides", "Fragrance-free"]
   },
 
+  // ───────────── NYX Professional Makeup ─────────────
+  {
+    id: "nyx-butter-gloss",
+    name: "Butter Gloss",
+    brand: "NYX Professional Makeup",
+    category: "beauty", sub: "makeup", condition: "new",
+    priceUSD: 9,
+    stock: { za: 15, zw: 10 }, usaOrder: true,
+    viral: "TikTok viral",
+    icon: "tube", tone: ["#fbe1d6", "#e0957a"],
+    desc: "The creamy, non-sticky gloss everyone owns in five shades. Buttery shine with a sweet scent.",
+    highlights: ["Shades: Cr\u00e8me Br\u00fbl\u00e9e, Madeleine, Tiramisu & more", "8 ml", "Non-sticky"]
+  },
+  {
+    id: "nyx-fat-oil-lip-drip",
+    name: "Fat Oil Lip Drip",
+    brand: "NYX Professional Makeup",
+    category: "beauty", sub: "makeup", condition: "new",
+    priceUSD: 12,
+    stock: { za: 8, zw: 6 }, usaOrder: true,
+    viral: "TikTok viral",
+    icon: "dropper", tone: ["#fcd9e3", "#d9577f"],
+    desc: "A high-shine lip oil that looks like gloss and feels like care, with a hint of colour.",
+    highlights: ["Shades: Missed Call, My Main, Status Update", "4.8 ml", "Squalane + raspberry oils"]
+  },
+  {
+    id: "nyx-duck-plump",
+    name: "Duck Plump High Pigment Plumping Gloss",
+    brand: "NYX Professional Makeup",
+    category: "beauty", sub: "makeup", condition: "new",
+    priceUSD: 14,
+    stock: { za: 4, zw: 0 }, usaOrder: true,
+    icon: "tube", tone: ["#f8d2d6", "#c9465b"],
+    desc: "A tingling plumping gloss with real colour for fuller-looking lips.",
+    highlights: ["Tingling plumping effect", "7 ml", "Pigmented colour + shine"]
+  },
+  {
+    id: "nyx-suede-matte-lip-liner",
+    name: "Suede Matte Lip Liner",
+    brand: "NYX Professional Makeup",
+    category: "beauty", sub: "makeup", condition: "new",
+    priceUSD: 7,
+    stock: { za: 20, zw: 12 }, usaOrder: true,
+    viral: "Best seller",
+    icon: "pencil", tone: ["#ecd0c4", "#8f5442"],
+    desc: "The creamy matte liner behind countless viral lip combos. Pair it with Butter Gloss.",
+    highlights: ["Shades: Brunch Me, Soft Spoken, Cabaret Queen & more", "1 g", "Long-wearing matte"]
+  },
+  {
+    id: "nyx-buttermelt-blush",
+    name: "Buttermelt Powder Blush",
+    brand: "NYX Professional Makeup",
+    category: "beauty", sub: "makeup", condition: "new",
+    priceUSD: 12,
+    stock: { za: 6, zw: 4 }, usaOrder: true,
+    viral: "TikTok viral",
+    icon: "compact", tone: ["#fbd7cf", "#e07a6a"],
+    desc: "Butter-soft pressed blush that melts into skin with up to 12 hours of colour.",
+    highlights: ["5 g", "Buildable, blendable", "Vegan formula"]
+  },
+  {
+    id: "nyx-epic-ink-liner",
+    name: "Epic Ink Liner",
+    brand: "NYX Professional Makeup",
+    category: "beauty", sub: "makeup", condition: "new",
+    priceUSD: 12,
+    stock: { za: 10, zw: 6 }, usaOrder: true,
+    icon: "pencil", tone: ["#dedde3", "#2d2c35"],
+    desc: "Waterproof liquid liner with a flexible brush tip for sharp wings in one stroke.",
+    highlights: ["Black", "1 ml", "Waterproof"]
+  },
+  {
+    id: "nyx-matte-setting-spray",
+    name: "Matte Finish Setting Spray",
+    brand: "NYX Professional Makeup",
+    category: "beauty", sub: "makeup", condition: "new",
+    priceUSD: 11,
+    stock: { za: 9, zw: 7 }, usaOrder: true,
+    icon: "mist", tone: ["#e3ecf3", "#7d98b0"],
+    desc: "Locks makeup in place with a shine-controlling matte finish \u2014 perfect for hot summer days.",
+    highlights: ["60 ml", "Long-lasting hold", "Lightweight mist"]
+  },
+  {
+    id: "nyx-bare-with-me-concealer-serum",
+    name: "Bare With Me Concealer Serum",
+    brand: "NYX Professional Makeup",
+    category: "beauty", sub: "makeup", condition: "new",
+    priceUSD: 13,
+    stock: { za: 5, zw: 3 }, usaOrder: true,
+    icon: "dropper", tone: ["#f2dcc6", "#b88a62"],
+    desc: "Lightweight, hydrating concealer with a natural finish that won't crease.",
+    highlights: ["9.6 ml", "Hydrating serum formula", "Medium buildable coverage"]
+  },
+
+  // ───────────── e.l.f. Cosmetics ─────────────
+  {
+    id: "elf-power-grip-primer",
+    name: "Power Grip Primer",
+    brand: "e.l.f. Cosmetics",
+    category: "beauty", sub: "makeup", condition: "new",
+    priceUSD: 13,
+    stock: { za: 14, zw: 8 }, usaOrder: true,
+    viral: "TikTok viral",
+    icon: "jar", tone: ["#e5f1ef", "#5fa8a0"],
+    desc: "The gel primer that grips makeup all day. Hydrating, with hyaluronic acid.",
+    highlights: ["24 ml", "Gel formula with hyaluronic acid", "Makeup lasts all day"]
+  },
+  {
+    id: "elf-glow-reviver-lip-oil",
+    name: "Glow Reviver Lip Oil",
+    brand: "e.l.f. Cosmetics",
+    category: "beauty", sub: "makeup", condition: "new",
+    priceUSD: 11,
+    stock: { za: 10, zw: 6 }, usaOrder: true,
+    viral: "TikTok viral",
+    icon: "dropper", tone: ["#fcd7e0", "#e46f8e"],
+    desc: "A nourishing, tinted lip oil with a glassy shine.",
+    highlights: ["Shades: Pink Quartz, Rose Envy, Honey Talks", "7.6 ml", "Jojoba oil + vitamin E"]
+  },
+  {
+    id: "elf-camo-concealer",
+    name: "Hydrating Camo Concealer",
+    brand: "e.l.f. Cosmetics",
+    category: "beauty", sub: "makeup", condition: "new",
+    priceUSD: 9,
+    stock: { za: 12, zw: 8 }, usaOrder: true,
+    viral: "Best seller",
+    icon: "bottle", tone: ["#f3dcc8", "#b5835b"],
+    desc: "Full coverage, satin finish and 25 shades, for a fraction of the luxury price.",
+    highlights: ["25 shades", "6 ml", "Full coverage, satin finish"]
+  },
+  {
+    id: "elf-camo-liquid-blush",
+    name: "Camo Liquid Blush",
+    brand: "e.l.f. Cosmetics",
+    category: "beauty", sub: "makeup", condition: "new",
+    priceUSD: 9,
+    stock: { za: 7, zw: 5 }, usaOrder: true,
+    icon: "dropper", tone: ["#ffd8d6", "#e6646a"],
+    desc: "A super-pigmented liquid blush. One tiny drop gives a long-lasting flush.",
+    highlights: ["Shades: Comin' in Hot Pink, Suave Mauve & more", "4 ml", "Long-wearing"]
+  },
+  {
+    id: "elf-putty-bronzer",
+    name: "Putty Bronzer",
+    brand: "e.l.f. Cosmetics",
+    category: "beauty", sub: "makeup", condition: "new",
+    priceUSD: 10,
+    stock: { za: 6, zw: 0 }, usaOrder: true,
+    icon: "compact", tone: ["#f2d7b8", "#b0743c"],
+    desc: "A creamy putty-to-powder bronzer for a natural sun-kissed warmth.",
+    highlights: ["10 g", "Putty-to-powder", "Tahitian vanilla + argan oil"]
+  },
+  {
+    id: "elf-halo-glow-beauty-wand",
+    name: "Halo Glow Contour Beauty Wand",
+    brand: "e.l.f. Cosmetics",
+    category: "beauty", sub: "makeup", condition: "new",
+    priceUSD: 11,
+    stock: { za: 5, zw: 3 }, usaOrder: true,
+    viral: "TikTok viral",
+    icon: "tube", tone: ["#e9d2bf", "#8d5c3b"],
+    desc: "Liquid contour in a cushion-tip wand for quick, seamless sculpting.",
+    highlights: ["10 ml", "Cushion applicator", "Blends in seconds"]
+  },
+  {
+    id: "elf-power-grip-setting-spray",
+    name: "Power Grip Dewy Setting Spray",
+    brand: "e.l.f. Cosmetics",
+    category: "beauty", sub: "makeup", condition: "new",
+    priceUSD: 14,
+    stock: { za: 6, zw: 4 }, usaOrder: true,
+    icon: "mist", tone: ["#e2f0f6", "#5c9fc0"],
+    desc: "Sets makeup with a dewy, hydrated finish that lasts up to 16 hours.",
+    highlights: ["80 ml", "Dewy finish", "Hyaluronic acid"]
+  },
+  {
+    id: "elf-holy-hydration-cream",
+    name: "Holy Hydration! Face Cream",
+    brand: "e.l.f. Cosmetics",
+    category: "beauty", sub: "skin", condition: "new",
+    priceUSD: 16,
+    stock: { za: 8, zw: 5 }, usaOrder: true,
+    icon: "jar", tone: ["#e6eef8", "#6f8fc4"],
+    desc: "A rich daily moisturiser with hyaluronic acid, peptides and niacinamide.",
+    highlights: ["50 g", "Fragrance-free", "For all skin types"]
+  },
+
   // ───────────── Beauty · Body ─────────────
   {
     id: "sol-de-janeiro-bum-bum-cream",
