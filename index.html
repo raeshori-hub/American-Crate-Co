@@ -1,0 +1,461 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>American Crate Company — Viral US beauty & electronics in South Africa and Zimbabwe</title>
+  <meta name="description" content="Shop TikTok-viral American beauty, fragrance and electronics in South Africa and Zimbabwe. Buy landed stock today or order from the USA for delivery in about 2 weeks. Prices in USD and ZAR.">
+  <meta name="theme-color" content="#14213d">
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect x='6' y='10' width='52' height='44' rx='6' fill='%23c58b4e'/%3E%3Cpath d='M6 25h52M6 39h52' stroke='%238a5a2b' stroke-width='3'/%3E%3Cpath d='M32 17l3.5 7.2 7.9 1.1-5.7 5.6 1.3 7.9L32 35.1l-7 3.7 1.3-7.9-5.7-5.6 7.9-1.1z' fill='%23fff'/%3E%3C/svg%3E">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+  <a class="skip-link" href="#shop">Skip to products</a>
+
+  <div class="announce">
+    <div class="container announce__inner">
+      <span><strong>Ready now</strong> — landed stock delivered in days</span>
+      <span class="announce__dot" aria-hidden="true">•</span>
+      <span><strong>Ships from USA</strong> — arrives in ~2 weeks</span>
+      <span class="announce__dot" aria-hidden="true">•</span>
+      <span>Pay in <strong>USD</strong> or <strong>ZAR</strong></span>
+    </div>
+  </div>
+
+  <header class="header" id="top">
+    <div class="container header__inner">
+      <a class="logo" href="#top" aria-label="American Crate Company home">
+        <svg class="logo__mark" viewBox="0 0 64 64" aria-hidden="true">
+          <rect x="6" y="10" width="52" height="44" rx="6" fill="var(--kraft)"/>
+          <path d="M6 25h52M6 39h52" stroke="var(--kraft-dark)" stroke-width="3"/>
+          <path d="M32 17l3.5 7.2 7.9 1.1-5.7 5.6 1.3 7.9L32 35.1l-7 3.7 1.3-7.9-5.7-5.6 7.9-1.1z" fill="#fff"/>
+        </svg>
+        <span class="logo__text">
+          <span class="logo__name">American Crate</span>
+          <span class="logo__sub">Company</span>
+        </span>
+      </a>
+
+      <nav class="nav" id="nav" aria-label="Main">
+        <a href="#shop" data-nav-cat="all">Shop all</a>
+        <a href="#shop" data-nav-cat="beauty">Beauty</a>
+        <a href="#shop" data-nav-cat="electronics">Electronics</a>
+        <a href="#concierge">Concierge</a>
+        <a href="#how">How it works</a>
+        <a href="#faq">FAQ</a>
+      </nav>
+
+      <div class="header__tools">
+        <label class="select-pill" title="Delivering to">
+          <span class="visually-hidden">Delivering to</span>
+          <select id="countrySelect" aria-label="Delivering to">
+            <option value="za">🇿🇦 South Africa</option>
+            <option value="zw">🇿🇼 Zimbabwe</option>
+          </select>
+        </label>
+        <div class="currency" role="group" aria-label="Currency">
+          <button type="button" data-currency="USD">USD</button>
+          <button type="button" data-currency="ZAR">ZAR</button>
+        </div>
+        <span class="header__break" aria-hidden="true"></span>
+        <button class="cart-btn" id="cartBtn" type="button" aria-label="Open cart">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 4h2l2.4 11.2a2 2 0 0 0 2 1.6h7.7a2 2 0 0 0 2-1.5L21 8H6.2" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/><circle cx="10" cy="20" r="1.4" fill="currentColor"/><circle cx="17" cy="20" r="1.4" fill="currentColor"/></svg>
+          <span class="cart-btn__count" id="cartCount">0</span>
+        </button>
+        <button class="menu-btn" id="menuBtn" type="button" aria-label="Open menu" aria-expanded="false" aria-controls="nav">
+          <span></span><span></span><span></span>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <!-- Hero -->
+    <section class="hero">
+      <div class="container hero__inner">
+        <div class="hero__copy">
+          <p class="eyebrow">USA → South Africa & Zimbabwe</p>
+          <h1>The viral American finds you've been seeing everywhere — <em>now at your door.</em></h1>
+          <p class="hero__lead">Beauty, fragrance and electronics straight from the States. Shop stock that's already landed for fast delivery, or order from the USA and have it in about two weeks.</p>
+          <div class="hero__ctas">
+            <a class="btn btn--primary" href="#shop" data-jump-avail="now">Shop ready-now stock</a>
+            <a class="btn btn--ghost" href="#concierge">Request a product</a>
+          </div>
+          <ul class="hero__stats">
+            <li><strong>100%</strong><span>authentic US-sourced</span></li>
+            <li><strong>1–4 days</strong><span>for landed stock</span></li>
+            <li><strong>~2 weeks</strong><span>from the USA</span></li>
+          </ul>
+        </div>
+        <div class="hero__art" aria-hidden="true" id="heroArt"></div>
+      </div>
+    </section>
+
+    <!-- Categories -->
+    <section class="section section--tight">
+      <div class="container">
+        <div class="cat-grid" id="catGrid">
+          <button class="cat" data-cat="beauty" data-sub="makeup"><span class="cat__icon" data-icon="lipstick"></span><span>Makeup</span></button>
+          <button class="cat" data-cat="beauty" data-sub="skin"><span class="cat__icon" data-icon="dropper"></span><span>Skincare</span></button>
+          <button class="cat" data-cat="beauty" data-sub="body"><span class="cat__icon" data-icon="jar"></span><span>Body care</span></button>
+          <button class="cat" data-cat="beauty" data-sub="fragrance"><span class="cat__icon" data-icon="perfume"></span><span>Perfume</span></button>
+          <button class="cat" data-cat="electronics" data-cond="new"><span class="cat__icon" data-icon="earbuds"></span><span>New electronics</span></button>
+          <button class="cat" data-cat="electronics" data-cond="refurbished"><span class="cat__icon" data-icon="phone"></span><span>Refurbished tech</span></button>
+        </div>
+      </div>
+    </section>
+
+    <!-- Shop -->
+    <section class="section" id="shop">
+      <div class="container">
+        <div class="section__head">
+          <div>
+            <p class="eyebrow">The Crate</p>
+            <h2>Shop the collection</h2>
+          </div>
+          <p class="section__note" id="hubNote"></p>
+        </div>
+
+        <div class="toolbar">
+          <div class="tabs" role="tablist" aria-label="Category">
+            <button role="tab" data-filter-cat="all">All</button>
+            <button role="tab" data-filter-cat="beauty">Beauty</button>
+            <button role="tab" data-filter-cat="electronics">Electronics</button>
+          </div>
+          <div class="toolbar__right">
+            <label class="search">
+              <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="11" cy="11" r="7" fill="none" stroke="currentColor" stroke-width="2"/><path d="M20 20l-3.5-3.5" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+              <span class="visually-hidden">Search products</span>
+              <input type="search" id="searchInput" placeholder="Search brands or products">
+            </label>
+            <label class="select">
+              <span class="visually-hidden">Sort by</span>
+              <select id="sortSelect">
+                <option value="featured">Featured</option>
+                <option value="price-asc">Price: low to high</option>
+                <option value="price-desc">Price: high to low</option>
+                <option value="name">Name A–Z</option>
+              </select>
+            </label>
+          </div>
+        </div>
+
+        <div class="filters">
+          <div class="chips" role="group" aria-label="Availability">
+            <span class="chips__label">Availability</span>
+            <button class="chip" data-filter-avail="all">All</button>
+            <button class="chip chip--now" data-filter-avail="now"><i class="dot dot--now"></i>Available now</button>
+            <button class="chip chip--ship" data-filter-avail="ship"><i class="dot dot--ship"></i>Ships in ~2 weeks</button>
+          </div>
+          <div class="chips" role="group" aria-label="Type" id="subChips"></div>
+          <div class="chips" role="group" aria-label="Condition" id="condChips">
+            <span class="chips__label">Condition</span>
+            <button class="chip" data-filter-cond="all">All</button>
+            <button class="chip" data-filter-cond="new">Brand new</button>
+            <button class="chip" data-filter-cond="refurbished">Refurbished</button>
+          </div>
+        </div>
+
+        <p class="results" id="resultsCount" aria-live="polite"></p>
+        <div class="grid" id="productGrid"></div>
+        <div class="empty" id="emptyState" hidden>
+          <h3>Can't find it?</h3>
+          <p>We can source almost anything sold in the USA. Tell us what you're after.</p>
+          <a class="btn btn--primary" href="#concierge">Use the concierge</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- How it works -->
+    <section class="section section--alt" id="how">
+      <div class="container">
+        <div class="section__head section__head--center">
+          <p class="eyebrow">How it works</p>
+          <h2>Two ways to get your crate</h2>
+          <p class="section__lead">Every product shows clearly whether it's ready now or ships from the USA.</p>
+        </div>
+        <div class="tracks">
+          <article class="track track--now">
+            <header>
+              <span class="badge badge--now"><i class="dot dot--now"></i>Available now</span>
+              <h3>Landed stock</h3>
+              <p>Already in South Africa or Zimbabwe — delivered in 1–4 days.</p>
+            </header>
+            <ol class="steps">
+              <li><strong>Add to cart</strong><span>Choose the “Buy now” option on any in-stock item.</span></li>
+              <li><strong>Check out</strong><span>Send your order on WhatsApp or email — we confirm within hours.</span></li>
+              <li><strong>Pay & receive</strong><span>Pay in USD or ZAR, then we deliver or you collect.</span></li>
+            </ol>
+          </article>
+          <article class="track track--ship">
+            <header>
+              <span class="badge badge--ship"><i class="dot dot--ship"></i>Ships in ~2 weeks</span>
+              <h3>Order from the USA</h3>
+              <p>Bought fresh in the States for you, with <span data-preorder-discount></span> off our landed price.</p>
+            </header>
+            <ol class="steps">
+              <li><strong>Choose “Order from USA”</strong><span>Available on every product, even when local stock sells out.</span></li>
+              <li><strong>Pay a <span data-deposit></span> deposit</strong><span>We purchase and ship your item from the USA.</span></li>
+              <li><strong>Delivered in ~2 weeks</strong><span>Pay the balance when it lands, with tracking updates along the way.</span></li>
+            </ol>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- Concierge -->
+    <section class="section concierge" id="concierge">
+      <div class="container concierge__inner">
+        <div class="concierge__copy">
+          <p class="eyebrow eyebrow--light">Concierge shopping</p>
+          <h2>Seen it on TikTok? We'll find it in the USA.</h2>
+          <p>Send us a link, a screenshot description or just the name. Our team in the States sources it, checks it's authentic and ships it to you.</p>
+          <ul class="ticks">
+            <li>Any US store — Sephora, Ulta, Target, Amazon, Best Buy, Apple & more</li>
+            <li>Free quote within 24 hours, no obligation</li>
+            <li>Sourcing fee of <span data-concierge-fee></span> of item cost (min <span data-concierge-min></span>)</li>
+            <li>Delivered to South Africa or Zimbabwe in ~2 weeks</li>
+          </ul>
+        </div>
+        <form class="card form" id="conciergeForm" novalidate>
+          <h3>Request a product</h3>
+          <div class="field">
+            <label for="cProduct">Product name or link *</label>
+            <input id="cProduct" name="product" required placeholder="e.g. Stanley Quencher 40oz in Rose Quartz">
+          </div>
+          <div class="field-row">
+            <div class="field">
+              <label for="cQty">Quantity</label>
+              <input id="cQty" name="qty" type="number" min="1" value="1">
+            </div>
+            <div class="field">
+              <label for="cBudget">Budget (optional)</label>
+              <input id="cBudget" name="budget" placeholder="e.g. $80 or R1 500">
+            </div>
+          </div>
+          <div class="field">
+            <label for="cDetails">Shade, size, colour or other details</label>
+            <textarea id="cDetails" name="details" rows="2" placeholder="Anything that helps us get it exactly right"></textarea>
+          </div>
+          <div class="field-row">
+            <div class="field">
+              <label for="cName">Your name *</label>
+              <input id="cName" name="name" required autocomplete="name">
+            </div>
+            <div class="field">
+              <label for="cPhone">WhatsApp number *</label>
+              <input id="cPhone" name="phone" required type="tel" autocomplete="tel" placeholder="+27 / +263">
+            </div>
+          </div>
+          <div class="field">
+            <label for="cCountry">Deliver to</label>
+            <select id="cCountry" name="country">
+              <option value="za">South Africa</option>
+              <option value="zw">Zimbabwe</option>
+            </select>
+          </div>
+          <p class="form__error" id="cError" role="alert" hidden></p>
+          <div class="form__actions">
+            <button class="btn btn--primary" type="submit" data-send="whatsapp">Send via WhatsApp</button>
+            <button class="btn btn--ghost" type="submit" data-send="email">Send via email</button>
+          </div>
+        </form>
+      </div>
+    </section>
+
+    <!-- Trust -->
+    <section class="section section--tight">
+      <div class="container trust">
+        <div><span class="trust__icon" data-icon="shield"></span><h4>Authentic only</h4><p>Bought from authorised US retailers. Receipts available on request.</p></div>
+        <div><span class="trust__icon" data-icon="tag"></span><h4>Clear pricing</h4><p>See every price in USD and ZAR. No hidden import surprises.</p></div>
+        <div><span class="trust__icon" data-icon="check"></span><h4>Tested refurbs</h4><p>Refurbished tech is graded, tested and backed by a 6-month warranty.</p></div>
+        <div><span class="trust__icon" data-icon="chat"></span><h4>Real people</h4><p>Order and track on WhatsApp — we reply fast.</p></div>
+      </div>
+    </section>
+
+    <!-- FAQ -->
+    <section class="section section--alt" id="faq">
+      <div class="container container--narrow">
+        <div class="section__head section__head--center">
+          <p class="eyebrow">FAQ</p>
+          <h2>Good to know</h2>
+        </div>
+        <div class="faq">
+          <details>
+            <summary>What does “Available now” mean?</summary>
+            <p>The item has already landed and is in stock in our <span data-hub-za></span> (South Africa) or <span data-hub-zw></span> (Zimbabwe) hub. It's delivered within 1–4 working days, or you can collect.</p>
+          </details>
+          <details>
+            <summary>What does “Ships in ~2 weeks” mean?</summary>
+            <p>We buy the item in the USA after you order and ship it to you. Most orders arrive in about 2 weeks. We ask for a <span data-deposit></span> deposit up front and the balance on arrival.</p>
+          </details>
+          <details>
+            <summary>Why is the USA price lower?</summary>
+            <p>Ordering from the USA lets us ship your item with our regular consolidated shipment, so we pass on a <span data-preorder-discount></span> saving compared with landed stock.</p>
+          </details>
+          <details>
+            <summary>Which currency do I pay in?</summary>
+            <p>Switch between USD and ZAR at the top of the page. Customers in South Africa usually pay in ZAR and customers in Zimbabwe in USD. ZAR prices are based on a rate of <span data-rate></span> and may change with the exchange rate.</p>
+          </details>
+          <details>
+            <summary>What's the difference between Grade A and Grade B refurbished?</summary>
+            <p>Grade A looks close to new with little or no visible wear. Grade B may have light cosmetic marks. Both are fully tested, work perfectly and come with a 6-month Crate warranty.</p>
+          </details>
+          <details>
+            <summary>Will US electronics work here?</summary>
+            <p>Yes. We supply the right plug adapter or converter with every item that needs one, and unlocked phones work on South African and Zimbabwean networks.</p>
+          </details>
+          <details>
+            <summary>Can I return an item?</summary>
+            <p>Unopened beauty products and electronics can be returned within 7 days of delivery. Faulty items are repaired or replaced under warranty.</p>
+          </details>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="container footer__inner">
+      <div class="footer__brand">
+        <a class="logo logo--light" href="#top">
+          <svg class="logo__mark" viewBox="0 0 64 64" aria-hidden="true">
+            <rect x="6" y="10" width="52" height="44" rx="6" fill="var(--kraft)"/>
+            <path d="M6 25h52M6 39h52" stroke="var(--kraft-dark)" stroke-width="3"/>
+            <path d="M32 17l3.5 7.2 7.9 1.1-5.7 5.6 1.3 7.9L32 35.1l-7 3.7 1.3-7.9-5.7-5.6 7.9-1.1z" fill="#fff"/>
+          </svg>
+          <span class="logo__text"><span class="logo__name">American Crate</span><span class="logo__sub">Company</span></span>
+        </a>
+        <p>Viral American beauty and electronics, delivered across South Africa and Zimbabwe.</p>
+      </div>
+      <div>
+        <h4>Shop</h4>
+        <ul>
+          <li><a href="#shop" data-nav-cat="beauty">Beauty</a></li>
+          <li><a href="#shop" data-nav-cat="electronics">Electronics</a></li>
+          <li><a href="#shop" data-jump-avail="now">Available now</a></li>
+          <li><a href="#concierge">Concierge</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Help</h4>
+        <ul>
+          <li><a href="#how">How it works</a></li>
+          <li><a href="#faq">Delivery & returns</a></li>
+          <li><a href="#faq">Refurbished grades</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Contact</h4>
+        <ul>
+          <li><a id="footWhatsapp" href="#">WhatsApp us</a></li>
+          <li><a id="footEmail" href="#"></a></li>
+          <li><a id="footInstagram" href="#" target="_blank" rel="noopener">Instagram</a></li>
+          <li><a id="footTiktok" href="#" target="_blank" rel="noopener">TikTok</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="container footer__base">
+      <span>© <span id="year"></span> American Crate Company. All brand names belong to their respective owners.</span>
+      <span>🇿🇦 South Africa · 🇿🇼 Zimbabwe</span>
+    </div>
+  </footer>
+
+  <!-- Product dialog -->
+  <dialog class="modal" id="productModal" aria-labelledby="pmTitle">
+    <div class="modal__body" id="productModalBody"></div>
+  </dialog>
+
+  <!-- Checkout dialog -->
+  <dialog class="modal modal--narrow" id="checkoutModal" aria-labelledby="coTitle">
+    <div class="modal__body">
+      <button class="modal__close" type="button" data-close aria-label="Close">×</button>
+      <div id="checkoutStep">
+        <h2 id="coTitle">Checkout</h2>
+        <p class="muted">Send us your order and we'll confirm availability, delivery and payment details — usually within a few hours.</p>
+        <form class="form" id="checkoutForm" novalidate>
+          <div class="field-row">
+            <div class="field">
+              <label for="oName">Full name *</label>
+              <input id="oName" name="name" required autocomplete="name">
+            </div>
+            <div class="field">
+              <label for="oPhone">WhatsApp number *</label>
+              <input id="oPhone" name="phone" type="tel" required autocomplete="tel" placeholder="+27 / +263">
+            </div>
+          </div>
+          <div class="field">
+            <label for="oEmail">Email</label>
+            <input id="oEmail" name="email" type="email" autocomplete="email">
+          </div>
+          <div class="field-row">
+            <div class="field">
+              <label for="oCountry">Country</label>
+              <select id="oCountry" name="country">
+                <option value="za">South Africa</option>
+                <option value="zw">Zimbabwe</option>
+              </select>
+            </div>
+            <div class="field">
+              <label for="oCity">City / town *</label>
+              <input id="oCity" name="city" required autocomplete="address-level2">
+            </div>
+          </div>
+          <div class="field">
+            <label for="oDelivery">Delivery</label>
+            <select id="oDelivery" name="delivery"></select>
+          </div>
+          <div class="field" id="addressField">
+            <label for="oAddress">Delivery address</label>
+            <textarea id="oAddress" name="address" rows="2" autocomplete="street-address"></textarea>
+          </div>
+          <div class="field">
+            <label for="oPayment">Preferred payment</label>
+            <select id="oPayment" name="payment"></select>
+          </div>
+          <div class="field">
+            <label for="oNotes">Notes</label>
+            <textarea id="oNotes" name="notes" rows="2" placeholder="Shade, colour or anything else we should know"></textarea>
+          </div>
+          <div class="summary" id="checkoutSummary"></div>
+          <p class="form__error" id="oError" role="alert" hidden></p>
+          <div class="form__actions">
+            <button class="btn btn--primary" type="submit" data-send="whatsapp">Send order via WhatsApp</button>
+            <button class="btn btn--ghost" type="submit" data-send="email">Send via email</button>
+          </div>
+        </form>
+      </div>
+      <div id="checkoutDone" hidden>
+        <div class="done">
+          <span class="done__icon" data-icon="check"></span>
+          <h2>Order sent!</h2>
+          <p>Your reference is <strong id="orderRef"></strong>. We'll be in touch shortly to confirm payment and delivery.</p>
+          <p class="muted small">If WhatsApp or your email app didn't open, contact us with your reference number.</p>
+          <button class="btn btn--primary" type="button" data-close>Continue shopping</button>
+        </div>
+      </div>
+    </div>
+  </dialog>
+
+  <!-- Cart drawer -->
+  <div class="drawer" id="cartDrawer" aria-hidden="true">
+    <div class="drawer__scrim" data-close-cart></div>
+    <aside class="drawer__panel" role="dialog" aria-modal="true" aria-labelledby="cartTitle">
+      <header class="drawer__head">
+        <h2 id="cartTitle">Your crate</h2>
+        <button class="modal__close" type="button" data-close-cart aria-label="Close cart">×</button>
+      </header>
+      <div class="drawer__content" id="cartContent"></div>
+      <footer class="drawer__foot" id="cartFoot"></footer>
+    </aside>
+  </div>
+
+  <div class="toast" id="toast" role="status" aria-live="polite"></div>
+
+  <script src="js/config.js"></script>
+  <script src="js/products.js"></script>
+  <script src="js/app.js"></script>
+</body>
+</html>
