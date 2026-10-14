@@ -33,6 +33,10 @@ jobs:
         uses: actions/checkout@v4
       - name: Setup Pages
         uses: actions/configure-pages@v5
+      - name: Stamp CSS and JS links with this commit
+        # Browsers cache css/js for a while; a new ?v= on every deploy makes them fetch the
+        # matching files instead of mixing an old stylesheet or script with a new page.
+        run: sed -i -E "s/\.(css|js)\?v=[A-Za-z0-9]+/.\1?v=${GITHUB_SHA::7}/g" index.html
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
         with:
