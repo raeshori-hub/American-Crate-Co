@@ -132,6 +132,10 @@
               <input type="search" id="searchInput" placeholder="Search brands or products">
             </label>
             <label class="select">
+              <span class="visually-hidden">Brand</span>
+              <select id="brandSelect"></select>
+            </label>
+            <label class="select">
               <span class="visually-hidden">Sort by</span>
               <select id="sortSelect">
                 <option value="featured">Featured</option>
@@ -151,6 +155,7 @@
             <button class="chip chip--ship" data-filter-avail="ship"><i class="dot dot--ship"></i>Ships in ~2 weeks</button>
           </div>
           <div class="chips" role="group" aria-label="Type" id="subChips"></div>
+          <div class="chips" role="group" aria-label="Scent for" id="genderChips" hidden></div>
           <div class="chips" role="group" aria-label="Condition" id="condChips">
             <span class="chips__label">Condition</span>
             <button class="chip" data-filter-cond="all">All</button>

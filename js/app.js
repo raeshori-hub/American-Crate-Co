@@ -33,6 +33,7 @@
     tag: '<path d="M6 24V8a2 2 0 0 1 2-2h16l18 18-18 18z"/><circle cx="15" cy="15" r="3"/>',
     check: '<path d="M10 25l9 9 19-20"/>',
     chat: '<path d="M8 10h32v22H22l-9 7v-7H8z"/><path d="M15 19h18M15 25h12"/>',
+    pencil: '<path d="M30 6l12 12-24 24H6V30zM26 10l12 12M6 42l6-6"/>',
     plane: '<path d="M44 6L4 21l14 6 5 15 6-10 10 7zM18 27L44 6"/>',
     bolt: '<path d="M27 4L10 27h13l-3 17 18-24H25z"/>',
     x: '<path d="M14 14l20 20M34 14L14 34"/>',
@@ -68,6 +69,8 @@
     currency: store.get("currency", null),
     cat: "all",
     sub: "all",
+    gender: "all",
+    brand: "all",
     cond: "all",
     avail: "all",
     q: "",
@@ -75,6 +78,10 @@
     cart: store.get("cart", []).filter((l) => byId[l.id])
   };
   if (state.currency !== "USD" && state.currency !== "ZAR") state.currency = CFG.countries[state.country].defaultCurrency;
+
+  const GENDERS = [["women", "For her"], ["men", "For him"], ["unisex", "Unisex"]];
+  const GENDER_LABEL = Object.fromEntries(GENDERS);
+  const GENDER_SEARCH = { women: "women her ladies perfume", men: "men him cologne", unisex: "unisex" };
 
   const SUBS = {
     beauty: [["makeup", "Makeup"], ["skin", "Skincare"], ["body", "Body care"], ["fragrance", "Perfume"], ["hair", "Hair tools"]],
@@ -103,14 +110,17 @@
   const fullName = (p) => (p.name.startsWith(p.brand) ? p.name : `${p.brand} ${p.name}`);
 
   // ---------- Product art ----------
+  // Photo for a product: its `image` field, else images/products/<id>.jpg if that file exists.
+  const photoSrc = (p) => p.image || (CFG.productImageFolder ? `${CFG.productImageFolder}${p.id}.jpg` : "");
+
   function art(p, { mark = true } = {}) {
-    if (p.image) {
-      return `<div class="art"><img src="${esc(p.image)}" alt="${esc(p.brand + " " + p.name)}" loading="lazy"></div>`;
-    }
     const [a, b] = p.tone || ["#e6e0d6", "#b9a98f"];
-    return `<div class="art" style="background:linear-gradient(140deg, ${a}, ${b})" role="img" aria-label="${esc(p.brand + " " + p.name)}">
+    const src = photoSrc(p);
+    // The generated artwork sits underneath; a missing photo removes itself and the artwork shows.
+    return `<div class="art" style="background:linear-gradient(140deg, ${a}, ${b})" role="img" aria-label="${esc(fullName(p))}">
       <span class="art__icon">${icon(p.icon, 2.2)}</span>
       ${mark ? `<span class="art__mark">${esc(p.brand)}</span>` : ""}
+      ${src ? `<img class="art__photo" src="${esc(src)}" alt="" loading="lazy" onerror="this.remove()">` : ""}
     </div>`;
   }
 
@@ -121,9 +131,11 @@
       if (state.cat !== "all" && p.category !== state.cat) return false;
       if (state.sub !== "all" && p.sub !== state.sub) return false;
       if (state.cond !== "all" && p.condition !== state.cond) return false;
+      if (state.brand !== "all" && p.brand !== state.brand) return false;
+      if (state.gender !== "all" && p.sub === "fragrance" && p.gender !== state.gender && p.gender !== "unisex") return false;
       if (state.avail === "now" && !canNow(p)) return false;
       if (state.avail === "ship" && (canNow(p) || !canShip(p))) return false;
-      if (q && !`${p.brand} ${p.name} ${p.sub} ${p.condition} ${p.viral || ""}`.toLowerCase().includes(q)) return false;
+      if (q && !`${p.brand} ${p.name} ${p.sub} ${p.condition} ${p.viral || ""} ${GENDER_SEARCH[p.gender] || ""}`.toLowerCase().includes(q)) return false;
       return true;
     });
     const price = (p) => unitUSD(p, bestMode(p));
@@ -194,6 +206,7 @@
           <div class="product__brand">${esc(p.brand)}</div>
           <h3 class="product__name"><button type="button" data-open="${p.id}">${esc(p.name)}</button></h3>
           ${p.grade ? `<div class="product__grade">${esc(p.grade)}</div>` : ""}
+          ${p.gender ? `<div class="product__for">${GENDER_LABEL[p.gender]}${p.size ? ` · ${esc(p.size)}` : ""}</div>` : ""}
         </div>
         ${priceBlock(p)}
         <div class="avail">${optionNow(p, true)}${optionShip(p, true)}</div>
@@ -203,11 +216,16 @@
 
   function renderSubChips() {
     const el = $("#subChips");
-    if (state.cat === "all") { el.hidden = true; el.innerHTML = ""; return; }
+    if (state.cat === "all") { el.hidden = true; el.innerHTML = ""; $("#genderChips").hidden = true; return; }
     el.hidden = false;
     el.innerHTML = `<span class="chips__label">Type</span>
       <button class="chip" data-filter-sub="all" aria-pressed="${state.sub === "all"}">All ${state.cat}</button>` +
       SUBS[state.cat].map(([v, l]) => `<button class="chip" data-filter-sub="${v}" aria-pressed="${state.sub === v}">${l}</button>`).join("");
+    const g = $("#genderChips");
+    g.hidden = state.sub !== "fragrance";
+    g.innerHTML = g.hidden ? "" : `<span class="chips__label">Scent for</span>
+      <button class="chip" data-filter-gender="all" aria-pressed="${state.gender === "all"}">Everyone</button>` +
+      GENDERS.map(([v, l]) => `<button class="chip" data-filter-gender="${v}" aria-pressed="${state.gender === v}">${l}</button>`).join("");
   }
 
   function renderGrid() {
@@ -220,6 +238,7 @@
     $$("[data-filter-avail]").forEach((b) => b.setAttribute("aria-pressed", b.dataset.filterAvail === state.avail));
     $$("[data-filter-cond]").forEach((b) => b.setAttribute("aria-pressed", b.dataset.filterCond === state.cond));
     $("#condChips").hidden = state.cat === "beauty";
+    renderBrands();
     renderSubChips();
   }
 
@@ -633,20 +652,21 @@
   document.addEventListener("click", (e) => {
     const t = e.target.closest("button, a");
     if (!t) return;
-    if (t.dataset.filterCat) { state.cat = t.dataset.filterCat; state.sub = "all"; if (state.cat === "beauty") state.cond = "all"; renderGrid(); }
-    else if (t.dataset.filterSub) { state.sub = t.dataset.filterSub; renderGrid(); }
+    if (t.dataset.filterCat) { state.cat = t.dataset.filterCat; state.sub = "all"; state.gender = "all"; state.brand = "all"; if (state.cat === "beauty") state.cond = "all"; renderGrid(); }
+    else if (t.dataset.filterSub) { state.sub = t.dataset.filterSub; state.gender = "all"; renderGrid(); }
+    else if (t.dataset.filterGender) { state.gender = t.dataset.filterGender; renderGrid(); }
     else if (t.dataset.filterCond) { state.cond = t.dataset.filterCond; renderGrid(); }
     else if (t.dataset.filterAvail) { state.avail = t.dataset.filterAvail; renderGrid(); }
     else if (t.dataset.open) { openProduct(t.dataset.open); }
     else if (t.dataset.add) { addToCart(t.dataset.add, t.dataset.mode); }
     else if (t.dataset.navCat) {
-      state.cat = t.dataset.navCat; state.sub = "all"; state.cond = "all"; state.avail = "all";
+      state.cat = t.dataset.navCat; state.sub = "all"; state.cond = "all"; state.avail = "all"; state.gender = "all"; state.brand = "all";
       renderGrid(); closeMenu();
     } else if (t.dataset.jumpAvail) {
       state.cat = "all"; state.sub = "all"; state.cond = "all"; state.avail = t.dataset.jumpAvail;
       renderGrid(); closeMenu();
     } else if (t.classList.contains("cat") && t.dataset.cat) {
-      state.cat = t.dataset.cat; state.sub = t.dataset.sub || "all"; state.cond = t.dataset.cond || "all"; state.avail = "all";
+      state.cat = t.dataset.cat; state.sub = t.dataset.sub || "all"; state.cond = t.dataset.cond || "all"; state.avail = "all"; state.gender = "all"; state.brand = "all";
       renderGrid();
       $("#shop").scrollIntoView({ behavior: "smooth" });
     }
@@ -658,6 +678,17 @@
     searchTimer = setTimeout(() => { state.q = e.target.value; renderGrid(); }, 120);
   });
   $("#sortSelect").addEventListener("change", (e) => { state.sort = e.target.value; renderGrid(); });
+
+  // Brand filter, built from the catalogue.
+  const brandSelect = $("#brandSelect");
+  function renderBrands() {
+    const brands = [...new Set(PRODUCTS.filter((p) => state.cat === "all" || p.category === state.cat).map((p) => p.brand))]
+      .sort((a, b) => a.localeCompare(b));
+    if (!brands.includes(state.brand)) state.brand = "all";
+    brandSelect.innerHTML = '<option value="all">All brands</option>' +
+      brands.map((b) => `<option ${b === state.brand ? "selected" : ""}>${esc(b)}</option>`).join("");
+  }
+  brandSelect.addEventListener("change", (e) => { state.brand = e.target.value; renderGrid(); });
 
   // Mobile menu
   const menuBtn = $("#menuBtn");

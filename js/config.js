@@ -26,6 +26,10 @@ window.STORE_CONFIG = {
   conciergeFeeRate: 0.12,
   conciergeMinFeeUSD: 10,
 
+  // Product photos: save a photo as <folder><product id>.jpg (e.g. images/products/dior-sauvage-edt.jpg)
+  // and it replaces the generated artwork automatically. Set to "" to turn this off.
+  productImageFolder: "images/products/",
+
   // Typical transit time for products shipped from the USA.
   usaLeadTime: "~2 weeks",
 
