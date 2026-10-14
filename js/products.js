@@ -15,8 +15,11 @@
  *   usaOrder    true if customers can order it to be shipped from the USA
  *   viral       optional badge text, e.g. "TikTok viral"
  *   icon        artwork used when no photo is set (see ICONS in js/app.js)
+ *   gender      (fragrance only) "women" | "men" | "unisex"
+ *   size        optional size shown on the card, e.g. "100 ml"
  *   tone        two colours for the artwork background
- *   image       optional path/URL to a real product photo, e.g. "images/rare-blush.jpg"
+ *   image       optional photo path/URL. If left out, the site uses images/products/<id>.jpg
+ *               when that file exists, and the generated artwork otherwise.
  *
  * Prices below are placeholders — replace them with your own.
  */
@@ -80,6 +83,74 @@ window.PRODUCTS = [
     icon: "compact", tone: ["#f7e6d3", "#d4a373"],
     desc: "Ultra-fine setting powder for a smooth, crease-free bake that lasts all day.",
     highlights: ["Shades: Pound Cake, Cherry Blossom, Banana Bread", "20 g", "Blurs pores and fine lines"]
+  },
+  {
+    id: "danessa-myricks-yummy-skin-balm-powder",
+    name: "Yummy Skin Blurring Balm Powder",
+    brand: "Danessa Myricks Beauty",
+    category: "beauty", sub: "makeup", condition: "new",
+    priceUSD: 38,
+    stock: { za: 4, zw: 3 }, usaOrder: true,
+    viral: "TikTok viral",
+    icon: "compact", tone: ["#f3dcc6", "#a8714a"],
+    desc: "The balm-to-powder that blurs, sets and smooths in one step — a cult favourite for deeper skin tones with an inclusive shade range.",
+    highlights: ["18 shades, light to deep", "Balm-to-powder finish", "Blurs pores and texture"]
+  },
+  {
+    id: "danessa-myricks-colorfix",
+    name: "Colorfix Multi-Use Cream Pigment",
+    brand: "Danessa Myricks Beauty",
+    category: "beauty", sub: "makeup", condition: "new",
+    priceUSD: 22,
+    stock: { za: 6, zw: 0 }, usaOrder: true,
+    icon: "tube", tone: ["#f6d4c8", "#c4574a"],
+    desc: "Waterproof, transfer-proof cream colour for eyes, lips and cheeks. Pros use it for everything.",
+    highlights: ["Eyes, lips & cheeks", "Waterproof once set", "Matte, metallic & neon shades"]
+  },
+  {
+    id: "danessa-myricks-lightwork-palette",
+    name: "Lightwork Highlight & Contour Palette",
+    brand: "Danessa Myricks Beauty",
+    category: "beauty", sub: "makeup", condition: "new",
+    priceUSD: 50,
+    stock: { za: 0, zw: 0 }, usaOrder: true,
+    icon: "compact", tone: ["#f7e3c5", "#c99a5b"],
+    desc: "Cream and balm highlighters that melt into skin for a lit-from-within glow on every complexion.",
+    highlights: ["Cream + balm textures", "Face & body", "Buildable glow"]
+  },
+  {
+    id: "fenty-gloss-bomb",
+    name: "Gloss Bomb Universal Lip Luminizer",
+    brand: "Fenty Beauty",
+    category: "beauty", sub: "makeup", condition: "new",
+    priceUSD: 24,
+    stock: { za: 10, zw: 6 }, usaOrder: true,
+    viral: "Best seller",
+    icon: "tube", tone: ["#fbd9cf", "#d98a73"],
+    desc: "The explosive-shine gloss that flatters every skin tone. Non-sticky, with a peach-vanilla scent.",
+    highlights: ["Shade: Fenty Glow (universal rose nude)", "9 ml", "Shea butter for comfort"]
+  },
+  {
+    id: "fenty-pro-filtr-foundation",
+    name: "Pro Filt'r Soft Matte Longwear Foundation",
+    brand: "Fenty Beauty",
+    category: "beauty", sub: "makeup", condition: "new",
+    priceUSD: 44,
+    stock: { za: 5, zw: 4 }, usaOrder: true,
+    icon: "bottle", tone: ["#f0d2b4", "#8d5a36"],
+    desc: "Soft-matte, buildable foundation in 50 shades that changed the industry. Send us your shade or we'll help match it.",
+    highlights: ["50 shades", "32 ml", "Climate-adaptive, sweat & humidity resistant"]
+  },
+  {
+    id: "fenty-killawatt-highlighter",
+    name: "Killawatt Freestyle Highlighter",
+    brand: "Fenty Beauty",
+    category: "beauty", sub: "makeup", condition: "new",
+    priceUSD: 42,
+    stock: { za: 2, zw: 0 }, usaOrder: true,
+    icon: "compact", tone: ["#fbe7c4", "#d9a24c"],
+    desc: "Ultra-fine highlighter duo, from subtle sheen to blinding shimmer.",
+    highlights: ["Duo: Trophy Wife / Mean Money / Lightning Dust", "8 g", "Cream-powder hybrid"]
   },
 
   // ───────────── Beauty · Skin ─────────────
@@ -177,6 +248,7 @@ window.PRODUCTS = [
     priceUSD: 98, wasUSD: 110,
     stock: { za: 2, zw: 1 }, usaOrder: true,
     viral: "TikTok viral",
+    gender: "women", size: "50 ml",
     icon: "perfume", tone: ["#f6e2c6", "#b98545"],
     desc: "A warm, cosy vanilla with brown sugar and tonka bean — one of the most talked-about scents online.",
     highlights: ["50 ml EDP", "Notes: vanilla orchid, brown sugar, tonka", "Long-lasting"]
@@ -189,6 +261,7 @@ window.PRODUCTS = [
     priceUSD: 55,
     stock: { za: 4, zw: 3 }, usaOrder: true,
     viral: "Fan favourite",
+    gender: "women", size: "100 ml",
     icon: "perfume", tone: ["#e6eefc", "#8ea7e0"],
     desc: "Dreamy and airy: lavender, pear and whipped cream over a creamy musk base.",
     highlights: ["100 ml EDP", "Notes: lavender, praline, musk", "Great everyday scent"]
@@ -200,9 +273,185 @@ window.PRODUCTS = [
     category: "beauty", sub: "fragrance", condition: "new",
     priceUSD: 82,
     stock: { za: 0, zw: 0 }, usaOrder: true,
+    gender: "unisex", size: "50 ml",
     icon: "perfume", tone: ["#fde2e0", "#e59a92"],
     desc: "A skin scent that smells different on everyone — warm, creamy and subtly musky.",
     highlights: ["50 ml EDP", "Notes: pink pepper, iris, ambrette", "Unisex"]
+  },
+  {
+    id: "forvr-mood-i-am-her",
+    name: "I Am Her Eau de Parfum",
+    brand: "FORVR Mood",
+    category: "beauty", sub: "fragrance", condition: "new",
+    priceUSD: 85,
+    stock: { za: 3, zw: 2 }, usaOrder: true,
+    viral: "New launch",
+    gender: "women", size: "50 ml",
+    icon: "perfume", tone: ["#f7d6d9", "#a8394a"],
+    desc: "Jackie Aina's sensual signature: red velvet and juicy pear over a warm, woody base.",
+    highlights: ["50 ml EDP", "Notes: red velvet, pear, oud", "By Jackie Aina's FORVR Mood"]
+  },
+  {
+    id: "forvr-mood-hard-to-get",
+    name: "Hard to Get Eau de Parfum",
+    brand: "FORVR Mood",
+    category: "beauty", sub: "fragrance", condition: "new",
+    priceUSD: 85,
+    stock: { za: 2, zw: 0 }, usaOrder: true,
+    gender: "women", size: "50 ml",
+    icon: "perfume", tone: ["#fbf0d2", "#d7aa55"],
+    desc: "Bright and addictive: sparkling citron zest, sheer jasmine and whipped vanilla.",
+    highlights: ["50 ml EDP", "Notes: citron zest, jasmine, whipped vanilla", "By Jackie Aina's FORVR Mood"]
+  },
+  {
+    id: "forvr-mood-discovery-set",
+    name: "Fine Fragrance Discovery Set",
+    brand: "FORVR Mood",
+    category: "beauty", sub: "fragrance", condition: "new",
+    priceUSD: 36,
+    stock: { za: 5, zw: 4 }, usaOrder: true,
+    viral: "Gift idea",
+    gender: "women", size: "4 × 3 ml",
+    icon: "perfume", tone: ["#f3e1ea", "#9c6a86"],
+    desc: "Try all four FORVR Mood scents before choosing your full size — or gift them.",
+    highlights: ["I Am Her, Hard to Get, NDA, You Remind Me", "4 × 3 ml vials", "Perfect gift"]
+  },
+  {
+    id: "ysl-libre-edp",
+    name: "Libre Eau de Parfum",
+    brand: "Yves Saint Laurent",
+    category: "beauty", sub: "fragrance", condition: "new",
+    priceUSD: 135, wasUSD: 150,
+    stock: { za: 2, zw: 1 }, usaOrder: true,
+    viral: "Best seller",
+    gender: "women", size: "50 ml",
+    icon: "perfume", tone: ["#f5e6c8", "#c79a3c"],
+    desc: "A bold floral lavender with orange blossom and vanilla — modern, confident and long-lasting.",
+    highlights: ["50 ml EDP", "Notes: lavender, orange blossom, vanilla", "Iconic gold-cap bottle"]
+  },
+  {
+    id: "lancome-la-vie-est-belle",
+    name: "La Vie Est Belle Eau de Parfum",
+    brand: "Lancôme",
+    category: "beauty", sub: "fragrance", condition: "new",
+    priceUSD: 125,
+    stock: { za: 3, zw: 2 }, usaOrder: true,
+    gender: "women", size: "50 ml",
+    icon: "perfume", tone: ["#fbe0e6", "#c9708a"],
+    desc: "The sweet gourmand classic: iris, praline and vanilla in the famous smile bottle.",
+    highlights: ["50 ml EDP", "Notes: iris, praline, vanilla", "All-day wear"]
+  },
+  {
+    id: "ch-good-girl",
+    name: "Good Girl Eau de Parfum",
+    brand: "Carolina Herrera",
+    category: "beauty", sub: "fragrance", condition: "new",
+    priceUSD: 130,
+    stock: { za: 0, zw: 2 }, usaOrder: true,
+    viral: "Fan favourite",
+    gender: "women", size: "50 ml",
+    icon: "perfume", tone: ["#dde3f2", "#2b3a6b"],
+    desc: "Light and dark in a stiletto bottle: jasmine and tuberose over tonka bean and cocoa.",
+    highlights: ["50 ml EDP", "Notes: jasmine, tonka bean, cocoa", "Statement stiletto bottle"]
+  },
+  {
+    id: "mfk-baccarat-rouge-540",
+    name: "Baccarat Rouge 540 Eau de Parfum",
+    brand: "Maison Francis Kurkdjian",
+    category: "beauty", sub: "fragrance", condition: "new",
+    priceUSD: 335,
+    stock: { za: 0, zw: 0 }, usaOrder: true,
+    viral: "TikTok viral",
+    gender: "unisex", size: "70 ml",
+    icon: "perfume", tone: ["#f6d7cf", "#b5523f"],
+    desc: "The most-complimented scent online: saffron, jasmine and ambergris for a luminous, airy trail.",
+    highlights: ["70 ml EDP", "Notes: saffron, jasmine, amberwood", "Unisex luxury"]
+  },
+  {
+    id: "dior-sauvage-edt",
+    name: "Sauvage Eau de Toilette",
+    brand: "Dior",
+    category: "beauty", sub: "fragrance", condition: "new",
+    priceUSD: 125,
+    stock: { za: 4, zw: 3 }, usaOrder: true,
+    viral: "Best seller",
+    gender: "men", size: "100 ml",
+    icon: "perfume", tone: ["#dfe7f1", "#3e5d84"],
+    desc: "Fresh, raw and powerful: Calabrian bergamot and ambroxan. The world's best-selling men's fragrance.",
+    highlights: ["100 ml EDT", "Notes: bergamot, pepper, ambroxan", "Everyday signature"]
+  },
+  {
+    id: "chanel-bleu-edp",
+    name: "Bleu de Chanel Eau de Parfum",
+    brand: "Chanel",
+    category: "beauty", sub: "fragrance", condition: "new",
+    priceUSD: 165,
+    stock: { za: 2, zw: 1 }, usaOrder: true,
+    gender: "men", size: "100 ml",
+    icon: "perfume", tone: ["#d9dfe8", "#1f2d44"],
+    desc: "Timeless woody-aromatic: citrus freshness over sandalwood and cedar.",
+    highlights: ["100 ml EDP", "Notes: grapefruit, incense, sandalwood", "Office to evening"]
+  },
+  {
+    id: "ysl-y-edp",
+    name: "Y Eau de Parfum",
+    brand: "Yves Saint Laurent",
+    category: "beauty", sub: "fragrance", condition: "new",
+    priceUSD: 130,
+    stock: { za: 0, zw: 2 }, usaOrder: true,
+    gender: "men", size: "60 ml",
+    icon: "perfume", tone: ["#e3e6ec", "#4b5466"],
+    desc: "Clean and intense: crisp apple and ginger over sage and amberwood.",
+    highlights: ["60 ml EDP", "Notes: apple, sage, amberwood", "Long-lasting"]
+  },
+  {
+    id: "jpg-le-male-elixir",
+    name: "Le Male Elixir Parfum",
+    brand: "Jean Paul Gaultier",
+    category: "beauty", sub: "fragrance", condition: "new",
+    priceUSD: 140,
+    stock: { za: 1, zw: 1 }, usaOrder: true,
+    viral: "TikTok viral",
+    gender: "men", size: "75 ml",
+    icon: "perfume", tone: ["#f2dfb5", "#a8792a"],
+    desc: "The viral sailor bottle turned up: lavender, honey and tonka for a warm, sweet, magnetic trail.",
+    highlights: ["75 ml Parfum", "Notes: lavender, honey, tonka", "Beast-mode projection"]
+  },
+  {
+    id: "versace-eros-edt",
+    name: "Eros Eau de Toilette",
+    brand: "Versace",
+    category: "beauty", sub: "fragrance", condition: "new",
+    priceUSD: 105,
+    stock: { za: 5, zw: 4 }, usaOrder: true,
+    gender: "men", size: "100 ml",
+    icon: "perfume", tone: ["#d8efe9", "#2e8c7c"],
+    desc: "Mint, green apple and vanilla — fresh and sweet, a crowd-pleaser for nights out.",
+    highlights: ["100 ml EDT", "Notes: mint, green apple, vanilla", "Great value"]
+  },
+  {
+    id: "valentino-born-in-roma-uomo-intense",
+    name: "Born in Roma Uomo Intense",
+    brand: "Valentino",
+    category: "beauty", sub: "fragrance", condition: "new",
+    priceUSD: 145,
+    stock: { za: 0, zw: 0 }, usaOrder: true,
+    gender: "men", size: "100 ml",
+    icon: "perfume", tone: ["#e4e1ea", "#3c3550"],
+    desc: "Smooth and addictive: vanilla, lavender and vetiver in the studded bottle.",
+    highlights: ["100 ml EDP", "Notes: vanilla, lavender, vetiver", "Evening favourite"]
+  },
+  {
+    id: "margiela-replica-jazz-club",
+    name: "Replica Jazz Club",
+    brand: "Maison Margiela",
+    category: "beauty", sub: "fragrance", condition: "new",
+    priceUSD: 155,
+    stock: { za: 1, zw: 0 }, usaOrder: true,
+    gender: "unisex", size: "100 ml",
+    icon: "perfume", tone: ["#ecdcc8", "#7a4e2c"],
+    desc: "A cosy Brooklyn jazz bar in a bottle: rum, tobacco leaf and vanilla.",
+    highlights: ["100 ml EDT", "Notes: rum, tobacco, vanilla", "Unisex"]
   },
 
   // ───────────── Beauty · Hair ─────────────

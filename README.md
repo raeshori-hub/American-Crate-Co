@@ -31,7 +31,7 @@ Open `index.html` in a browser, or run `python3 -m http.server` and visit http:/
 
 **Stock:** `stock: { za: 3, zw: 0 }` means 3 units have landed in South Africa and none in Zimbabwe. When a count is `0`, the product shows "Not in stock locally" and customers can still order it from the USA.
 
-**Photos:** each product shows generated artwork by default. To use a real photo, put it in an `images/` folder and add `image: "images/your-photo.jpg"` to the product.
+**Photos:** each product shows generated artwork until you add a photo. Save it as `images/products/<product-id>.jpg` and it appears automatically. [`images/products/README.md`](images/products/README.md) lists the filename for every product.
 
 ## Publishing
 
