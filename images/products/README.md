@@ -20,6 +20,27 @@ Save a photo here named after the product id and it replaces the generated artwo
 | `fenty-gloss-bomb.jpg` | Fenty Beauty — Gloss Bomb Universal Lip Luminizer |
 | `fenty-pro-filtr-foundation.jpg` | Fenty Beauty — Pro Filt'r Soft Matte Longwear Foundation |
 | `fenty-killawatt-highlighter.jpg` | Fenty Beauty — Killawatt Freestyle Highlighter |
+| `nars-radiant-creamy-concealer.jpg` | NARS — Radiant Creamy Concealer |
+| `nars-orgasm-blush.jpg` | NARS — Blush in Orgasm |
+| `nars-light-reflecting-foundation.jpg` | NARS — Light Reflecting Foundation |
+| `nars-laguna-bronzer.jpg` | NARS — Laguna Bronzing Powder |
+| `ct-hollywood-flawless-filter.jpg` | Charlotte Tilbury — Hollywood Flawless Filter |
+| `ct-airbrush-setting-spray.jpg` | Charlotte Tilbury — Airbrush Flawless Setting Spray |
+| `ct-beauty-light-wand.jpg` | Charlotte Tilbury — Beauty Light Wand |
+| `ct-magic-cream.jpg` | Charlotte Tilbury — Charlotte's Magic Cream |
+| `too-faced-better-than-sex-mascara.jpg` | Too Faced — Better Than Sex Volumizing Mascara |
+| `too-faced-born-this-way.jpg` | Too Faced — Born This Way Natural Finish Foundation |
+| `too-faced-lip-injection-extreme.jpg` | Too Faced — Lip Injection Extreme Lip Plumper |
+| `too-faced-hangover-primer.jpg` | Too Faced — Hangover Replenishing Face Primer |
+| `rare-beauty-positive-light-luminizer.jpg` | Rare Beauty — Positive Light Liquid Luminizer |
+| `rare-beauty-warm-wishes-bronzer.jpg` | Rare Beauty — Warm Wishes Effortless Bronzer Stick |
+| `rare-beauty-liquid-touch-foundation.jpg` | Rare Beauty — Liquid Touch Weightless Foundation |
+| `rare-beauty-perfect-strokes-mascara.jpg` | Rare Beauty — Perfect Strokes Universal Volumizing Mascara |
+| `loreal-lash-paradise.jpg` | L'Oréal Paris — Voluminous Lash Paradise Mascara |
+| `loreal-telescopic-lift.jpg` | L'Oréal Paris — Telescopic Lift Washable Mascara |
+| `loreal-infallible-fresh-wear.jpg` | L'Oréal Paris — Infallible 32H Fresh Wear Foundation |
+| `loreal-revitalift-ha-serum.jpg` | L'Oréal Paris — Revitalift 1.5% Pure Hyaluronic Acid Serum |
+| `loreal-lumi-glotion.jpg` | L'Oréal Paris — Lumi Glotion Natural Glow Enhancer |
 | `glow-recipe-watermelon-dew-drops.jpg` | Glow Recipe — Watermelon Glow Niacinamide Dew Drops |
 | `laneige-lip-sleeping-mask.jpg` | Laneige — Lip Sleeping Mask |
 | `cerave-sa-cleanser.jpg` | CeraVe — SA Smoothing Cleanser (Large) |

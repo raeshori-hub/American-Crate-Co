@@ -129,8 +129,11 @@
   }
 
   // ---------- Filtering ----------
+  // Search ignores case, accents and punctuation, so "loreal" finds L'Oréal and "elf" finds e.l.f.
+  const norm = (t) => t.normalize("NFD").replace(/[\u0300-\u036f]/g, "").replace(/['’.\-]/g, "").toLowerCase();
+
   function matches(p, f) {
-    const q = f.q.trim().toLowerCase();
+    const q = norm(f.q.trim());
     if (f.cat !== "all" && p.category !== f.cat) return false;
     if (f.sub !== "all" && p.sub !== f.sub) return false;
     if (f.cond !== "all" && p.condition !== f.cond) return false;
@@ -138,7 +141,7 @@
     if (f.gender !== "all" && p.sub === "fragrance" && p.gender !== f.gender && p.gender !== "unisex") return false;
     if (f.avail === "now" && !canNow(p)) return false;
     if (f.avail === "ship" && (canNow(p) || !canShip(p))) return false;
-    if (q && !`${p.brand} ${p.name} ${p.sub} ${p.condition} ${p.viral || ""} ${GENDER_SEARCH[p.gender] || ""}`.toLowerCase().includes(q)) return false;
+    if (q && !norm(`${p.brand} ${p.name} ${p.sub} ${p.condition} ${p.viral || ""} ${GENDER_SEARCH[p.gender] || ""}`).includes(q)) return false;
     return true;
   }
   // How many products a filter option would show, given the other active filters.

@@ -154,6 +154,256 @@ window.PRODUCTS = [
     highlights: ["Duo: Trophy Wife / Mean Money / Lightning Dust", "8 g", "Cream-powder hybrid"]
   },
 
+  // ───────────── NARS ─────────────
+  {
+    id: "nars-radiant-creamy-concealer",
+    name: "Radiant Creamy Concealer",
+    brand: "NARS",
+    category: "beauty", sub: "makeup", condition: "new",
+    priceUSD: 36,
+    stock: { za: 6, zw: 4 }, usaOrder: true,
+    viral: "Best seller",
+    icon: "tube", tone: ["#f3dcc8", "#a8714a"],
+    desc: "The award-winning concealer that corrects, contours and highlights with a natural, radiant finish.",
+    highlights: ["30 shades", "6 ml", "Medium-to-buildable coverage"]
+  },
+  {
+    id: "nars-orgasm-blush",
+    name: "Blush in Orgasm",
+    brand: "NARS",
+    category: "beauty", sub: "makeup", condition: "new",
+    priceUSD: 36,
+    stock: { za: 5, zw: 3 }, usaOrder: true,
+    viral: "Iconic",
+    icon: "compact", tone: ["#fbdcd6", "#d9776a"],
+    desc: "The world-famous peachy-pink blush with golden shimmer that flatters every skin tone.",
+    highlights: ["4.8 g", "Peachy pink with golden shimmer", "Long-wearing powder"]
+  },
+  {
+    id: "nars-light-reflecting-foundation",
+    name: "Light Reflecting Foundation",
+    brand: "NARS",
+    category: "beauty", sub: "makeup", condition: "new",
+    priceUSD: 55,
+    stock: { za: 3, zw: 2 }, usaOrder: true,
+    icon: "bottle", tone: ["#f0d6bd", "#9a6640"],
+    desc: "A skincare-infused foundation that blurs and brightens for a luminous, natural finish.",
+    highlights: ["36 shades", "30 ml", "Medium buildable coverage"]
+  },
+  {
+    id: "nars-laguna-bronzer",
+    name: "Laguna Bronzing Powder",
+    brand: "NARS",
+    category: "beauty", sub: "makeup", condition: "new",
+    priceUSD: 45,
+    stock: { za: 3, zw: 2 }, usaOrder: true,
+    icon: "compact", tone: ["#f1d6bb", "#a96f3c"],
+    desc: "The cult matte bronzer for a natural, sun-kissed glow.",
+    highlights: ["11 g", "Shade: Laguna (universal matte bronze)", "Buildable"]
+  },
+
+  // ───────────── Charlotte Tilbury ─────────────
+  {
+    id: "ct-hollywood-flawless-filter",
+    name: "Hollywood Flawless Filter",
+    brand: "Charlotte Tilbury",
+    category: "beauty", sub: "makeup", condition: "new",
+    priceUSD: 52,
+    stock: { za: 4, zw: 2 }, usaOrder: true,
+    viral: "TikTok viral",
+    icon: "bottle", tone: ["#f7e3d0", "#c48a57"],
+    desc: "The complexion booster that gives skin a soft-focus, lit-from-within glow. Wear alone or under foundation.",
+    highlights: ["30 ml", "Shades 1 Fair \u2192 9 Deep", "Primer, highlighter & glow booster"]
+  },
+  {
+    id: "ct-airbrush-setting-spray",
+    name: "Airbrush Flawless Setting Spray",
+    brand: "Charlotte Tilbury",
+    category: "beauty", sub: "makeup", condition: "new",
+    priceUSD: 40,
+    stock: { za: 5, zw: 3 }, usaOrder: true,
+    icon: "mist", tone: ["#f4e4ea", "#b9748e"],
+    desc: "Locks makeup in place for up to 16 hours with a fresh, airbrushed finish.",
+    highlights: ["100 ml", "Up to 16 hours wear", "Shine-controlling"]
+  },
+  {
+    id: "ct-beauty-light-wand",
+    name: "Beauty Light Wand",
+    brand: "Charlotte Tilbury",
+    category: "beauty", sub: "makeup", condition: "new",
+    priceUSD: 45,
+    stock: { za: 4, zw: 2 }, usaOrder: true,
+    viral: "Fan favourite",
+    icon: "tube", tone: ["#fbe0e3", "#d27588"],
+    desc: "A cushion-tip liquid highlighter and blush in one, for an instant rosy glow.",
+    highlights: ["12 ml", "Shade: Pillow Talk", "Highlighter + blush"]
+  },
+  {
+    id: "ct-magic-cream",
+    name: "Charlotte's Magic Cream",
+    brand: "Charlotte Tilbury",
+    category: "beauty", sub: "skin", condition: "new",
+    priceUSD: 84,
+    stock: { za: 2, zw: 1 }, usaOrder: true,
+    icon: "jar", tone: ["#f4e6dd", "#b98b6b"],
+    desc: "The backstage moisturiser that plumps, hydrates and preps skin for makeup.",
+    highlights: ["50 ml", "Hyaluronic acid + peptides", "Makeup-artist favourite"]
+  },
+
+  // ───────────── Too Faced ─────────────
+  {
+    id: "too-faced-better-than-sex-mascara",
+    name: "Better Than Sex Volumizing Mascara",
+    brand: "Too Faced",
+    category: "beauty", sub: "makeup", condition: "new",
+    priceUSD: 31,
+    stock: { za: 10, zw: 6 }, usaOrder: true,
+    viral: "Best seller",
+    icon: "pencil", tone: ["#f7d9e2", "#c04d72"],
+    desc: "The cult hourglass-brush mascara for dramatic volume and length.",
+    highlights: ["8 ml", "Intense black", "Volume + length"]
+  },
+  {
+    id: "too-faced-born-this-way",
+    name: "Born This Way Natural Finish Foundation",
+    brand: "Too Faced",
+    category: "beauty", sub: "makeup", condition: "new",
+    priceUSD: 45,
+    stock: { za: 4, zw: 3 }, usaOrder: true,
+    icon: "bottle", tone: ["#f2d8c1", "#a26b43"],
+    desc: "Oil-free, medium-to-full coverage foundation that looks like skin, with coconut water and hyaluronic acid.",
+    highlights: ["35 shades", "30 ml", "Undetectable, natural finish"]
+  },
+  {
+    id: "too-faced-lip-injection-extreme",
+    name: "Lip Injection Extreme Lip Plumper",
+    brand: "Too Faced",
+    category: "beauty", sub: "makeup", condition: "new",
+    priceUSD: 31,
+    stock: { za: 6, zw: 4 }, usaOrder: true,
+    viral: "TikTok viral",
+    icon: "tube", tone: ["#fbe3ea", "#d0607f"],
+    desc: "The tingling clear gloss that gives an instantly fuller-looking pout.",
+    highlights: ["4 g", "Clear, high-shine", "Instant plumping tingle"]
+  },
+  {
+    id: "too-faced-hangover-primer",
+    name: "Hangover Replenishing Face Primer",
+    brand: "Too Faced",
+    category: "beauty", sub: "makeup", condition: "new",
+    priceUSD: 38,
+    stock: { za: 3, zw: 0 }, usaOrder: true,
+    icon: "bottle", tone: ["#e9f2ea", "#5b9a6b"],
+    desc: "A hydrating primer with coconut water and probiotics that wakes up tired skin and helps makeup last.",
+    highlights: ["40 ml", "Coconut water + probiotics", "Smooths & hydrates"]
+  },
+
+  // ───────────── Rare Beauty ─────────────
+  {
+    id: "rare-beauty-positive-light-luminizer",
+    name: "Positive Light Liquid Luminizer",
+    brand: "Rare Beauty",
+    category: "beauty", sub: "makeup", condition: "new",
+    priceUSD: 28,
+    stock: { za: 5, zw: 3 }, usaOrder: true,
+    icon: "dropper", tone: ["#fbecd9", "#cf9a5c"],
+    desc: "A weightless liquid highlighter for a natural, lit-from-within glow.",
+    highlights: ["15 ml", "Buildable glow", "Shades: Enlighten, Mesmerize, Exhilarate & more"]
+  },
+  {
+    id: "rare-beauty-warm-wishes-bronzer",
+    name: "Warm Wishes Effortless Bronzer Stick",
+    brand: "Rare Beauty",
+    category: "beauty", sub: "makeup", condition: "new",
+    priceUSD: 28,
+    stock: { za: 4, zw: 2 }, usaOrder: true,
+    viral: "TikTok viral",
+    icon: "tube", tone: ["#f3dac2", "#ad7445"],
+    desc: "A creamy bronzer stick with a cushion applicator that blends in seconds.",
+    highlights: ["10 g", "Cushion-tip applicator", "Shades: Happy Sol, Sunny Days & more"]
+  },
+  {
+    id: "rare-beauty-liquid-touch-foundation",
+    name: "Liquid Touch Weightless Foundation",
+    brand: "Rare Beauty",
+    category: "beauty", sub: "makeup", condition: "new",
+    priceUSD: 34,
+    stock: { za: 3, zw: 2 }, usaOrder: true,
+    icon: "bottle", tone: ["#f2dac4", "#a36d45"],
+    desc: "A breathable, medium-coverage foundation with a natural matte finish.",
+    highlights: ["48 shades", "30 ml", "Weightless, buildable"]
+  },
+  {
+    id: "rare-beauty-perfect-strokes-mascara",
+    name: "Perfect Strokes Universal Volumizing Mascara",
+    brand: "Rare Beauty",
+    category: "beauty", sub: "makeup", condition: "new",
+    priceUSD: 24,
+    stock: { za: 6, zw: 4 }, usaOrder: true,
+    icon: "pencil", tone: ["#f6dfe3", "#a65a6c"],
+    desc: "A lengthening, volumising mascara with a dual-sided brush for every lash type.",
+    highlights: ["11 ml", "Black", "Volume + length, smudge-resistant"]
+  },
+
+  // ───────────── L'Oréal Paris ─────────────
+  {
+    id: "loreal-lash-paradise",
+    name: "Voluminous Lash Paradise Mascara",
+    brand: "L'Or\u00e9al Paris",
+    category: "beauty", sub: "makeup", condition: "new",
+    priceUSD: 14,
+    stock: { za: 15, zw: 10 }, usaOrder: true,
+    viral: "Best seller",
+    icon: "pencil", tone: ["#fbe0e8", "#d0577c"],
+    desc: "The feathery-soft, volumising mascara that rivals luxury brands at a drugstore price.",
+    highlights: ["7.6 ml", "Blackest Black", "Volume + length"]
+  },
+  {
+    id: "loreal-telescopic-lift",
+    name: "Telescopic Lift Washable Mascara",
+    brand: "L'Or\u00e9al Paris",
+    category: "beauty", sub: "makeup", condition: "new",
+    priceUSD: 15,
+    stock: { za: 10, zw: 6 }, usaOrder: true,
+    viral: "TikTok viral",
+    icon: "pencil", tone: ["#e6e9f4", "#4a5a9c"],
+    desc: "Lifts and lengthens lashes up to 36 hours with a double-hook bristle brush.",
+    highlights: ["9.9 ml", "Black", "Lift + length, up to 36 hours"]
+  },
+  {
+    id: "loreal-infallible-fresh-wear",
+    name: "Infallible 32H Fresh Wear Foundation",
+    brand: "L'Or\u00e9al Paris",
+    category: "beauty", sub: "makeup", condition: "new",
+    priceUSD: 18,
+    stock: { za: 8, zw: 5 }, usaOrder: true,
+    icon: "bottle", tone: ["#f2d9c3", "#a56f47"],
+    desc: "Long-lasting, breathable full coverage that resists sweat, heat and transfer.",
+    highlights: ["40 shades", "30 ml", "SPF 25, waterproof"]
+  },
+  {
+    id: "loreal-revitalift-ha-serum",
+    name: "Revitalift 1.5% Pure Hyaluronic Acid Serum",
+    brand: "L'Or\u00e9al Paris",
+    category: "beauty", sub: "skin", condition: "new",
+    priceUSD: 32,
+    stock: { za: 6, zw: 4 }, usaOrder: true,
+    icon: "dropper", tone: ["#e4ecf7", "#5679b0"],
+    desc: "A plumping, hydrating serum with pure hyaluronic acid for smoother-looking skin.",
+    highlights: ["30 ml", "1.5% hyaluronic acid", "Fragrance-free"]
+  },
+  {
+    id: "loreal-lumi-glotion",
+    name: "Lumi Glotion Natural Glow Enhancer",
+    brand: "L'Or\u00e9al Paris",
+    category: "beauty", sub: "makeup", condition: "new",
+    priceUSD: 18,
+    stock: { za: 7, zw: 4 }, usaOrder: true,
+    icon: "tube", tone: ["#fbebd6", "#c99357"],
+    desc: "A tinted, glowy body-and-face lotion for an instant, radiant finish.",
+    highlights: ["40 ml", "Shades: Light, Medium, Deep", "Shea butter + glycerin"]
+  },
+
   // ───────────── Beauty · Skin ─────────────
   {
     id: "glow-recipe-watermelon-dew-drops",
