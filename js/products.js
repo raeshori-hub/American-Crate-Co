@@ -86,6 +86,63 @@ window.PRODUCTS = [
     highlights: ["Shades: Pound Cake, Cherry Blossom, Banana Bread", "20 g", "Blurs pores and fine lines"]
   },
   {
+    id: "huda-faux-filter-foundation",
+    name: "#FauxFilter Luminous Matte Foundation",
+    brand: "Huda Beauty",
+    category: "beauty", sub: "makeup", condition: "new",
+    priceUSD: 42,
+    stock: { za: 4, zw: 3 }, usaOrder: true,
+    viral: "Best seller",
+    icon: "bottle", tone: ["#f1d7bf", "#9c6540"],
+    desc: "Full-coverage, long-wearing foundation with a soft, luminous-matte finish that looks filtered in real life.",
+    highlights: ["Over 50 shades", "35 ml", "Full coverage, transfer-resistant"]
+  },
+  {
+    id: "huda-faux-filter-concealer",
+    name: "#FauxFilter Luminous Matte Concealer",
+    brand: "Huda Beauty",
+    category: "beauty", sub: "makeup", condition: "new",
+    priceUSD: 34,
+    stock: { za: 5, zw: 3 }, usaOrder: true,
+    icon: "tube", tone: ["#f4dcc6", "#a8714a"],
+    desc: "A creamy, crease-proof concealer that covers, brightens and blurs.",
+    highlights: ["9 ml", "Full coverage", "Crease-proof, waterproof"]
+  },
+  {
+    id: "huda-lip-contour-2",
+    name: "Lip Contour 2.0 Automatic Matte Lip Pencil",
+    brand: "Huda Beauty",
+    category: "beauty", sub: "makeup", condition: "new",
+    priceUSD: 22,
+    stock: { za: 8, zw: 6 }, usaOrder: true,
+    viral: "TikTok viral",
+    icon: "pencil", tone: ["#ecd0c4", "#8f4f3e"],
+    desc: "A creamy, long-wearing lip liner that defines and fills for the perfect overlined look.",
+    highlights: ["0.5 g", "Shades: Muted Pink, Trendy, Warm Brown & more", "Built-in sharpener"]
+  },
+  {
+    id: "huda-glowish-multidew-skin-tint",
+    name: "GloWish Multidew Skin Tint",
+    brand: "Huda Beauty",
+    category: "beauty", sub: "makeup", condition: "new",
+    priceUSD: 30,
+    stock: { za: 5, zw: 4 }, usaOrder: true,
+    icon: "dropper", tone: ["#f6e0cb", "#c08a5a"],
+    desc: "A lightweight, dewy skin tint with hydrating ingredients for a fresh, natural glow.",
+    highlights: ["40 ml", "Light coverage, dewy finish", "Hyaluronic acid + vitamin C"]
+  },
+  {
+    id: "huda-nude-obsessions-palette",
+    name: "Nude Obsessions Eyeshadow Palette",
+    brand: "Huda Beauty",
+    category: "beauty", sub: "makeup", condition: "new",
+    priceUSD: 30,
+    stock: { za: 4, zw: 2 }, usaOrder: true,
+    icon: "compact", tone: ["#f1dccb", "#a9785a"],
+    desc: "Nine wearable mattes and shimmers for everyday nude eyes, in shades made for different undertones.",
+    highlights: ["9 shades", "Mattes + shimmers", "Variations: Light, Medium, Rich"]
+  },
+  {
     id: "danessa-myricks-yummy-skin-balm-powder",
     name: "Yummy Skin Blurring Balm Powder",
     brand: "Danessa Myricks Beauty",

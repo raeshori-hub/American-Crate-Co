@@ -14,6 +14,11 @@ Save a photo here named after the product id and it replaces the generated artwo
 | `charlotte-tilbury-pillow-talk.jpg` | Charlotte Tilbury — Pillow Talk Matte Revolution Lipstick |
 | `summer-fridays-lip-butter.jpg` | Summer Fridays — Lip Butter Balm |
 | `huda-easy-bake-powder.jpg` | Huda Beauty — Easy Bake Loose Setting Powder |
+| `huda-faux-filter-foundation.jpg` | Huda Beauty — #FauxFilter Luminous Matte Foundation |
+| `huda-faux-filter-concealer.jpg` | Huda Beauty — #FauxFilter Luminous Matte Concealer |
+| `huda-lip-contour-2.jpg` | Huda Beauty — Lip Contour 2.0 Automatic Matte Lip Pencil |
+| `huda-glowish-multidew-skin-tint.jpg` | Huda Beauty — GloWish Multidew Skin Tint |
+| `huda-nude-obsessions-palette.jpg` | Huda Beauty — Nude Obsessions Eyeshadow Palette |
 | `danessa-myricks-yummy-skin-balm-powder.jpg` | Danessa Myricks Beauty — Yummy Skin Blurring Balm Powder |
 | `danessa-myricks-colorfix.jpg` | Danessa Myricks Beauty — Colorfix Multi-Use Cream Pigment |
 | `danessa-myricks-lightwork-palette.jpg` | Danessa Myricks Beauty — Lightwork Highlight & Contour Palette |
