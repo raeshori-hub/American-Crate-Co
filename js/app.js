@@ -33,6 +33,8 @@
     tag: '<path d="M6 24V8a2 2 0 0 1 2-2h16l18 18-18 18z"/><circle cx="15" cy="15" r="3"/>',
     check: '<path d="M10 25l9 9 19-20"/>',
     chat: '<path d="M8 10h32v22H22l-9 7v-7H8z"/><path d="M15 19h18M15 25h12"/>',
+    pyjamas: '<path d="M17 6l-10 6 4 8 5-3v25h16V17l5 3 4-8-10-6c-1 3-4 5-7 5s-6-2-7-5z"/><path d="M24 20v18M28 24h.01M28 30h.01"/>',
+    candle: '<rect x="13" y="22" width="22" height="20" rx="4"/><path d="M24 22v-4M24 18c-2.5-2-2.5-5 0-9 2.5 4 2.5 7 0 9zM13 30h22"/>',
     pencil: '<path d="M30 6l12 12-24 24H6V30zM26 10l12 12M6 42l6-6"/>',
     plane: '<path d="M44 6L4 21l14 6 5 15 6-10 10 7zM18 27L44 6"/>',
     bolt: '<path d="M27 4L10 27h13l-3 17 18-24H25z"/>',
@@ -82,10 +84,11 @@
 
   const GENDERS = [["women", "For her"], ["men", "For him"], ["unisex", "Unisex"]];
   const GENDER_LABEL = Object.fromEntries(GENDERS);
-  const GENDER_SEARCH = { women: "women her ladies perfume", men: "men him cologne", unisex: "unisex" };
+  const GENDER_SEARCH = { women: "for her women ladies perfume", men: "for him men mens cologne", unisex: "unisex for everyone" };
 
   const SUBS = {
     beauty: [["makeup", "Makeup"], ["skin", "Skincare"], ["body", "Body care"], ["fragrance", "Perfume"], ["hair", "Hair tools"]],
+    sleep: [["pyjamas", "Pyjamas"]],
     electronics: [["audio", "Audio"], ["phones", "Phones"], ["computers", "Laptops & tablets"], ["wearables", "Wearables"], ["gaming", "Gaming"]]
   };
 
@@ -126,8 +129,18 @@
   }
 
   // ---------- Filtering ----------
+  // Search ignores case, accents and punctuation: every typed word must appear in the product,
+  // and brand names also match with the spaces squeezed out ("onesize", "toofaced", "loreal").
+  const spaced = (t) => t.normalize("NFD").replace(/[\u0300-\u036f]/g, "").replace(/['’.\-]/g, "").replace(/\//g, " ")
+    .toLowerCase().replace(/\s+/g, " ").trim();
+  const squash = (t) => spaced(t).replace(/ /g, "");
+  function searchHit(p, q) {
+    const hay = spaced(`${p.brand} ${p.name} ${p.sub} ${p.condition} ${p.viral || ""} ${GENDER_SEARCH[p.gender] || ""}`);
+    return spaced(q).split(" ").every((w) => hay.includes(w)) || squash(p.brand).includes(squash(q));
+  }
+
   function matches(p, f) {
-    const q = f.q.trim().toLowerCase();
+    const q = f.q.trim();
     if (f.cat !== "all" && p.category !== f.cat) return false;
     if (f.sub !== "all" && p.sub !== f.sub) return false;
     if (f.cond !== "all" && p.condition !== f.cond) return false;
@@ -135,7 +148,7 @@
     if (f.gender !== "all" && p.sub === "fragrance" && p.gender !== f.gender && p.gender !== "unisex") return false;
     if (f.avail === "now" && !canNow(p)) return false;
     if (f.avail === "ship" && (canNow(p) || !canShip(p))) return false;
-    if (q && !`${p.brand} ${p.name} ${p.sub} ${p.condition} ${p.viral || ""} ${GENDER_SEARCH[p.gender] || ""}`.toLowerCase().includes(q)) return false;
+    if (q && !searchHit(p, q)) return false;
     return true;
   }
   // How many products a filter option would show, given the other active filters.
@@ -168,6 +181,7 @@
     if (p.gender) return `${GENDER_LABEL[p.gender]}${p.size ? ` · ${esc(p.size)}` : ""}`;
     if (p.grade) return esc(p.grade);
     if (p.category === "electronics") return "Brand new · sealed";
+    if (p.category === "sleep") return "Sizes XS–XL";
     return "";
   }
 
@@ -227,7 +241,7 @@
   }
 
   const SUB_LABEL = Object.fromEntries([...SUBS.beauty, ...SUBS.electronics]);
-  const CAT_LABEL = { all: "Shop all", beauty: "Beauty", electronics: "Tech" };
+  const CAT_LABEL = { all: "Shop all", beauty: "Beauty", sleep: "Sleepwear", electronics: "Tech" };
 
   function shopTitle() {
     if (state.sub !== "all") return SUB_LABEL[state.sub];
@@ -284,7 +298,7 @@
 
   function renderFilters() {
     const groups = [];
-    groups.push(["Category", [["all", "All"], ["beauty", "Beauty"], ["electronics", "Tech"]]
+    groups.push(["Category", [["all", "All"], ["beauty", "Beauty"], ["sleep", "Sleepwear"], ["electronics", "Tech"]]
       .map(([v, l]) => fchip("cat", v, l, v === "all" ? null : countWith({ cat: v, sub: "all", cond: "all", gender: "all", brand: "all" }))).join("")]);
     if (state.cat !== "all") {
       groups.push(["Type", fchip("sub", "all", "All", null) +
@@ -293,7 +307,7 @@
     if (state.sub === "fragrance") {
       groups.push(["Scent for", fchip("gender", "all", "Everyone", null) + GENDERS.map(([v, l]) => fchip("gender", v, l, countWith({ gender: v }))).join("")]);
     }
-    if (state.cat !== "beauty") {
+    if (state.cat === "all" || state.cat === "electronics") {
       groups.push(["Condition", fchip("cond", "all", "All", null) + fchip("cond", "new", "Brand new", countWith({ cond: "new" })) + fchip("cond", "refurbished", "Refurbished", countWith({ cond: "refurbished" }))]);
     }
     const brands = [...new Set(PRODUCTS.filter((p) => matches(p, { ...state, brand: "all" })).map((p) => p.brand))].sort((a, b) => a.localeCompare(b));
@@ -309,7 +323,7 @@
 
   function setFilter(key, value) {
     state[key] = value;
-    if (key === "cat") { state.sub = "all"; state.gender = "all"; state.brand = "all"; if (value === "beauty") state.cond = "all"; }
+    if (key === "cat") { state.sub = "all"; state.gender = "all"; state.brand = "all"; if (value !== "electronics") state.cond = "all"; }
     if (key === "sub") state.gender = "all";
     renderGrid();
   }
@@ -760,7 +774,12 @@
   let searchTimer;
   $("#searchInput").addEventListener("input", (e) => {
     clearTimeout(searchTimer);
-    searchTimer = setTimeout(() => { state.q = e.target.value; renderGrid(); }, 150);
+    // Search covers the whole store, so typing clears any category narrowing.
+    searchTimer = setTimeout(() => {
+      state.q = e.target.value;
+      if (state.q.trim()) Object.assign(state, { cat: "all", sub: "all", gender: "all", brand: "all", cond: "all" });
+      renderGrid();
+    }, 150);
   });
   $("#searchBtn").addEventListener("click", () => {
     $("#shop").scrollIntoView({ behavior: "smooth" });

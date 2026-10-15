@@ -4,9 +4,10 @@
  * Each product:
  *   id          unique, url-safe id
  *   name, brand
- *   category    "beauty" | "electronics"
+ *   category    "beauty" | "electronics" | "sleep"
  *   sub         beauty: "makeup" | "skin" | "body" | "fragrance" | "hair"
  *               electronics: "audio" | "phones" | "computers" | "wearables" | "gaming"
+ *               sleep: "pyjamas"
  *   condition   "new" | "refurbished"
  *   grade       (refurbished only) e.g. "Grade A — Excellent"
  *   priceUSD    selling price in USD (ZAR is calculated from js/config.js)
@@ -85,6 +86,63 @@ window.PRODUCTS = [
     highlights: ["Shades: Pound Cake, Cherry Blossom, Banana Bread", "20 g", "Blurs pores and fine lines"]
   },
   {
+    id: "huda-faux-filter-foundation",
+    name: "#FauxFilter Luminous Matte Foundation",
+    brand: "Huda Beauty",
+    category: "beauty", sub: "makeup", condition: "new",
+    priceUSD: 42,
+    stock: { za: 4, zw: 3 }, usaOrder: true,
+    viral: "Best seller",
+    icon: "bottle", tone: ["#f1d7bf", "#9c6540"],
+    desc: "Full-coverage, long-wearing foundation with a soft, luminous-matte finish that looks filtered in real life.",
+    highlights: ["Over 50 shades", "35 ml", "Full coverage, transfer-resistant"]
+  },
+  {
+    id: "huda-faux-filter-concealer",
+    name: "#FauxFilter Luminous Matte Concealer",
+    brand: "Huda Beauty",
+    category: "beauty", sub: "makeup", condition: "new",
+    priceUSD: 34,
+    stock: { za: 5, zw: 3 }, usaOrder: true,
+    icon: "tube", tone: ["#f4dcc6", "#a8714a"],
+    desc: "A creamy, crease-proof concealer that covers, brightens and blurs.",
+    highlights: ["9 ml", "Full coverage", "Crease-proof, waterproof"]
+  },
+  {
+    id: "huda-lip-contour-2",
+    name: "Lip Contour 2.0 Automatic Matte Lip Pencil",
+    brand: "Huda Beauty",
+    category: "beauty", sub: "makeup", condition: "new",
+    priceUSD: 22,
+    stock: { za: 8, zw: 6 }, usaOrder: true,
+    viral: "TikTok viral",
+    icon: "pencil", tone: ["#ecd0c4", "#8f4f3e"],
+    desc: "A creamy, long-wearing lip liner that defines and fills for the perfect overlined look.",
+    highlights: ["0.5 g", "Shades: Muted Pink, Trendy, Warm Brown & more", "Built-in sharpener"]
+  },
+  {
+    id: "huda-glowish-multidew-skin-tint",
+    name: "GloWish Multidew Skin Tint",
+    brand: "Huda Beauty",
+    category: "beauty", sub: "makeup", condition: "new",
+    priceUSD: 30,
+    stock: { za: 5, zw: 4 }, usaOrder: true,
+    icon: "dropper", tone: ["#f6e0cb", "#c08a5a"],
+    desc: "A lightweight, dewy skin tint with hydrating ingredients for a fresh, natural glow.",
+    highlights: ["40 ml", "Light coverage, dewy finish", "Hyaluronic acid + vitamin C"]
+  },
+  {
+    id: "huda-nude-obsessions-palette",
+    name: "Nude Obsessions Eyeshadow Palette",
+    brand: "Huda Beauty",
+    category: "beauty", sub: "makeup", condition: "new",
+    priceUSD: 30,
+    stock: { za: 4, zw: 2 }, usaOrder: true,
+    icon: "compact", tone: ["#f1dccb", "#a9785a"],
+    desc: "Nine wearable mattes and shimmers for everyday nude eyes, in shades made for different undertones.",
+    highlights: ["9 shades", "Mattes + shimmers", "Variations: Light, Medium, Rich"]
+  },
+  {
     id: "danessa-myricks-yummy-skin-balm-powder",
     name: "Yummy Skin Blurring Balm Powder",
     brand: "Danessa Myricks Beauty",
@@ -151,6 +209,448 @@ window.PRODUCTS = [
     icon: "compact", tone: ["#fbe7c4", "#d9a24c"],
     desc: "Ultra-fine highlighter duo, from subtle sheen to blinding shimmer.",
     highlights: ["Duo: Trophy Wife / Mean Money / Lightning Dust", "8 g", "Cream-powder hybrid"]
+  },
+
+  // ───────────── NARS ─────────────
+  {
+    id: "nars-radiant-creamy-concealer",
+    name: "Radiant Creamy Concealer",
+    brand: "NARS",
+    category: "beauty", sub: "makeup", condition: "new",
+    priceUSD: 36,
+    stock: { za: 6, zw: 4 }, usaOrder: true,
+    viral: "Best seller",
+    icon: "tube", tone: ["#f3dcc8", "#a8714a"],
+    desc: "The award-winning concealer that corrects, contours and highlights with a natural, radiant finish.",
+    highlights: ["30 shades", "6 ml", "Medium-to-buildable coverage"]
+  },
+  {
+    id: "nars-orgasm-blush",
+    name: "Blush in Orgasm",
+    brand: "NARS",
+    category: "beauty", sub: "makeup", condition: "new",
+    priceUSD: 36,
+    stock: { za: 5, zw: 3 }, usaOrder: true,
+    viral: "Iconic",
+    icon: "compact", tone: ["#fbdcd6", "#d9776a"],
+    desc: "The world-famous peachy-pink blush with golden shimmer that flatters every skin tone.",
+    highlights: ["4.8 g", "Peachy pink with golden shimmer", "Long-wearing powder"]
+  },
+  {
+    id: "nars-light-reflecting-foundation",
+    name: "Light Reflecting Foundation",
+    brand: "NARS",
+    category: "beauty", sub: "makeup", condition: "new",
+    priceUSD: 55,
+    stock: { za: 3, zw: 2 }, usaOrder: true,
+    icon: "bottle", tone: ["#f0d6bd", "#9a6640"],
+    desc: "A skincare-infused foundation that blurs and brightens for a luminous, natural finish.",
+    highlights: ["36 shades", "30 ml", "Medium buildable coverage"]
+  },
+  {
+    id: "nars-laguna-bronzer",
+    name: "Laguna Bronzing Powder",
+    brand: "NARS",
+    category: "beauty", sub: "makeup", condition: "new",
+    priceUSD: 45,
+    stock: { za: 3, zw: 2 }, usaOrder: true,
+    icon: "compact", tone: ["#f1d6bb", "#a96f3c"],
+    desc: "The cult matte bronzer for a natural, sun-kissed glow.",
+    highlights: ["11 g", "Shade: Laguna (universal matte bronze)", "Buildable"]
+  },
+
+  // ───────────── Charlotte Tilbury ─────────────
+  {
+    id: "ct-hollywood-flawless-filter",
+    name: "Hollywood Flawless Filter",
+    brand: "Charlotte Tilbury",
+    category: "beauty", sub: "makeup", condition: "new",
+    priceUSD: 52,
+    stock: { za: 4, zw: 2 }, usaOrder: true,
+    viral: "TikTok viral",
+    icon: "bottle", tone: ["#f7e3d0", "#c48a57"],
+    desc: "The complexion booster that gives skin a soft-focus, lit-from-within glow. Wear alone or under foundation.",
+    highlights: ["30 ml", "Shades 1 Fair \u2192 9 Deep", "Primer, highlighter & glow booster"]
+  },
+  {
+    id: "ct-airbrush-setting-spray",
+    name: "Airbrush Flawless Setting Spray",
+    brand: "Charlotte Tilbury",
+    category: "beauty", sub: "makeup", condition: "new",
+    priceUSD: 40,
+    stock: { za: 5, zw: 3 }, usaOrder: true,
+    icon: "mist", tone: ["#f4e4ea", "#b9748e"],
+    desc: "Locks makeup in place for up to 16 hours with a fresh, airbrushed finish.",
+    highlights: ["100 ml", "Up to 16 hours wear", "Shine-controlling"]
+  },
+  {
+    id: "ct-beauty-light-wand",
+    name: "Beauty Light Wand",
+    brand: "Charlotte Tilbury",
+    category: "beauty", sub: "makeup", condition: "new",
+    priceUSD: 45,
+    stock: { za: 4, zw: 2 }, usaOrder: true,
+    viral: "Fan favourite",
+    icon: "tube", tone: ["#fbe0e3", "#d27588"],
+    desc: "A cushion-tip liquid highlighter and blush in one, for an instant rosy glow.",
+    highlights: ["12 ml", "Shade: Pillow Talk", "Highlighter + blush"]
+  },
+  {
+    id: "ct-magic-cream",
+    name: "Charlotte's Magic Cream",
+    brand: "Charlotte Tilbury",
+    category: "beauty", sub: "skin", condition: "new",
+    priceUSD: 84,
+    stock: { za: 2, zw: 1 }, usaOrder: true,
+    icon: "jar", tone: ["#f4e6dd", "#b98b6b"],
+    desc: "The backstage moisturiser that plumps, hydrates and preps skin for makeup.",
+    highlights: ["50 ml", "Hyaluronic acid + peptides", "Makeup-artist favourite"]
+  },
+
+  // ───────────── Too Faced ─────────────
+  {
+    id: "too-faced-better-than-sex-mascara",
+    name: "Better Than Sex Volumizing Mascara",
+    brand: "Too Faced",
+    category: "beauty", sub: "makeup", condition: "new",
+    priceUSD: 31,
+    stock: { za: 10, zw: 6 }, usaOrder: true,
+    viral: "Best seller",
+    icon: "pencil", tone: ["#f7d9e2", "#c04d72"],
+    desc: "The cult hourglass-brush mascara for dramatic volume and length.",
+    highlights: ["8 ml", "Intense black", "Volume + length"]
+  },
+  {
+    id: "too-faced-born-this-way",
+    name: "Born This Way Natural Finish Foundation",
+    brand: "Too Faced",
+    category: "beauty", sub: "makeup", condition: "new",
+    priceUSD: 45,
+    stock: { za: 4, zw: 3 }, usaOrder: true,
+    icon: "bottle", tone: ["#f2d8c1", "#a26b43"],
+    desc: "Oil-free, medium-to-full coverage foundation that looks like skin, with coconut water and hyaluronic acid.",
+    highlights: ["35 shades", "30 ml", "Undetectable, natural finish"]
+  },
+  {
+    id: "too-faced-lip-injection-extreme",
+    name: "Lip Injection Extreme Lip Plumper",
+    brand: "Too Faced",
+    category: "beauty", sub: "makeup", condition: "new",
+    priceUSD: 31,
+    stock: { za: 6, zw: 4 }, usaOrder: true,
+    viral: "TikTok viral",
+    icon: "tube", tone: ["#fbe3ea", "#d0607f"],
+    desc: "The tingling clear gloss that gives an instantly fuller-looking pout.",
+    highlights: ["4 g", "Clear, high-shine", "Instant plumping tingle"]
+  },
+  {
+    id: "too-faced-hangover-primer",
+    name: "Hangover Replenishing Face Primer",
+    brand: "Too Faced",
+    category: "beauty", sub: "makeup", condition: "new",
+    priceUSD: 38,
+    stock: { za: 3, zw: 0 }, usaOrder: true,
+    icon: "bottle", tone: ["#e9f2ea", "#5b9a6b"],
+    desc: "A hydrating primer with coconut water and probiotics that wakes up tired skin and helps makeup last.",
+    highlights: ["40 ml", "Coconut water + probiotics", "Smooths & hydrates"]
+  },
+
+  // ───────────── Rare Beauty ─────────────
+  {
+    id: "rare-beauty-positive-light-luminizer",
+    name: "Positive Light Liquid Luminizer",
+    brand: "Rare Beauty",
+    category: "beauty", sub: "makeup", condition: "new",
+    priceUSD: 28,
+    stock: { za: 5, zw: 3 }, usaOrder: true,
+    icon: "dropper", tone: ["#fbecd9", "#cf9a5c"],
+    desc: "A weightless liquid highlighter for a natural, lit-from-within glow.",
+    highlights: ["15 ml", "Buildable glow", "Shades: Enlighten, Mesmerize, Exhilarate & more"]
+  },
+  {
+    id: "rare-beauty-warm-wishes-bronzer",
+    name: "Warm Wishes Effortless Bronzer Stick",
+    brand: "Rare Beauty",
+    category: "beauty", sub: "makeup", condition: "new",
+    priceUSD: 28,
+    stock: { za: 4, zw: 2 }, usaOrder: true,
+    viral: "TikTok viral",
+    icon: "tube", tone: ["#f3dac2", "#ad7445"],
+    desc: "A creamy bronzer stick with a cushion applicator that blends in seconds.",
+    highlights: ["10 g", "Cushion-tip applicator", "Shades: Happy Sol, Sunny Days & more"]
+  },
+  {
+    id: "rare-beauty-liquid-touch-foundation",
+    name: "Liquid Touch Weightless Foundation",
+    brand: "Rare Beauty",
+    category: "beauty", sub: "makeup", condition: "new",
+    priceUSD: 34,
+    stock: { za: 3, zw: 2 }, usaOrder: true,
+    icon: "bottle", tone: ["#f2dac4", "#a36d45"],
+    desc: "A breathable, medium-coverage foundation with a natural matte finish.",
+    highlights: ["48 shades", "30 ml", "Weightless, buildable"]
+  },
+  {
+    id: "rare-beauty-perfect-strokes-mascara",
+    name: "Perfect Strokes Universal Volumizing Mascara",
+    brand: "Rare Beauty",
+    category: "beauty", sub: "makeup", condition: "new",
+    priceUSD: 24,
+    stock: { za: 6, zw: 4 }, usaOrder: true,
+    icon: "pencil", tone: ["#f6dfe3", "#a65a6c"],
+    desc: "A lengthening, volumising mascara with a dual-sided brush for every lash type.",
+    highlights: ["11 ml", "Black", "Volume + length, smudge-resistant"]
+  },
+
+  // ───────────── L'Oréal Paris ─────────────
+  {
+    id: "loreal-lash-paradise",
+    name: "Voluminous Lash Paradise Mascara",
+    brand: "L'Or\u00e9al Paris",
+    category: "beauty", sub: "makeup", condition: "new",
+    priceUSD: 14,
+    stock: { za: 15, zw: 10 }, usaOrder: true,
+    viral: "Best seller",
+    icon: "pencil", tone: ["#fbe0e8", "#d0577c"],
+    desc: "The feathery-soft, volumising mascara that rivals luxury brands at a drugstore price.",
+    highlights: ["7.6 ml", "Blackest Black", "Volume + length"]
+  },
+  {
+    id: "loreal-telescopic-lift",
+    name: "Telescopic Lift Washable Mascara",
+    brand: "L'Or\u00e9al Paris",
+    category: "beauty", sub: "makeup", condition: "new",
+    priceUSD: 15,
+    stock: { za: 10, zw: 6 }, usaOrder: true,
+    viral: "TikTok viral",
+    icon: "pencil", tone: ["#e6e9f4", "#4a5a9c"],
+    desc: "Lifts and lengthens lashes up to 36 hours with a double-hook bristle brush.",
+    highlights: ["9.9 ml", "Black", "Lift + length, up to 36 hours"]
+  },
+  {
+    id: "loreal-infallible-fresh-wear",
+    name: "Infallible 32H Fresh Wear Foundation",
+    brand: "L'Or\u00e9al Paris",
+    category: "beauty", sub: "makeup", condition: "new",
+    priceUSD: 18,
+    stock: { za: 8, zw: 5 }, usaOrder: true,
+    icon: "bottle", tone: ["#f2d9c3", "#a56f47"],
+    desc: "Long-lasting, breathable full coverage that resists sweat, heat and transfer.",
+    highlights: ["40 shades", "30 ml", "SPF 25, waterproof"]
+  },
+  {
+    id: "loreal-revitalift-ha-serum",
+    name: "Revitalift 1.5% Pure Hyaluronic Acid Serum",
+    brand: "L'Or\u00e9al Paris",
+    category: "beauty", sub: "skin", condition: "new",
+    priceUSD: 32,
+    stock: { za: 6, zw: 4 }, usaOrder: true,
+    icon: "dropper", tone: ["#e4ecf7", "#5679b0"],
+    desc: "A plumping, hydrating serum with pure hyaluronic acid for smoother-looking skin.",
+    highlights: ["30 ml", "1.5% hyaluronic acid", "Fragrance-free"]
+  },
+  {
+    id: "loreal-lumi-glotion",
+    name: "Lumi Glotion Natural Glow Enhancer",
+    brand: "L'Or\u00e9al Paris",
+    category: "beauty", sub: "makeup", condition: "new",
+    priceUSD: 18,
+    stock: { za: 7, zw: 4 }, usaOrder: true,
+    icon: "tube", tone: ["#fbebd6", "#c99357"],
+    desc: "A tinted, glowy body-and-face lotion for an instant, radiant finish.",
+    highlights: ["40 ml", "Shades: Light, Medium, Deep", "Shea butter + glycerin"]
+  },
+
+  // ───────────── ONE/SIZE by Patrick Starrr ─────────────
+  {
+    id: "onesize-on-til-dawn-setting-spray",
+    name: "On 'Til Dawn Mattifying Waterproof Setting Spray",
+    brand: "ONE/SIZE by Patrick Starrr",
+    category: "beauty", sub: "makeup", condition: "new",
+    priceUSD: 34,
+    stock: { za: 8, zw: 6 }, usaOrder: true,
+    viral: "TikTok viral",
+    icon: "mist", tone: ["#ece2f8", "#6a46a3"],
+    desc: "The cult setting spray that locks makeup in place through heat, sweat and long nights, with a soft matte finish.",
+    highlights: ["100 ml", "Up to 16-hour wear", "Waterproof, mattifying"]
+  },
+  {
+    id: "onesize-ultimate-blurring-setting-powder",
+    name: "Ultimate Blurring Setting Powder",
+    brand: "ONE/SIZE by Patrick Starrr",
+    category: "beauty", sub: "makeup", condition: "new",
+    priceUSD: 36,
+    stock: { za: 6, zw: 4 }, usaOrder: true,
+    viral: "Best seller",
+    icon: "compact", tone: ["#f3e6dc", "#a77d5c"],
+    desc: "A finely milled setting powder that blurs pores and texture and keeps shine away.",
+    highlights: ["Several shades, including translucent", "Blurs pores & texture", "Long-lasting matte set"]
+  },
+  {
+    id: "onesize-turn-up-the-base-foundation",
+    name: "Turn Up The Base Full Beat Waterproof Liquid Foundation",
+    brand: "ONE/SIZE by Patrick Starrr",
+    category: "beauty", sub: "makeup", condition: "new",
+    priceUSD: 36,
+    stock: { za: 4, zw: 3 }, usaOrder: true,
+    icon: "bottle", tone: ["#f1d8c0", "#9d6741"],
+    desc: "Full-coverage, waterproof foundation built to last from day to night.",
+    highlights: ["Wide shade range", "Full coverage", "Waterproof, long-wearing"]
+  },
+  {
+    id: "onesize-turn-up-the-base-powder-foundation",
+    name: "Turn Up The Base Versatile Powder Foundation",
+    brand: "ONE/SIZE by Patrick Starrr",
+    category: "beauty", sub: "makeup", condition: "new",
+    priceUSD: 36,
+    stock: { za: 3, zw: 2 }, usaOrder: true,
+    icon: "compact", tone: ["#f2dbc5", "#a16d46"],
+    desc: "A buildable powder foundation for quick, even coverage and touch-ups on the go.",
+    highlights: ["Wide shade range", "Buildable coverage", "Wear alone or over liquid"]
+  },
+  {
+    id: "onesize-beauty-blur-balm",
+    name: "Beauty Blur Balm Hybrid Foundation",
+    brand: "ONE/SIZE by Patrick Starrr",
+    category: "beauty", sub: "makeup", condition: "new",
+    priceUSD: 34,
+    stock: { za: 3, zw: 2 }, usaOrder: true,
+    icon: "compact", tone: ["#f3decb", "#a8774f"],
+    desc: "A balm-to-skin hybrid foundation that melts in to blur and even out the complexion.",
+    highlights: ["Wide shade range", "Balm texture", "Natural, soft-blur finish"]
+  },
+  {
+    id: "onesize-butter-silk-concealer",
+    name: "Butter Silk Concealer",
+    brand: "ONE/SIZE by Patrick Starrr",
+    category: "beauty", sub: "makeup", condition: "new",
+    priceUSD: 28,
+    stock: { za: 5, zw: 3 }, usaOrder: true,
+    icon: "tube", tone: ["#f5dfca", "#ab7550"],
+    desc: "A creamy, buttery concealer that covers and brightens without creasing.",
+    highlights: ["Wide shade range", "Creamy, crease-resistant", "Medium-to-full coverage"]
+  },
+  {
+    id: "onesize-bb-cream",
+    name: "Turn Up The Base BB Cream",
+    brand: "ONE/SIZE by Patrick Starrr",
+    category: "beauty", sub: "makeup", condition: "new",
+    priceUSD: 32,
+    stock: { za: 4, zw: 2 }, usaOrder: true,
+    icon: "tube", tone: ["#f4e1cf", "#b0805a"],
+    desc: "A lightweight, skin-evening BB cream for a fresh, natural look.",
+    highlights: ["Light coverage", "Lightweight", "Everyday wear"]
+  },
+  {
+    id: "onesize-boucle-silk-powder",
+    name: "Boucl\u00e9 Silk Airbrushed Finishing Powder",
+    brand: "ONE/SIZE by Patrick Starrr",
+    category: "beauty", sub: "makeup", condition: "new",
+    priceUSD: 36,
+    stock: { za: 3, zw: 2 }, usaOrder: true,
+    icon: "compact", tone: ["#f4e9e1", "#b38e72"],
+    desc: "A silky finishing powder for a smooth, airbrushed final touch.",
+    highlights: ["Finishing powder", "Silky, airbrushed finish", "Softens texture"]
+  },
+  {
+    id: "onesize-oil-sucker-primer",
+    name: "Oil Sucker Extreme Mattifying Alkaline Primer",
+    brand: "ONE/SIZE by Patrick Starrr",
+    category: "beauty", sub: "makeup", condition: "new",
+    priceUSD: 32,
+    stock: { za: 5, zw: 4 }, usaOrder: true,
+    icon: "bottle", tone: ["#e5f1ec", "#4c9479"],
+    desc: "A mattifying primer that controls oil and helps makeup stay put on shiny skin.",
+    highlights: ["Mattifying", "Oil control", "Great for hot climates"]
+  },
+  {
+    id: "onesize-secure-the-blur-primer",
+    name: "Secure The Blur Makeup Magnet Primer",
+    brand: "ONE/SIZE by Patrick Starrr",
+    category: "beauty", sub: "makeup", condition: "new",
+    priceUSD: 32,
+    stock: { za: 4, zw: 2 }, usaOrder: true,
+    icon: "bottle", tone: ["#ece4f6", "#7a59ad"],
+    desc: "A gripping, blurring primer that holds makeup in place and softens pores.",
+    highlights: ["Gripping formula", "Blurs pores", "Smooth base"]
+  },
+  {
+    id: "onesize-secure-the-sweat-primer",
+    name: "Secure The Sweat Waterproof Mattifying Primer",
+    brand: "ONE/SIZE by Patrick Starrr",
+    category: "beauty", sub: "makeup", condition: "new",
+    priceUSD: 32,
+    stock: { za: 4, zw: 3 }, usaOrder: true,
+    icon: "bottle", tone: ["#e3eef7", "#4f7fb0"],
+    desc: "A waterproof, mattifying primer made to keep makeup on through heat and sweat.",
+    highlights: ["Waterproof", "Mattifying", "Sweat-resistant"]
+  },
+  {
+    id: "onesize-oil-sucker-blotting-spray",
+    name: "Oil Sucker Liquid Blotting Paper Spray",
+    brand: "ONE/SIZE by Patrick Starrr",
+    category: "beauty", sub: "makeup", condition: "new",
+    priceUSD: 30,
+    stock: { za: 4, zw: 2 }, usaOrder: true,
+    icon: "mist", tone: ["#e6f2ee", "#4f977f"],
+    desc: "A spray-on blotting paper that knocks back shine over makeup during the day.",
+    highlights: ["Mist over makeup", "Instant shine control", "Touch-up friendly"]
+  },
+  {
+    id: "onesize-go-off-makeup-dissolving-mist",
+    name: "GO OFF Makeup Dissolving Mist",
+    brand: "ONE/SIZE by Patrick Starrr",
+    category: "beauty", sub: "makeup", condition: "new",
+    priceUSD: 30,
+    stock: { za: 4, zw: 3 }, usaOrder: true,
+    icon: "mist", tone: ["#eef0f6", "#6b7aa4"],
+    desc: "Mist on, wipe off: melts away makeup, even waterproof formulas, at the end of the night.",
+    highlights: ["Spray-on makeup remover", "Removes waterproof makeup", "Gentle on skin"]
+  },
+  {
+    id: "onesize-cheek-clapper-blush-trio",
+    name: "Cheek Clapper 3D Blush Trio Palette",
+    brand: "ONE/SIZE by Patrick Starrr",
+    category: "beauty", sub: "makeup", condition: "new",
+    priceUSD: 36,
+    stock: { za: 5, zw: 3 }, usaOrder: true,
+    viral: "Fan favourite",
+    icon: "compact", tone: ["#fbdde3", "#d2607d"],
+    desc: "Three coordinated blush shades for a dimensional, sculpted flush.",
+    highlights: ["3 shades per palette", "Several colourways", "Buildable, blendable"]
+  },
+  {
+    id: "onesize-made-for-shade-bronze-sculpt-trio",
+    name: "Made For Shade Bronze & Sculpt Trio",
+    brand: "ONE/SIZE by Patrick Starrr",
+    category: "beauty", sub: "makeup", condition: "new",
+    priceUSD: 36,
+    stock: { za: 3, zw: 2 }, usaOrder: true,
+    icon: "compact", tone: ["#f1d8bd", "#a26a39"],
+    desc: "Bronzer, contour and highlight in one trio for a quick sculpted face.",
+    highlights: ["3 shades", "Bronze, sculpt & glow", "Several colourways"]
+  },
+  {
+    id: "onesize-fantasize-mascara",
+    name: "Fantasize Lifting & Lengthening Mascara",
+    brand: "ONE/SIZE by Patrick Starrr",
+    category: "beauty", sub: "makeup", condition: "new",
+    priceUSD: 26,
+    stock: { za: 6, zw: 4 }, usaOrder: true,
+    icon: "pencil", tone: ["#e8e4f0", "#4f4170"],
+    desc: "A lifting, lengthening mascara for long, defined lashes that hold their curl.",
+    highlights: ["Black", "Lift + length", "Long-wearing"]
+  },
+  {
+    id: "onesize-lip-snatcher-velvet-flex",
+    name: "Lip Snatcher Velvet Flex Lip Duo",
+    brand: "ONE/SIZE by Patrick Starrr",
+    category: "beauty", sub: "makeup", condition: "new",
+    priceUSD: 24,
+    stock: { za: 5, zw: 3 }, usaOrder: true,
+    icon: "lipstick", tone: ["#f6d6da", "#b0475d"],
+    desc: "A two-ended lip duo with a velvet colour and a defining liner for a snatched lip.",
+    highlights: ["Liner + colour duo", "Velvet finish", "Several shades"]
   },
 
   // ───────────── Beauty · Skin ─────────────
@@ -378,6 +878,227 @@ window.PRODUCTS = [
     highlights: ["50 g", "Fragrance-free", "For all skin types"]
   },
 
+  // ───────────── La Roche-Posay ─────────────
+  {
+    id: "lrp-toleriane-double-repair",
+    name: "Toleriane Double Repair Face Moisturizer",
+    brand: "La Roche-Posay",
+    category: "beauty", sub: "skin", condition: "new",
+    priceUSD: 26,
+    stock: { za: 8, zw: 5 }, usaOrder: true,
+    viral: "Best seller",
+    icon: "pump", tone: ["#e4eef7", "#3f78b5"],
+    desc: "The dermatologist-favourite daily moisturiser with ceramides and niacinamide. Restores the skin barrier in one hour.",
+    highlights: ["100 ml US size", "Ceramides + niacinamide", "Oil-free, fragrance-free"]
+  },
+  {
+    id: "lrp-cicaplast-baume-b5",
+    name: "Cicaplast Baume B5+",
+    brand: "La Roche-Posay",
+    category: "beauty", sub: "skin", condition: "new",
+    priceUSD: 20,
+    stock: { za: 10, zw: 6 }, usaOrder: true,
+    viral: "TikTok viral",
+    icon: "tube", tone: ["#e8f0f6", "#4d7fa8"],
+    desc: "The cult multi-purpose soothing balm for dry, irritated skin. A must-have for harmattan and winter.",
+    highlights: ["40 ml", "Panthenol + madecassoside", "Face, body & lips"]
+  },
+  {
+    id: "lrp-anthelios-melt-in-milk-spf60",
+    name: "Anthelios Melt-In Milk Sunscreen SPF 60",
+    brand: "La Roche-Posay",
+    category: "beauty", sub: "skin", condition: "new",
+    priceUSD: 40,
+    stock: { za: 4, zw: 2 }, usaOrder: true,
+    icon: "bottle", tone: ["#fdf0d6", "#d8973c"],
+    desc: "Fast-absorbing, broad-spectrum sun protection for face and body with a velvety finish.",
+    highlights: ["150 ml", "SPF 60, broad spectrum", "Water resistant (80 min)"]
+  },
+  {
+    id: "lrp-effaclar-duo",
+    name: "Effaclar Duo Dual Action Acne Treatment",
+    brand: "La Roche-Posay",
+    category: "beauty", sub: "skin", condition: "new",
+    priceUSD: 26,
+    stock: { za: 5, zw: 4 }, usaOrder: true,
+    icon: "tube", tone: ["#e6f1f0", "#3c8f8a"],
+    desc: "Benzoyl peroxide spot treatment that clears breakouts and helps prevent marks.",
+    highlights: ["20 ml", "5.5% micronised benzoyl peroxide", "Oil-free"]
+  },
+  {
+    id: "lrp-toleriane-hydrating-cleanser",
+    name: "Toleriane Hydrating Gentle Cleanser",
+    brand: "La Roche-Posay",
+    category: "beauty", sub: "skin", condition: "new",
+    priceUSD: 20,
+    stock: { za: 9, zw: 6 }, usaOrder: true,
+    icon: "pump", tone: ["#eaf1f8", "#5b86b3"],
+    desc: "A creamy, non-foaming cleanser that removes makeup and impurities without stripping.",
+    highlights: ["400 ml US size", "Ceramides + glycerin", "For normal to dry, sensitive skin"]
+  },
+  {
+    id: "lrp-lipikar-ap-balm",
+    name: "Lipikar Balm AP+M Body Moisturizer",
+    brand: "La Roche-Posay",
+    category: "beauty", sub: "body", condition: "new",
+    priceUSD: 34,
+    stock: { za: 3, zw: 2 }, usaOrder: true,
+    icon: "tube", tone: ["#e3edf6", "#356da4"],
+    desc: "Rich, 48-hour body balm for very dry and eczema-prone skin, for adults, kids and babies.",
+    highlights: ["400 ml", "Shea butter + niacinamide", "Suitable from birth"]
+  },
+
+  // ───────────── Glossier ─────────────
+  {
+    id: "glossier-boy-brow",
+    name: "Boy Brow",
+    brand: "Glossier",
+    category: "beauty", sub: "makeup", condition: "new",
+    priceUSD: 22,
+    stock: { za: 8, zw: 5 }, usaOrder: true,
+    viral: "Best seller",
+    icon: "pencil", tone: ["#f6e3dc", "#8a5a46"],
+    desc: "The cult brow pomade that thickens, shapes and holds brows for a fluffy, natural look.",
+    highlights: ["3 g", "Shades: Clear, Blond, Brown, Black & more", "Flexible, buildable hold"]
+  },
+  {
+    id: "glossier-cloud-paint",
+    name: "Cloud Paint",
+    brand: "Glossier",
+    category: "beauty", sub: "makeup", condition: "new",
+    priceUSD: 24,
+    stock: { za: 6, zw: 4 }, usaOrder: true,
+    viral: "TikTok viral",
+    icon: "tube", tone: ["#fde0e4", "#e06a80"],
+    desc: "A seamless gel-cream blush that blends in with your fingertips for a natural flush.",
+    highlights: ["10 ml", "Shades: Puff, Dusk, Beam, Haze & more", "Buildable, dewy finish"]
+  },
+  {
+    id: "glossier-balm-dotcom",
+    name: "Balm Dotcom",
+    brand: "Glossier",
+    category: "beauty", sub: "skin", condition: "new",
+    priceUSD: 17,
+    stock: { za: 12, zw: 8 }, usaOrder: true,
+    viral: "Best seller",
+    icon: "tube", tone: ["#fbe7e8", "#d07a85"],
+    desc: "The universal skin salve for lips and dry patches, in signature flavours.",
+    highlights: ["15 ml", "Flavours: Original, Birthday, Cherry, Mint & more", "Lips, cuticles, dry spots"]
+  },
+  {
+    id: "glossier-milky-jelly-cleanser",
+    name: "Milky Jelly Cleanser",
+    brand: "Glossier",
+    category: "beauty", sub: "skin", condition: "new",
+    priceUSD: 22,
+    stock: { za: 6, zw: 4 }, usaOrder: true,
+    icon: "pump", tone: ["#f1eff6", "#8e86b0"],
+    desc: "A gentle, conditioning daily cleanser that removes makeup without stripping skin.",
+    highlights: ["177 ml", "pH-balanced", "For all skin types"]
+  },
+  {
+    id: "glossier-futuredew",
+    name: "Futuredew",
+    brand: "Glossier",
+    category: "beauty", sub: "skin", condition: "new",
+    priceUSD: 28,
+    stock: { za: 4, zw: 2 }, usaOrder: true,
+    icon: "dropper", tone: ["#fbf0e2", "#c99a64"],
+    desc: "An oil-serum hybrid for an instant dewy glow, alone or under makeup.",
+    highlights: ["30 ml", "Oil-serum hybrid", "Glowy finish"]
+  },
+  {
+    id: "glossier-lash-slick",
+    name: "Lash Slick",
+    brand: "Glossier",
+    category: "beauty", sub: "makeup", condition: "new",
+    priceUSD: 20,
+    stock: { za: 7, zw: 5 }, usaOrder: true,
+    icon: "pencil", tone: ["#ece7ef", "#4b3f5c"],
+    desc: "A lengthening, lifting mascara for naturally defined lashes that stay put.",
+    highlights: ["Black or brown", "Tubing film formula", "Smudge-proof, flake-free"]
+  },
+  {
+    id: "glossier-stretch-concealer",
+    name: "Stretch Concealer",
+    brand: "Glossier",
+    category: "beauty", sub: "makeup", condition: "new",
+    priceUSD: 24,
+    stock: { za: 5, zw: 3 }, usaOrder: true,
+    icon: "compact", tone: ["#f5e1cf", "#ad7a53"],
+    desc: "A flexible, buildable concealer that moves with your skin and never looks cakey.",
+    highlights: ["Wide shade range", "Natural, dewy finish", "Buildable coverage"]
+  },
+  {
+    id: "glossier-ultralip",
+    name: "Ultralip",
+    brand: "Glossier",
+    category: "beauty", sub: "makeup", condition: "new",
+    priceUSD: 22,
+    stock: { za: 6, zw: 4 }, usaOrder: true,
+    icon: "lipstick", tone: ["#f8d9dd", "#b85465"],
+    desc: "A sheer, high-shine lip colour that treats lips like a balm.",
+    highlights: ["Several shades", "Hydrating", "Sheer, glossy colour"]
+  },
+  {
+    id: "glossier-solution",
+    name: "Solution Exfoliating Skin Perfector",
+    brand: "Glossier",
+    category: "beauty", sub: "skin", condition: "new",
+    priceUSD: 26,
+    stock: { za: 4, zw: 2 }, usaOrder: true,
+    icon: "bottle", tone: ["#f0f3f8", "#6c86a8"],
+    desc: "A daily chemical exfoliant that smooths texture and helps prevent breakouts.",
+    highlights: ["130 ml", "AHA + BHA + PHA", "For clearer, smoother skin"]
+  },
+
+  // ───────────── eos ─────────────
+  {
+    id: "eos-vanilla-cashmere-body-lotion",
+    name: "Shea Better Body Lotion, Vanilla Cashmere",
+    brand: "eos",
+    category: "beauty", sub: "body", condition: "new",
+    priceUSD: 11,
+    stock: { za: 15, zw: 10 }, usaOrder: true,
+    viral: "TikTok viral",
+    icon: "pump", tone: ["#f8eadc", "#b98a5a"],
+    desc: "The viral 24-hour body lotion in the cosy Vanilla Cashmere scent everyone's talking about.",
+    highlights: ["473 ml", "Shea butter + 5 oils", "24-hour moisture"]
+  },
+  {
+    id: "eos-shea-better-shave-cream",
+    name: "Shea Better Shave Cream",
+    brand: "eos",
+    category: "beauty", sub: "body", condition: "new",
+    priceUSD: 7,
+    stock: { za: 18, zw: 12 }, usaOrder: true,
+    icon: "tube", tone: ["#eaf2fb", "#5d8fc6"],
+    desc: "A rich, creamy shave cream that helps prevent nicks and razor burn.",
+    highlights: ["207 ml", "Shea butter + aloe", "Scents: Vanilla Bliss, Pomegranate Raspberry & more"]
+  },
+  {
+    id: "eos-lip-balm-spheres-4-pack",
+    name: "Lip Balm Spheres (4-pack)",
+    brand: "eos",
+    category: "beauty", sub: "skin", condition: "new",
+    priceUSD: 12,
+    stock: { za: 20, zw: 15 }, usaOrder: true,
+    icon: "jar", tone: ["#fde5ea", "#e46f8c"],
+    desc: "The iconic round lip balms in four favourite flavours.",
+    highlights: ["4 \u00d7 7 g", "Shea butter + vitamin E", "Flavours: Strawberry Sorbet, Vanilla Bean & more"]
+  },
+  {
+    id: "eos-shea-better-body-wash",
+    name: "Shea Better Body Wash, Vanilla Cashmere",
+    brand: "eos",
+    category: "beauty", sub: "body", condition: "new",
+    priceUSD: 10,
+    stock: { za: 10, zw: 6 }, usaOrder: true,
+    icon: "pump", tone: ["#f6e8db", "#a97b52"],
+    desc: "A gentle, creamy body wash to pair with the Vanilla Cashmere lotion.",
+    highlights: ["473 ml", "Shea butter", "Vanilla Cashmere scent"]
+  },
+
   // ───────────── Beauty · Body ─────────────
   {
     id: "sol-de-janeiro-bum-bum-cream",
@@ -425,6 +1146,112 @@ window.PRODUCTS = [
     icon: "mist", tone: ["#efe4ff", "#9b7ad9"],
     desc: "America's favourite body mists in the season's best-selling scents.",
     highlights: ["236 ml", "Scents: A Thousand Wishes, Into the Night, Gingham", "Light, all-day scent"]
+  },
+  {
+    id: "bbw-ultimate-hydration-body-cream",
+    name: "Ultimate Hydration Body Cream",
+    brand: "Bath & Body Works",
+    category: "beauty", sub: "body", condition: "new",
+    priceUSD: 19,
+    stock: { za: 12, zw: 8 }, usaOrder: true,
+    viral: "Best seller",
+    icon: "jar", tone: ["#fde4ec", "#e07a9b"],
+    desc: "Rich, whipped body cream with 24-hour moisture in America's favourite scents.",
+    highlights: ["226 g", "Scents: A Thousand Wishes, Warm Vanilla Sugar, Champagne Toast", "Shea butter + hyaluronic acid"]
+  },
+  {
+    id: "bbw-shower-gel",
+    name: "Daily Nourishing Shower Gel",
+    brand: "Bath & Body Works",
+    category: "beauty", sub: "body", condition: "new",
+    priceUSD: 17,
+    stock: { za: 10, zw: 6 }, usaOrder: true,
+    icon: "pump", tone: ["#e9f3ea", "#5ba26a"],
+    desc: "Lathers into a fragrant, moisturising shower in the scent of your choice.",
+    highlights: ["295 ml", "Shea butter + vitamin E", "Scents to match the mists & creams"]
+  },
+  {
+    id: "bbw-3-wick-candle",
+    name: "3-Wick Candle",
+    brand: "Bath & Body Works",
+    category: "beauty", sub: "body", condition: "new",
+    priceUSD: 29,
+    stock: { za: 6, zw: 4 }, usaOrder: true,
+    viral: "TikTok viral",
+    icon: "candle", tone: ["#fff0d9", "#d98c3a"],
+    desc: "The iconic 3-wick candle that fills a room with scent. Up to 45 hours of burn time.",
+    highlights: ["411 g", "Up to 45 hours burn", "Seasonal & classic scents"]
+  },
+  {
+    id: "bbw-foaming-hand-soap",
+    name: "Gentle & Clean Foaming Hand Soap",
+    brand: "Bath & Body Works",
+    category: "beauty", sub: "body", condition: "new",
+    priceUSD: 9,
+    stock: { za: 20, zw: 12 }, usaOrder: true,
+    icon: "pump", tone: ["#e8eefc", "#6b80d6"],
+    desc: "Soft, fluffy foam that cleans gently and leaves hands smelling amazing. Stock up in three scents.",
+    highlights: ["259 ml", "Aloe + vitamin E", "Mix & match scents"]
+  },
+
+  // ───────────── Victoria's Secret Beauty ─────────────
+  {
+    id: "vs-bombshell-edp",
+    name: "Bombshell Eau de Parfum",
+    brand: "Victoria's Secret",
+    category: "beauty", sub: "fragrance", condition: "new",
+    priceUSD: 98,
+    stock: { za: 3, zw: 2 }, usaOrder: true,
+    viral: "Best seller",
+    gender: "women", size: "100 ml",
+    icon: "perfume", tone: ["#fbe1ea", "#d1557f"],
+    desc: "Victoria's Secret's best-selling fragrance: bright purple passion fruit, peony and vanilla orchid.",
+    highlights: ["100 ml EDP", "Notes: passion fruit, peony, vanilla orchid", "Signature striped bottle"]
+  },
+  {
+    id: "vs-bare-vanilla-mist",
+    name: "Bare Vanilla Fragrance Mist",
+    brand: "Victoria's Secret",
+    category: "beauty", sub: "body", condition: "new",
+    priceUSD: 24,
+    stock: { za: 10, zw: 8 }, usaOrder: true,
+    viral: "TikTok viral",
+    icon: "mist", tone: ["#f8ead9", "#c08a54"],
+    desc: "The cosy, creamy vanilla mist everyone layers. Soft cashmere and whipped vanilla.",
+    highlights: ["250 ml", "Notes: whipped vanilla, cashmere", "Hair & body safe"]
+  },
+  {
+    id: "vs-pure-seduction-mist",
+    name: "Pure Seduction Fragrance Mist",
+    brand: "Victoria's Secret",
+    category: "beauty", sub: "body", condition: "new",
+    priceUSD: 24,
+    stock: { za: 6, zw: 5 }, usaOrder: true,
+    icon: "mist", tone: ["#f6dbe4", "#b8456d"],
+    desc: "Juicy red plum and freesia: a bold, fruity favourite.",
+    highlights: ["250 ml", "Notes: red plum, freesia", "Hair & body safe"]
+  },
+  {
+    id: "vs-bare-vanilla-lotion",
+    name: "Bare Vanilla Fragrance Lotion",
+    brand: "Victoria's Secret",
+    category: "beauty", sub: "body", condition: "new",
+    priceUSD: 22,
+    stock: { za: 8, zw: 5 }, usaOrder: true,
+    icon: "pump", tone: ["#f8ece0", "#b98656"],
+    desc: "Silky lotion in the Bare Vanilla scent to layer with the mist.",
+    highlights: ["236 ml", "Shea butter + coconut oil", "Pairs with Bare Vanilla mist"]
+  },
+  {
+    id: "vs-flavored-lip-gloss",
+    name: "Flavored Lip Gloss",
+    brand: "Victoria's Secret",
+    category: "beauty", sub: "makeup", condition: "new",
+    priceUSD: 15,
+    stock: { za: 12, zw: 8 }, usaOrder: true,
+    icon: "tube", tone: ["#fde0e6", "#e46a86"],
+    desc: "The nostalgic, high-shine flavoured gloss in sweet fruity flavours.",
+    highlights: ["13 g", "Flavours: Strawberry Fizz, Coconut Craze & more", "Sheer, glossy shine"]
   },
 
   // ───────────── Beauty · Fragrance ─────────────
@@ -776,5 +1603,53 @@ window.PRODUCTS = [
     icon: "console", tone: ["#e3e8f4", "#3e5aa8"],
     desc: "Certified refurbished PS5 Slim with one controller. Tested, cleaned and ready to play.",
     highlights: ["1 TB", "Includes DualSense controller", "6-month Crate warranty"]
+  },
+
+  // ───────────── Sleepwear ─────────────
+  {
+    id: "vs-satin-short-pj-set",
+    name: "Satin Short PJ Set",
+    brand: "Victoria's Secret",
+    category: "sleep", sub: "pyjamas", condition: "new",
+    priceUSD: 65,
+    stock: { za: 4, zw: 3 }, usaOrder: true,
+    viral: "Best seller",
+    icon: "pyjamas", tone: ["#fbe3ea", "#cf6b8c"],
+    desc: "A silky satin cami-and-shorts set with contrast piping, perfect for warm nights.",
+    highlights: ["Sizes XS\u2013XL (tell us yours at checkout)", "Satin, machine washable", "Colours: Pink, Black, Ivory"]
+  },
+  {
+    id: "vs-modal-long-pj-set",
+    name: "Modal Long PJ Set",
+    brand: "Victoria's Secret",
+    category: "sleep", sub: "pyjamas", condition: "new",
+    priceUSD: 75,
+    stock: { za: 3, zw: 2 }, usaOrder: true,
+    icon: "pyjamas", tone: ["#ece6f5", "#7d63b0"],
+    desc: "Buttery-soft modal long-sleeve top and pants with a relaxed fit.",
+    highlights: ["Sizes XS\u2013XL (tell us yours at checkout)", "Modal blend, breathable", "Colours: Heather Grey, Navy, Blush"]
+  },
+  {
+    id: "vs-flannel-long-pj-set",
+    name: "Flannel Long PJ Set",
+    brand: "Victoria's Secret",
+    category: "sleep", sub: "pyjamas", condition: "new",
+    priceUSD: 80,
+    stock: { za: 2, zw: 0 }, usaOrder: true,
+    viral: "Fan favourite",
+    icon: "pyjamas", tone: ["#f6e2dc", "#b2513e"],
+    desc: "The cosy classic: brushed cotton flannel in a button-up top and pants. Ideal for chilly winter nights.",
+    highlights: ["Sizes XS\u2013XL (tell us yours at checkout)", "100% cotton flannel", "Seasonal plaids"]
+  },
+  {
+    id: "vs-cotton-short-pj-set",
+    name: "Cotton Short PJ Set",
+    brand: "Victoria's Secret",
+    category: "sleep", sub: "pyjamas", condition: "new",
+    priceUSD: 55,
+    stock: { za: 5, zw: 4 }, usaOrder: true,
+    icon: "pyjamas", tone: ["#e3eef8", "#5487bd"],
+    desc: "Breathable cotton short-sleeve top and shorts with fun prints.",
+    highlights: ["Sizes XS\u2013XL (tell us yours at checkout)", "100% cotton", "Prints change seasonally"]
   }
 ];
