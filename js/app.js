@@ -84,7 +84,7 @@
 
   const GENDERS = [["women", "For her"], ["men", "For him"], ["unisex", "Unisex"]];
   const GENDER_LABEL = Object.fromEntries(GENDERS);
-  const GENDER_SEARCH = { women: "women her ladies perfume", men: "men him cologne", unisex: "unisex" };
+  const GENDER_SEARCH = { women: "for her women ladies perfume", men: "for him men mens cologne", unisex: "unisex for everyone" };
 
   const SUBS = {
     beauty: [["makeup", "Makeup"], ["skin", "Skincare"], ["body", "Body care"], ["fragrance", "Perfume"], ["hair", "Hair tools"]],
@@ -129,11 +129,18 @@
   }
 
   // ---------- Filtering ----------
-  // Search ignores case, accents and punctuation, so "loreal" finds L'Oréal and "elf" finds e.l.f.
-  const norm = (t) => t.normalize("NFD").replace(/[\u0300-\u036f]/g, "").replace(/['’.\-]/g, "").toLowerCase();
+  // Search ignores case, accents and punctuation: every typed word must appear in the product,
+  // and brand names also match with the spaces squeezed out ("onesize", "toofaced", "loreal").
+  const spaced = (t) => t.normalize("NFD").replace(/[\u0300-\u036f]/g, "").replace(/['’.\-]/g, "").replace(/\//g, " ")
+    .toLowerCase().replace(/\s+/g, " ").trim();
+  const squash = (t) => spaced(t).replace(/ /g, "");
+  function searchHit(p, q) {
+    const hay = spaced(`${p.brand} ${p.name} ${p.sub} ${p.condition} ${p.viral || ""} ${GENDER_SEARCH[p.gender] || ""}`);
+    return spaced(q).split(" ").every((w) => hay.includes(w)) || squash(p.brand).includes(squash(q));
+  }
 
   function matches(p, f) {
-    const q = norm(f.q.trim());
+    const q = f.q.trim();
     if (f.cat !== "all" && p.category !== f.cat) return false;
     if (f.sub !== "all" && p.sub !== f.sub) return false;
     if (f.cond !== "all" && p.condition !== f.cond) return false;
@@ -141,7 +148,7 @@
     if (f.gender !== "all" && p.sub === "fragrance" && p.gender !== f.gender && p.gender !== "unisex") return false;
     if (f.avail === "now" && !canNow(p)) return false;
     if (f.avail === "ship" && (canNow(p) || !canShip(p))) return false;
-    if (q && !norm(`${p.brand} ${p.name} ${p.sub} ${p.condition} ${p.viral || ""} ${GENDER_SEARCH[p.gender] || ""}`).includes(q)) return false;
+    if (q && !searchHit(p, q)) return false;
     return true;
   }
   // How many products a filter option would show, given the other active filters.

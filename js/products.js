@@ -461,6 +461,198 @@ window.PRODUCTS = [
     highlights: ["40 ml", "Shades: Light, Medium, Deep", "Shea butter + glycerin"]
   },
 
+  // ───────────── ONE/SIZE by Patrick Starrr ─────────────
+  {
+    id: "onesize-on-til-dawn-setting-spray",
+    name: "On 'Til Dawn Mattifying Waterproof Setting Spray",
+    brand: "ONE/SIZE by Patrick Starrr",
+    category: "beauty", sub: "makeup", condition: "new",
+    priceUSD: 34,
+    stock: { za: 8, zw: 6 }, usaOrder: true,
+    viral: "TikTok viral",
+    icon: "mist", tone: ["#ece2f8", "#6a46a3"],
+    desc: "The cult setting spray that locks makeup in place through heat, sweat and long nights, with a soft matte finish.",
+    highlights: ["100 ml", "Up to 16-hour wear", "Waterproof, mattifying"]
+  },
+  {
+    id: "onesize-ultimate-blurring-setting-powder",
+    name: "Ultimate Blurring Setting Powder",
+    brand: "ONE/SIZE by Patrick Starrr",
+    category: "beauty", sub: "makeup", condition: "new",
+    priceUSD: 36,
+    stock: { za: 6, zw: 4 }, usaOrder: true,
+    viral: "Best seller",
+    icon: "compact", tone: ["#f3e6dc", "#a77d5c"],
+    desc: "A finely milled setting powder that blurs pores and texture and keeps shine away.",
+    highlights: ["Several shades, including translucent", "Blurs pores & texture", "Long-lasting matte set"]
+  },
+  {
+    id: "onesize-turn-up-the-base-foundation",
+    name: "Turn Up The Base Full Beat Waterproof Liquid Foundation",
+    brand: "ONE/SIZE by Patrick Starrr",
+    category: "beauty", sub: "makeup", condition: "new",
+    priceUSD: 36,
+    stock: { za: 4, zw: 3 }, usaOrder: true,
+    icon: "bottle", tone: ["#f1d8c0", "#9d6741"],
+    desc: "Full-coverage, waterproof foundation built to last from day to night.",
+    highlights: ["Wide shade range", "Full coverage", "Waterproof, long-wearing"]
+  },
+  {
+    id: "onesize-turn-up-the-base-powder-foundation",
+    name: "Turn Up The Base Versatile Powder Foundation",
+    brand: "ONE/SIZE by Patrick Starrr",
+    category: "beauty", sub: "makeup", condition: "new",
+    priceUSD: 36,
+    stock: { za: 3, zw: 2 }, usaOrder: true,
+    icon: "compact", tone: ["#f2dbc5", "#a16d46"],
+    desc: "A buildable powder foundation for quick, even coverage and touch-ups on the go.",
+    highlights: ["Wide shade range", "Buildable coverage", "Wear alone or over liquid"]
+  },
+  {
+    id: "onesize-beauty-blur-balm",
+    name: "Beauty Blur Balm Hybrid Foundation",
+    brand: "ONE/SIZE by Patrick Starrr",
+    category: "beauty", sub: "makeup", condition: "new",
+    priceUSD: 34,
+    stock: { za: 3, zw: 2 }, usaOrder: true,
+    icon: "compact", tone: ["#f3decb", "#a8774f"],
+    desc: "A balm-to-skin hybrid foundation that melts in to blur and even out the complexion.",
+    highlights: ["Wide shade range", "Balm texture", "Natural, soft-blur finish"]
+  },
+  {
+    id: "onesize-butter-silk-concealer",
+    name: "Butter Silk Concealer",
+    brand: "ONE/SIZE by Patrick Starrr",
+    category: "beauty", sub: "makeup", condition: "new",
+    priceUSD: 28,
+    stock: { za: 5, zw: 3 }, usaOrder: true,
+    icon: "tube", tone: ["#f5dfca", "#ab7550"],
+    desc: "A creamy, buttery concealer that covers and brightens without creasing.",
+    highlights: ["Wide shade range", "Creamy, crease-resistant", "Medium-to-full coverage"]
+  },
+  {
+    id: "onesize-bb-cream",
+    name: "Turn Up The Base BB Cream",
+    brand: "ONE/SIZE by Patrick Starrr",
+    category: "beauty", sub: "makeup", condition: "new",
+    priceUSD: 32,
+    stock: { za: 4, zw: 2 }, usaOrder: true,
+    icon: "tube", tone: ["#f4e1cf", "#b0805a"],
+    desc: "A lightweight, skin-evening BB cream for a fresh, natural look.",
+    highlights: ["Light coverage", "Lightweight", "Everyday wear"]
+  },
+  {
+    id: "onesize-boucle-silk-powder",
+    name: "Boucl\u00e9 Silk Airbrushed Finishing Powder",
+    brand: "ONE/SIZE by Patrick Starrr",
+    category: "beauty", sub: "makeup", condition: "new",
+    priceUSD: 36,
+    stock: { za: 3, zw: 2 }, usaOrder: true,
+    icon: "compact", tone: ["#f4e9e1", "#b38e72"],
+    desc: "A silky finishing powder for a smooth, airbrushed final touch.",
+    highlights: ["Finishing powder", "Silky, airbrushed finish", "Softens texture"]
+  },
+  {
+    id: "onesize-oil-sucker-primer",
+    name: "Oil Sucker Extreme Mattifying Alkaline Primer",
+    brand: "ONE/SIZE by Patrick Starrr",
+    category: "beauty", sub: "makeup", condition: "new",
+    priceUSD: 32,
+    stock: { za: 5, zw: 4 }, usaOrder: true,
+    icon: "bottle", tone: ["#e5f1ec", "#4c9479"],
+    desc: "A mattifying primer that controls oil and helps makeup stay put on shiny skin.",
+    highlights: ["Mattifying", "Oil control", "Great for hot climates"]
+  },
+  {
+    id: "onesize-secure-the-blur-primer",
+    name: "Secure The Blur Makeup Magnet Primer",
+    brand: "ONE/SIZE by Patrick Starrr",
+    category: "beauty", sub: "makeup", condition: "new",
+    priceUSD: 32,
+    stock: { za: 4, zw: 2 }, usaOrder: true,
+    icon: "bottle", tone: ["#ece4f6", "#7a59ad"],
+    desc: "A gripping, blurring primer that holds makeup in place and softens pores.",
+    highlights: ["Gripping formula", "Blurs pores", "Smooth base"]
+  },
+  {
+    id: "onesize-secure-the-sweat-primer",
+    name: "Secure The Sweat Waterproof Mattifying Primer",
+    brand: "ONE/SIZE by Patrick Starrr",
+    category: "beauty", sub: "makeup", condition: "new",
+    priceUSD: 32,
+    stock: { za: 4, zw: 3 }, usaOrder: true,
+    icon: "bottle", tone: ["#e3eef7", "#4f7fb0"],
+    desc: "A waterproof, mattifying primer made to keep makeup on through heat and sweat.",
+    highlights: ["Waterproof", "Mattifying", "Sweat-resistant"]
+  },
+  {
+    id: "onesize-oil-sucker-blotting-spray",
+    name: "Oil Sucker Liquid Blotting Paper Spray",
+    brand: "ONE/SIZE by Patrick Starrr",
+    category: "beauty", sub: "makeup", condition: "new",
+    priceUSD: 30,
+    stock: { za: 4, zw: 2 }, usaOrder: true,
+    icon: "mist", tone: ["#e6f2ee", "#4f977f"],
+    desc: "A spray-on blotting paper that knocks back shine over makeup during the day.",
+    highlights: ["Mist over makeup", "Instant shine control", "Touch-up friendly"]
+  },
+  {
+    id: "onesize-go-off-makeup-dissolving-mist",
+    name: "GO OFF Makeup Dissolving Mist",
+    brand: "ONE/SIZE by Patrick Starrr",
+    category: "beauty", sub: "makeup", condition: "new",
+    priceUSD: 30,
+    stock: { za: 4, zw: 3 }, usaOrder: true,
+    icon: "mist", tone: ["#eef0f6", "#6b7aa4"],
+    desc: "Mist on, wipe off: melts away makeup, even waterproof formulas, at the end of the night.",
+    highlights: ["Spray-on makeup remover", "Removes waterproof makeup", "Gentle on skin"]
+  },
+  {
+    id: "onesize-cheek-clapper-blush-trio",
+    name: "Cheek Clapper 3D Blush Trio Palette",
+    brand: "ONE/SIZE by Patrick Starrr",
+    category: "beauty", sub: "makeup", condition: "new",
+    priceUSD: 36,
+    stock: { za: 5, zw: 3 }, usaOrder: true,
+    viral: "Fan favourite",
+    icon: "compact", tone: ["#fbdde3", "#d2607d"],
+    desc: "Three coordinated blush shades for a dimensional, sculpted flush.",
+    highlights: ["3 shades per palette", "Several colourways", "Buildable, blendable"]
+  },
+  {
+    id: "onesize-made-for-shade-bronze-sculpt-trio",
+    name: "Made For Shade Bronze & Sculpt Trio",
+    brand: "ONE/SIZE by Patrick Starrr",
+    category: "beauty", sub: "makeup", condition: "new",
+    priceUSD: 36,
+    stock: { za: 3, zw: 2 }, usaOrder: true,
+    icon: "compact", tone: ["#f1d8bd", "#a26a39"],
+    desc: "Bronzer, contour and highlight in one trio for a quick sculpted face.",
+    highlights: ["3 shades", "Bronze, sculpt & glow", "Several colourways"]
+  },
+  {
+    id: "onesize-fantasize-mascara",
+    name: "Fantasize Lifting & Lengthening Mascara",
+    brand: "ONE/SIZE by Patrick Starrr",
+    category: "beauty", sub: "makeup", condition: "new",
+    priceUSD: 26,
+    stock: { za: 6, zw: 4 }, usaOrder: true,
+    icon: "pencil", tone: ["#e8e4f0", "#4f4170"],
+    desc: "A lifting, lengthening mascara for long, defined lashes that hold their curl.",
+    highlights: ["Black", "Lift + length", "Long-wearing"]
+  },
+  {
+    id: "onesize-lip-snatcher-velvet-flex",
+    name: "Lip Snatcher Velvet Flex Lip Duo",
+    brand: "ONE/SIZE by Patrick Starrr",
+    category: "beauty", sub: "makeup", condition: "new",
+    priceUSD: 24,
+    stock: { za: 5, zw: 3 }, usaOrder: true,
+    icon: "lipstick", tone: ["#f6d6da", "#b0475d"],
+    desc: "A two-ended lip duo with a velvet colour and a defining liner for a snatched lip.",
+    highlights: ["Liner + colour duo", "Velvet finish", "Several shades"]
+  },
+
   // ───────────── Beauty · Skin ─────────────
   {
     id: "glow-recipe-watermelon-dew-drops",

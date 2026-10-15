@@ -46,6 +46,23 @@ Save a photo here named after the product id and it replaces the generated artwo
 | `loreal-infallible-fresh-wear.jpg` | L'Oréal Paris — Infallible 32H Fresh Wear Foundation |
 | `loreal-revitalift-ha-serum.jpg` | L'Oréal Paris — Revitalift 1.5% Pure Hyaluronic Acid Serum |
 | `loreal-lumi-glotion.jpg` | L'Oréal Paris — Lumi Glotion Natural Glow Enhancer |
+| `onesize-on-til-dawn-setting-spray.jpg` | ONE/SIZE by Patrick Starrr — On 'Til Dawn Mattifying Waterproof Setting Spray |
+| `onesize-ultimate-blurring-setting-powder.jpg` | ONE/SIZE by Patrick Starrr — Ultimate Blurring Setting Powder |
+| `onesize-turn-up-the-base-foundation.jpg` | ONE/SIZE by Patrick Starrr — Turn Up The Base Full Beat Waterproof Liquid Foundation |
+| `onesize-turn-up-the-base-powder-foundation.jpg` | ONE/SIZE by Patrick Starrr — Turn Up The Base Versatile Powder Foundation |
+| `onesize-beauty-blur-balm.jpg` | ONE/SIZE by Patrick Starrr — Beauty Blur Balm Hybrid Foundation |
+| `onesize-butter-silk-concealer.jpg` | ONE/SIZE by Patrick Starrr — Butter Silk Concealer |
+| `onesize-bb-cream.jpg` | ONE/SIZE by Patrick Starrr — Turn Up The Base BB Cream |
+| `onesize-boucle-silk-powder.jpg` | ONE/SIZE by Patrick Starrr — Bouclé Silk Airbrushed Finishing Powder |
+| `onesize-oil-sucker-primer.jpg` | ONE/SIZE by Patrick Starrr — Oil Sucker Extreme Mattifying Alkaline Primer |
+| `onesize-secure-the-blur-primer.jpg` | ONE/SIZE by Patrick Starrr — Secure The Blur Makeup Magnet Primer |
+| `onesize-secure-the-sweat-primer.jpg` | ONE/SIZE by Patrick Starrr — Secure The Sweat Waterproof Mattifying Primer |
+| `onesize-oil-sucker-blotting-spray.jpg` | ONE/SIZE by Patrick Starrr — Oil Sucker Liquid Blotting Paper Spray |
+| `onesize-go-off-makeup-dissolving-mist.jpg` | ONE/SIZE by Patrick Starrr — GO OFF Makeup Dissolving Mist |
+| `onesize-cheek-clapper-blush-trio.jpg` | ONE/SIZE by Patrick Starrr — Cheek Clapper 3D Blush Trio Palette |
+| `onesize-made-for-shade-bronze-sculpt-trio.jpg` | ONE/SIZE by Patrick Starrr — Made For Shade Bronze & Sculpt Trio |
+| `onesize-fantasize-mascara.jpg` | ONE/SIZE by Patrick Starrr — Fantasize Lifting & Lengthening Mascara |
+| `onesize-lip-snatcher-velvet-flex.jpg` | ONE/SIZE by Patrick Starrr — Lip Snatcher Velvet Flex Lip Duo |
 | `glow-recipe-watermelon-dew-drops.jpg` | Glow Recipe — Watermelon Glow Niacinamide Dew Drops |
 | `laneige-lip-sleeping-mask.jpg` | Laneige — Lip Sleeping Mask |
 | `cerave-sa-cleanser.jpg` | CeraVe — SA Smoothing Cleanser (Large) |
