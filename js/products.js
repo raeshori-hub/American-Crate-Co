@@ -4,9 +4,10 @@
  * Each product:
  *   id          unique, url-safe id
  *   name, brand
- *   category    "beauty" | "electronics"
+ *   category    "beauty" | "electronics" | "sleep"
  *   sub         beauty: "makeup" | "skin" | "body" | "fragrance" | "hair"
  *               electronics: "audio" | "phones" | "computers" | "wearables" | "gaming"
+ *               sleep: "pyjamas"
  *   condition   "new" | "refurbished"
  *   grade       (refurbished only) e.g. "Grade A — Excellent"
  *   priceUSD    selling price in USD (ZAR is calculated from js/config.js)
@@ -378,6 +379,76 @@ window.PRODUCTS = [
     highlights: ["50 g", "Fragrance-free", "For all skin types"]
   },
 
+  // ───────────── La Roche-Posay ─────────────
+  {
+    id: "lrp-toleriane-double-repair",
+    name: "Toleriane Double Repair Face Moisturizer",
+    brand: "La Roche-Posay",
+    category: "beauty", sub: "skin", condition: "new",
+    priceUSD: 26,
+    stock: { za: 8, zw: 5 }, usaOrder: true,
+    viral: "Best seller",
+    icon: "pump", tone: ["#e4eef7", "#3f78b5"],
+    desc: "The dermatologist-favourite daily moisturiser with ceramides and niacinamide. Restores the skin barrier in one hour.",
+    highlights: ["100 ml US size", "Ceramides + niacinamide", "Oil-free, fragrance-free"]
+  },
+  {
+    id: "lrp-cicaplast-baume-b5",
+    name: "Cicaplast Baume B5+",
+    brand: "La Roche-Posay",
+    category: "beauty", sub: "skin", condition: "new",
+    priceUSD: 20,
+    stock: { za: 10, zw: 6 }, usaOrder: true,
+    viral: "TikTok viral",
+    icon: "tube", tone: ["#e8f0f6", "#4d7fa8"],
+    desc: "The cult multi-purpose soothing balm for dry, irritated skin. A must-have for harmattan and winter.",
+    highlights: ["40 ml", "Panthenol + madecassoside", "Face, body & lips"]
+  },
+  {
+    id: "lrp-anthelios-melt-in-milk-spf60",
+    name: "Anthelios Melt-In Milk Sunscreen SPF 60",
+    brand: "La Roche-Posay",
+    category: "beauty", sub: "skin", condition: "new",
+    priceUSD: 40,
+    stock: { za: 4, zw: 2 }, usaOrder: true,
+    icon: "bottle", tone: ["#fdf0d6", "#d8973c"],
+    desc: "Fast-absorbing, broad-spectrum sun protection for face and body with a velvety finish.",
+    highlights: ["150 ml", "SPF 60, broad spectrum", "Water resistant (80 min)"]
+  },
+  {
+    id: "lrp-effaclar-duo",
+    name: "Effaclar Duo Dual Action Acne Treatment",
+    brand: "La Roche-Posay",
+    category: "beauty", sub: "skin", condition: "new",
+    priceUSD: 26,
+    stock: { za: 5, zw: 4 }, usaOrder: true,
+    icon: "tube", tone: ["#e6f1f0", "#3c8f8a"],
+    desc: "Benzoyl peroxide spot treatment that clears breakouts and helps prevent marks.",
+    highlights: ["20 ml", "5.5% micronised benzoyl peroxide", "Oil-free"]
+  },
+  {
+    id: "lrp-toleriane-hydrating-cleanser",
+    name: "Toleriane Hydrating Gentle Cleanser",
+    brand: "La Roche-Posay",
+    category: "beauty", sub: "skin", condition: "new",
+    priceUSD: 20,
+    stock: { za: 9, zw: 6 }, usaOrder: true,
+    icon: "pump", tone: ["#eaf1f8", "#5b86b3"],
+    desc: "A creamy, non-foaming cleanser that removes makeup and impurities without stripping.",
+    highlights: ["400 ml US size", "Ceramides + glycerin", "For normal to dry, sensitive skin"]
+  },
+  {
+    id: "lrp-lipikar-ap-balm",
+    name: "Lipikar Balm AP+M Body Moisturizer",
+    brand: "La Roche-Posay",
+    category: "beauty", sub: "body", condition: "new",
+    priceUSD: 34,
+    stock: { za: 3, zw: 2 }, usaOrder: true,
+    icon: "tube", tone: ["#e3edf6", "#356da4"],
+    desc: "Rich, 48-hour body balm for very dry and eczema-prone skin, for adults, kids and babies.",
+    highlights: ["400 ml", "Shea butter + niacinamide", "Suitable from birth"]
+  },
+
   // ───────────── Beauty · Body ─────────────
   {
     id: "sol-de-janeiro-bum-bum-cream",
@@ -425,6 +496,112 @@ window.PRODUCTS = [
     icon: "mist", tone: ["#efe4ff", "#9b7ad9"],
     desc: "America's favourite body mists in the season's best-selling scents.",
     highlights: ["236 ml", "Scents: A Thousand Wishes, Into the Night, Gingham", "Light, all-day scent"]
+  },
+  {
+    id: "bbw-ultimate-hydration-body-cream",
+    name: "Ultimate Hydration Body Cream",
+    brand: "Bath & Body Works",
+    category: "beauty", sub: "body", condition: "new",
+    priceUSD: 19,
+    stock: { za: 12, zw: 8 }, usaOrder: true,
+    viral: "Best seller",
+    icon: "jar", tone: ["#fde4ec", "#e07a9b"],
+    desc: "Rich, whipped body cream with 24-hour moisture in America's favourite scents.",
+    highlights: ["226 g", "Scents: A Thousand Wishes, Warm Vanilla Sugar, Champagne Toast", "Shea butter + hyaluronic acid"]
+  },
+  {
+    id: "bbw-shower-gel",
+    name: "Daily Nourishing Shower Gel",
+    brand: "Bath & Body Works",
+    category: "beauty", sub: "body", condition: "new",
+    priceUSD: 17,
+    stock: { za: 10, zw: 6 }, usaOrder: true,
+    icon: "pump", tone: ["#e9f3ea", "#5ba26a"],
+    desc: "Lathers into a fragrant, moisturising shower in the scent of your choice.",
+    highlights: ["295 ml", "Shea butter + vitamin E", "Scents to match the mists & creams"]
+  },
+  {
+    id: "bbw-3-wick-candle",
+    name: "3-Wick Candle",
+    brand: "Bath & Body Works",
+    category: "beauty", sub: "body", condition: "new",
+    priceUSD: 29,
+    stock: { za: 6, zw: 4 }, usaOrder: true,
+    viral: "TikTok viral",
+    icon: "candle", tone: ["#fff0d9", "#d98c3a"],
+    desc: "The iconic 3-wick candle that fills a room with scent. Up to 45 hours of burn time.",
+    highlights: ["411 g", "Up to 45 hours burn", "Seasonal & classic scents"]
+  },
+  {
+    id: "bbw-foaming-hand-soap",
+    name: "Gentle & Clean Foaming Hand Soap",
+    brand: "Bath & Body Works",
+    category: "beauty", sub: "body", condition: "new",
+    priceUSD: 9,
+    stock: { za: 20, zw: 12 }, usaOrder: true,
+    icon: "pump", tone: ["#e8eefc", "#6b80d6"],
+    desc: "Soft, fluffy foam that cleans gently and leaves hands smelling amazing. Stock up in three scents.",
+    highlights: ["259 ml", "Aloe + vitamin E", "Mix & match scents"]
+  },
+
+  // ───────────── Victoria's Secret Beauty ─────────────
+  {
+    id: "vs-bombshell-edp",
+    name: "Bombshell Eau de Parfum",
+    brand: "Victoria's Secret",
+    category: "beauty", sub: "fragrance", condition: "new",
+    priceUSD: 98,
+    stock: { za: 3, zw: 2 }, usaOrder: true,
+    viral: "Best seller",
+    gender: "women", size: "100 ml",
+    icon: "perfume", tone: ["#fbe1ea", "#d1557f"],
+    desc: "Victoria's Secret's best-selling fragrance: bright purple passion fruit, peony and vanilla orchid.",
+    highlights: ["100 ml EDP", "Notes: passion fruit, peony, vanilla orchid", "Signature striped bottle"]
+  },
+  {
+    id: "vs-bare-vanilla-mist",
+    name: "Bare Vanilla Fragrance Mist",
+    brand: "Victoria's Secret",
+    category: "beauty", sub: "body", condition: "new",
+    priceUSD: 24,
+    stock: { za: 10, zw: 8 }, usaOrder: true,
+    viral: "TikTok viral",
+    icon: "mist", tone: ["#f8ead9", "#c08a54"],
+    desc: "The cosy, creamy vanilla mist everyone layers. Soft cashmere and whipped vanilla.",
+    highlights: ["250 ml", "Notes: whipped vanilla, cashmere", "Hair & body safe"]
+  },
+  {
+    id: "vs-pure-seduction-mist",
+    name: "Pure Seduction Fragrance Mist",
+    brand: "Victoria's Secret",
+    category: "beauty", sub: "body", condition: "new",
+    priceUSD: 24,
+    stock: { za: 6, zw: 5 }, usaOrder: true,
+    icon: "mist", tone: ["#f6dbe4", "#b8456d"],
+    desc: "Juicy red plum and freesia: a bold, fruity favourite.",
+    highlights: ["250 ml", "Notes: red plum, freesia", "Hair & body safe"]
+  },
+  {
+    id: "vs-bare-vanilla-lotion",
+    name: "Bare Vanilla Fragrance Lotion",
+    brand: "Victoria's Secret",
+    category: "beauty", sub: "body", condition: "new",
+    priceUSD: 22,
+    stock: { za: 8, zw: 5 }, usaOrder: true,
+    icon: "pump", tone: ["#f8ece0", "#b98656"],
+    desc: "Silky lotion in the Bare Vanilla scent to layer with the mist.",
+    highlights: ["236 ml", "Shea butter + coconut oil", "Pairs with Bare Vanilla mist"]
+  },
+  {
+    id: "vs-flavored-lip-gloss",
+    name: "Flavored Lip Gloss",
+    brand: "Victoria's Secret",
+    category: "beauty", sub: "makeup", condition: "new",
+    priceUSD: 15,
+    stock: { za: 12, zw: 8 }, usaOrder: true,
+    icon: "tube", tone: ["#fde0e6", "#e46a86"],
+    desc: "The nostalgic, high-shine flavoured gloss in sweet fruity flavours.",
+    highlights: ["13 g", "Flavours: Strawberry Fizz, Coconut Craze & more", "Sheer, glossy shine"]
   },
 
   // ───────────── Beauty · Fragrance ─────────────
@@ -776,5 +953,53 @@ window.PRODUCTS = [
     icon: "console", tone: ["#e3e8f4", "#3e5aa8"],
     desc: "Certified refurbished PS5 Slim with one controller. Tested, cleaned and ready to play.",
     highlights: ["1 TB", "Includes DualSense controller", "6-month Crate warranty"]
+  },
+
+  // ───────────── Sleepwear ─────────────
+  {
+    id: "vs-satin-short-pj-set",
+    name: "Satin Short PJ Set",
+    brand: "Victoria's Secret",
+    category: "sleep", sub: "pyjamas", condition: "new",
+    priceUSD: 65,
+    stock: { za: 4, zw: 3 }, usaOrder: true,
+    viral: "Best seller",
+    icon: "pyjamas", tone: ["#fbe3ea", "#cf6b8c"],
+    desc: "A silky satin cami-and-shorts set with contrast piping, perfect for warm nights.",
+    highlights: ["Sizes XS\u2013XL (tell us yours at checkout)", "Satin, machine washable", "Colours: Pink, Black, Ivory"]
+  },
+  {
+    id: "vs-modal-long-pj-set",
+    name: "Modal Long PJ Set",
+    brand: "Victoria's Secret",
+    category: "sleep", sub: "pyjamas", condition: "new",
+    priceUSD: 75,
+    stock: { za: 3, zw: 2 }, usaOrder: true,
+    icon: "pyjamas", tone: ["#ece6f5", "#7d63b0"],
+    desc: "Buttery-soft modal long-sleeve top and pants with a relaxed fit.",
+    highlights: ["Sizes XS\u2013XL (tell us yours at checkout)", "Modal blend, breathable", "Colours: Heather Grey, Navy, Blush"]
+  },
+  {
+    id: "vs-flannel-long-pj-set",
+    name: "Flannel Long PJ Set",
+    brand: "Victoria's Secret",
+    category: "sleep", sub: "pyjamas", condition: "new",
+    priceUSD: 80,
+    stock: { za: 2, zw: 0 }, usaOrder: true,
+    viral: "Fan favourite",
+    icon: "pyjamas", tone: ["#f6e2dc", "#b2513e"],
+    desc: "The cosy classic: brushed cotton flannel in a button-up top and pants. Ideal for chilly winter nights.",
+    highlights: ["Sizes XS\u2013XL (tell us yours at checkout)", "100% cotton flannel", "Seasonal plaids"]
+  },
+  {
+    id: "vs-cotton-short-pj-set",
+    name: "Cotton Short PJ Set",
+    brand: "Victoria's Secret",
+    category: "sleep", sub: "pyjamas", condition: "new",
+    priceUSD: 55,
+    stock: { za: 5, zw: 4 }, usaOrder: true,
+    icon: "pyjamas", tone: ["#e3eef8", "#5487bd"],
+    desc: "Breathable cotton short-sleeve top and shorts with fun prints.",
+    highlights: ["Sizes XS\u2013XL (tell us yours at checkout)", "100% cotton", "Prints change seasonally"]
   }
 ];

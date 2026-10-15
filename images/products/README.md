@@ -39,10 +39,25 @@ Save a photo here named after the product id and it replaces the generated artwo
 | `elf-halo-glow-beauty-wand.jpg` | e.l.f. Cosmetics — Halo Glow Contour Beauty Wand |
 | `elf-power-grip-setting-spray.jpg` | e.l.f. Cosmetics — Power Grip Dewy Setting Spray |
 | `elf-holy-hydration-cream.jpg` | e.l.f. Cosmetics — Holy Hydration! Face Cream |
+| `lrp-toleriane-double-repair.jpg` | La Roche-Posay — Toleriane Double Repair Face Moisturizer |
+| `lrp-cicaplast-baume-b5.jpg` | La Roche-Posay — Cicaplast Baume B5+ |
+| `lrp-anthelios-melt-in-milk-spf60.jpg` | La Roche-Posay — Anthelios Melt-In Milk Sunscreen SPF 60 |
+| `lrp-effaclar-duo.jpg` | La Roche-Posay — Effaclar Duo Dual Action Acne Treatment |
+| `lrp-toleriane-hydrating-cleanser.jpg` | La Roche-Posay — Toleriane Hydrating Gentle Cleanser |
+| `lrp-lipikar-ap-balm.jpg` | La Roche-Posay — Lipikar Balm AP+M Body Moisturizer |
 | `sol-de-janeiro-bum-bum-cream.jpg` | Sol de Janeiro — Brazilian Bum Bum Cream |
 | `sol-de-janeiro-cheirosa-mist.jpg` | Sol de Janeiro — Cheirosa 68 Perfume Mist |
 | `tree-hut-sugar-scrub.jpg` | Tree Hut — Shea Sugar Scrub |
 | `bbw-body-mist.jpg` | Bath & Body Works — Fine Fragrance Body Mist |
+| `bbw-ultimate-hydration-body-cream.jpg` | Bath & Body Works — Ultimate Hydration Body Cream |
+| `bbw-shower-gel.jpg` | Bath & Body Works — Daily Nourishing Shower Gel |
+| `bbw-3-wick-candle.jpg` | Bath & Body Works — 3-Wick Candle |
+| `bbw-foaming-hand-soap.jpg` | Bath & Body Works — Gentle & Clean Foaming Hand Soap |
+| `vs-bombshell-edp.jpg` | Victoria's Secret — Bombshell Eau de Parfum |
+| `vs-bare-vanilla-mist.jpg` | Victoria's Secret — Bare Vanilla Fragrance Mist |
+| `vs-pure-seduction-mist.jpg` | Victoria's Secret — Pure Seduction Fragrance Mist |
+| `vs-bare-vanilla-lotion.jpg` | Victoria's Secret — Bare Vanilla Fragrance Lotion |
+| `vs-flavored-lip-gloss.jpg` | Victoria's Secret — Flavored Lip Gloss |
 | `kayali-vanilla-28.jpg` | Kayali — Vanilla \| 28 Eau de Parfum |
 | `ariana-grande-cloud.jpg` | Ariana Grande — Cloud Eau de Parfum |
 | `glossier-you.jpg` | Glossier — Glossier You Eau de Parfum |
@@ -71,3 +86,7 @@ Save a photo here named after the product id and it replaces the generated artwo
 | `macbook-air-m1-refurb.jpg` | Apple — MacBook Air 13" M1 8GB/256GB |
 | `apple-watch-se-refurb.jpg` | Apple — Apple Watch SE (2nd gen) 44mm |
 | `ps5-slim-refurb.jpg` | Sony — PlayStation 5 Slim (Disc) |
+| `vs-satin-short-pj-set.jpg` | Victoria's Secret — Satin Short PJ Set |
+| `vs-modal-long-pj-set.jpg` | Victoria's Secret — Modal Long PJ Set |
+| `vs-flannel-long-pj-set.jpg` | Victoria's Secret — Flannel Long PJ Set |
+| `vs-cotton-short-pj-set.jpg` | Victoria's Secret — Cotton Short PJ Set |
