@@ -948,6 +948,157 @@ window.PRODUCTS = [
     highlights: ["400 ml", "Shea butter + niacinamide", "Suitable from birth"]
   },
 
+  // ───────────── Glossier ─────────────
+  {
+    id: "glossier-boy-brow",
+    name: "Boy Brow",
+    brand: "Glossier",
+    category: "beauty", sub: "makeup", condition: "new",
+    priceUSD: 22,
+    stock: { za: 8, zw: 5 }, usaOrder: true,
+    viral: "Best seller",
+    icon: "pencil", tone: ["#f6e3dc", "#8a5a46"],
+    desc: "The cult brow pomade that thickens, shapes and holds brows for a fluffy, natural look.",
+    highlights: ["3 g", "Shades: Clear, Blond, Brown, Black & more", "Flexible, buildable hold"]
+  },
+  {
+    id: "glossier-cloud-paint",
+    name: "Cloud Paint",
+    brand: "Glossier",
+    category: "beauty", sub: "makeup", condition: "new",
+    priceUSD: 24,
+    stock: { za: 6, zw: 4 }, usaOrder: true,
+    viral: "TikTok viral",
+    icon: "tube", tone: ["#fde0e4", "#e06a80"],
+    desc: "A seamless gel-cream blush that blends in with your fingertips for a natural flush.",
+    highlights: ["10 ml", "Shades: Puff, Dusk, Beam, Haze & more", "Buildable, dewy finish"]
+  },
+  {
+    id: "glossier-balm-dotcom",
+    name: "Balm Dotcom",
+    brand: "Glossier",
+    category: "beauty", sub: "skin", condition: "new",
+    priceUSD: 17,
+    stock: { za: 12, zw: 8 }, usaOrder: true,
+    viral: "Best seller",
+    icon: "tube", tone: ["#fbe7e8", "#d07a85"],
+    desc: "The universal skin salve for lips and dry patches, in signature flavours.",
+    highlights: ["15 ml", "Flavours: Original, Birthday, Cherry, Mint & more", "Lips, cuticles, dry spots"]
+  },
+  {
+    id: "glossier-milky-jelly-cleanser",
+    name: "Milky Jelly Cleanser",
+    brand: "Glossier",
+    category: "beauty", sub: "skin", condition: "new",
+    priceUSD: 22,
+    stock: { za: 6, zw: 4 }, usaOrder: true,
+    icon: "pump", tone: ["#f1eff6", "#8e86b0"],
+    desc: "A gentle, conditioning daily cleanser that removes makeup without stripping skin.",
+    highlights: ["177 ml", "pH-balanced", "For all skin types"]
+  },
+  {
+    id: "glossier-futuredew",
+    name: "Futuredew",
+    brand: "Glossier",
+    category: "beauty", sub: "skin", condition: "new",
+    priceUSD: 28,
+    stock: { za: 4, zw: 2 }, usaOrder: true,
+    icon: "dropper", tone: ["#fbf0e2", "#c99a64"],
+    desc: "An oil-serum hybrid for an instant dewy glow, alone or under makeup.",
+    highlights: ["30 ml", "Oil-serum hybrid", "Glowy finish"]
+  },
+  {
+    id: "glossier-lash-slick",
+    name: "Lash Slick",
+    brand: "Glossier",
+    category: "beauty", sub: "makeup", condition: "new",
+    priceUSD: 20,
+    stock: { za: 7, zw: 5 }, usaOrder: true,
+    icon: "pencil", tone: ["#ece7ef", "#4b3f5c"],
+    desc: "A lengthening, lifting mascara for naturally defined lashes that stay put.",
+    highlights: ["Black or brown", "Tubing film formula", "Smudge-proof, flake-free"]
+  },
+  {
+    id: "glossier-stretch-concealer",
+    name: "Stretch Concealer",
+    brand: "Glossier",
+    category: "beauty", sub: "makeup", condition: "new",
+    priceUSD: 24,
+    stock: { za: 5, zw: 3 }, usaOrder: true,
+    icon: "compact", tone: ["#f5e1cf", "#ad7a53"],
+    desc: "A flexible, buildable concealer that moves with your skin and never looks cakey.",
+    highlights: ["Wide shade range", "Natural, dewy finish", "Buildable coverage"]
+  },
+  {
+    id: "glossier-ultralip",
+    name: "Ultralip",
+    brand: "Glossier",
+    category: "beauty", sub: "makeup", condition: "new",
+    priceUSD: 22,
+    stock: { za: 6, zw: 4 }, usaOrder: true,
+    icon: "lipstick", tone: ["#f8d9dd", "#b85465"],
+    desc: "A sheer, high-shine lip colour that treats lips like a balm.",
+    highlights: ["Several shades", "Hydrating", "Sheer, glossy colour"]
+  },
+  {
+    id: "glossier-solution",
+    name: "Solution Exfoliating Skin Perfector",
+    brand: "Glossier",
+    category: "beauty", sub: "skin", condition: "new",
+    priceUSD: 26,
+    stock: { za: 4, zw: 2 }, usaOrder: true,
+    icon: "bottle", tone: ["#f0f3f8", "#6c86a8"],
+    desc: "A daily chemical exfoliant that smooths texture and helps prevent breakouts.",
+    highlights: ["130 ml", "AHA + BHA + PHA", "For clearer, smoother skin"]
+  },
+
+  // ───────────── eos ─────────────
+  {
+    id: "eos-vanilla-cashmere-body-lotion",
+    name: "Shea Better Body Lotion, Vanilla Cashmere",
+    brand: "eos",
+    category: "beauty", sub: "body", condition: "new",
+    priceUSD: 11,
+    stock: { za: 15, zw: 10 }, usaOrder: true,
+    viral: "TikTok viral",
+    icon: "pump", tone: ["#f8eadc", "#b98a5a"],
+    desc: "The viral 24-hour body lotion in the cosy Vanilla Cashmere scent everyone's talking about.",
+    highlights: ["473 ml", "Shea butter + 5 oils", "24-hour moisture"]
+  },
+  {
+    id: "eos-shea-better-shave-cream",
+    name: "Shea Better Shave Cream",
+    brand: "eos",
+    category: "beauty", sub: "body", condition: "new",
+    priceUSD: 7,
+    stock: { za: 18, zw: 12 }, usaOrder: true,
+    icon: "tube", tone: ["#eaf2fb", "#5d8fc6"],
+    desc: "A rich, creamy shave cream that helps prevent nicks and razor burn.",
+    highlights: ["207 ml", "Shea butter + aloe", "Scents: Vanilla Bliss, Pomegranate Raspberry & more"]
+  },
+  {
+    id: "eos-lip-balm-spheres-4-pack",
+    name: "Lip Balm Spheres (4-pack)",
+    brand: "eos",
+    category: "beauty", sub: "skin", condition: "new",
+    priceUSD: 12,
+    stock: { za: 20, zw: 15 }, usaOrder: true,
+    icon: "jar", tone: ["#fde5ea", "#e46f8c"],
+    desc: "The iconic round lip balms in four favourite flavours.",
+    highlights: ["4 \u00d7 7 g", "Shea butter + vitamin E", "Flavours: Strawberry Sorbet, Vanilla Bean & more"]
+  },
+  {
+    id: "eos-shea-better-body-wash",
+    name: "Shea Better Body Wash, Vanilla Cashmere",
+    brand: "eos",
+    category: "beauty", sub: "body", condition: "new",
+    priceUSD: 10,
+    stock: { za: 10, zw: 6 }, usaOrder: true,
+    icon: "pump", tone: ["#f6e8db", "#a97b52"],
+    desc: "A gentle, creamy body wash to pair with the Vanilla Cashmere lotion.",
+    highlights: ["473 ml", "Shea butter", "Vanilla Cashmere scent"]
+  },
+
   // ───────────── Beauty · Body ─────────────
   {
     id: "sol-de-janeiro-bum-bum-cream",

@@ -88,6 +88,19 @@ Save a photo here named after the product id and it replaces the generated artwo
 | `lrp-effaclar-duo.jpg` | La Roche-Posay — Effaclar Duo Dual Action Acne Treatment |
 | `lrp-toleriane-hydrating-cleanser.jpg` | La Roche-Posay — Toleriane Hydrating Gentle Cleanser |
 | `lrp-lipikar-ap-balm.jpg` | La Roche-Posay — Lipikar Balm AP+M Body Moisturizer |
+| `glossier-boy-brow.jpg` | Glossier — Boy Brow |
+| `glossier-cloud-paint.jpg` | Glossier — Cloud Paint |
+| `glossier-balm-dotcom.jpg` | Glossier — Balm Dotcom |
+| `glossier-milky-jelly-cleanser.jpg` | Glossier — Milky Jelly Cleanser |
+| `glossier-futuredew.jpg` | Glossier — Futuredew |
+| `glossier-lash-slick.jpg` | Glossier — Lash Slick |
+| `glossier-stretch-concealer.jpg` | Glossier — Stretch Concealer |
+| `glossier-ultralip.jpg` | Glossier — Ultralip |
+| `glossier-solution.jpg` | Glossier — Solution Exfoliating Skin Perfector |
+| `eos-vanilla-cashmere-body-lotion.jpg` | eos — Shea Better Body Lotion, Vanilla Cashmere |
+| `eos-shea-better-shave-cream.jpg` | eos — Shea Better Shave Cream |
+| `eos-lip-balm-spheres-4-pack.jpg` | eos — Lip Balm Spheres (4-pack) |
+| `eos-shea-better-body-wash.jpg` | eos — Shea Better Body Wash, Vanilla Cashmere |
 | `sol-de-janeiro-bum-bum-cream.jpg` | Sol de Janeiro — Brazilian Bum Bum Cream |
 | `sol-de-janeiro-cheirosa-mist.jpg` | Sol de Janeiro — Cheirosa 68 Perfume Mist |
 | `tree-hut-sugar-scrub.jpg` | Tree Hut — Shea Sugar Scrub |
