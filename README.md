@@ -25,7 +25,7 @@ Open `index.html` in a browser, or run `python3 -m http.server` and visit http:/
 | Colours and layout | `css/styles.css` |
 
 **Before going live:**
-1. Set `whatsappNumber` and `email` in `js/config.js` (the current values are placeholders).
+1. Contact details are set in `js/config.js` (`whatsappNumber`, `phoneDisplay`, `email`). Change them there if they ever change.
 2. Replace the placeholder prices in `js/products.js` with your real ones.
 3. Update `usdToZar` whenever your rate changes.
 

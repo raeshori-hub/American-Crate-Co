@@ -11,8 +11,10 @@ window.STORE_CONFIG = {
 
   // Where orders and concierge requests are sent.
   // WhatsApp number in international format, digits only (no + or spaces).
-  whatsappNumber: "27000000000",
-  email: "orders@americancrate.co",
+  whatsappNumber: "15015294268",
+  // How the number is shown on the site (also used for the call link).
+  phoneDisplay: "+1 (501) 529-4268",
+  email: "americancrateco@gmail.com",
   instagram: "americancrateco",
   tiktok: "americancrateco",
 

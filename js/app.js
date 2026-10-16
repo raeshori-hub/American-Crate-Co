@@ -811,6 +811,9 @@
 
   // Footer contact
   $("#footWhatsapp").href = `https://wa.me/${CFG.whatsappNumber}`;
+  $("#footWhatsapp").textContent = `WhatsApp ${CFG.phoneDisplay}`;
+  $("#footPhone").href = `tel:+${CFG.whatsappNumber}`;
+  $("#footPhone").textContent = `Call ${CFG.phoneDisplay}`;
   $("#footEmail").href = `mailto:${CFG.email}`;
   $("#footEmail").textContent = CFG.email;
   $("#footInstagram").href = `https://instagram.com/${CFG.instagram}`;
