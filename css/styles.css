@@ -276,6 +276,7 @@ p { margin: 0 0 1em; }
 .footer__inner > div { display: flex; flex-direction: column; gap: 8px; }
 .footer__brand p { max-width: 24em; margin: 6px 0 4px; }
 .footer h4 { font-size: .8rem; text-transform: uppercase; letter-spacing: .08em; margin-bottom: 6px; color: var(--muted); }
+#footWhatsapp, #footPhone { white-space: nowrap; }
 .footer a:hover { text-decoration: underline; text-underline-offset: 3px; }
 .socials { display: flex; gap: 16px; font-weight: 600; }
 .footer__base { display: flex; justify-content: space-between; gap: 16px; flex-wrap: wrap; margin-top: 40px; padding-top: 18px; border-top: 1px solid var(--line); font-size: .8rem; color: var(--muted); }
